@@ -13,18 +13,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Generator, um dummy-data für Experimente zu generieren.
+ * @Author Joseph Alzieb
+ */
 public class DummyDataGenerator {
 
+  /**
+   * @param args
+   * @throws IOException
+   */
   public static void main(String[] args) throws IOException {
     Random random = new Random();
     int x = 5;
     while (x < 41) {
       for (int j = 0; j < 5; j++) {
         List<Robot> robots = new ArrayList<>();
+
+        // der erste aktive Roboter
         Location randomLocation = new Location(random.nextInt(1000), random.nextInt(1000));
         robots.add(new Robot("0", randomLocation));
         robots.get(0).status = Status.ON;
 
+        // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < x; i++) {
           randomLocation = new Location(random.nextInt(1000), random.nextInt(1000));
           robots.add(new Robot(String.valueOf(i), randomLocation));
@@ -42,6 +53,12 @@ public class DummyDataGenerator {
     }
   }
 
+  /**
+   * erzeugt ein Json-File mit dummy-data.
+   * @param file
+   * @param robots
+   * @throws IOException
+   */
   private static void save(String file, List<Robot> robots) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

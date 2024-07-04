@@ -1,5 +1,8 @@
 package de.frezzetagproblem.models;
 
+/**
+ * @Author Joseph Alzieb
+ */
 public class Location {
   public int x;
   public int y;
