@@ -24,20 +24,19 @@ public class DummyDataGenerator {
    * @throws IOException
    */
   public static void main(String[] args) throws IOException {
-    Random random = new Random();
     int x = 5;
     while (x < 41) {
       for (int j = 0; j < 5; j++) {
         List<Robot> robots = new ArrayList<>();
 
         // der erste aktive Roboter
-        Location randomLocation = new Location(random.nextInt(1000), random.nextInt(1000));
+        Location randomLocation = getRandomLocation();
         robots.add(new Robot("0", randomLocation));
         robots.get(0).status = Status.ON;
 
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < x; i++) {
-          randomLocation = new Location(random.nextInt(1000), random.nextInt(1000));
+          randomLocation = getRandomLocation();
           robots.add(new Robot(String.valueOf(i), randomLocation));
         }
 
@@ -51,6 +50,15 @@ public class DummyDataGenerator {
       }
       x = x * 2;
     }
+  }
+
+  /**
+   * erzeugt rondom-location.
+   * @return
+   */
+  private static Location getRandomLocation() {
+    Random random = new Random();
+    return new Location(random.nextInt(1000), random.nextInt(1000));
   }
 
   /**
