@@ -7,7 +7,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.models.Robot;
 import de.frezzetagproblem.models.Status;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -22,12 +24,15 @@ import java.util.Map;
 public class FrezzeTag {
 
   public static void main(String[] args) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    int x = 5;
+    runExperiments(5,40, 2);
+  }
 
-    while (x < 41) {
+  private static void runExperiments(int robotCount, int totalRobotsCount, int offset) throws IOException {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+    while (robotCount <= totalRobotsCount) {
       Map<String, Integer> results = new HashMap<>();
-      Path dir = Paths.get("dummy-data/" + x);
+      Path dir = Paths.get("dummy-data/" + robotCount);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }
@@ -77,9 +82,26 @@ public class FrezzeTag {
           }
           timeunit++;
         }
+
+        results.put(entry.getFileName().toString(), timeunit);
       }
 
-      x = x * 2;
+      saveResults(robotCount, gson, results);
+
+      robotCount *= offset;
+    }
+  }
+
+  private static void saveResults(int robotCount, Gson gson, Map<String, Integer> results)
+      throws IOException {
+    String resultDirectory= "results/";
+    File resDir = new File(resultDirectory);
+    if (!resDir.exists()) {
+      resDir.mkdirs();
+    }
+    String resultFileName =  resultDirectory + robotCount + "-results.json";
+    try (FileWriter writer = new FileWriter(resultFileName)) {
+      gson.toJson(results, writer);
     }
   }
 

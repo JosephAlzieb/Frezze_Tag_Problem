@@ -20,7 +20,7 @@ import java.util.Random;
 public class DummyDataGenerator {
 
   public static void main(String[] args) throws IOException {
-    generateDummyRoboters(5, 40, 5, 2);
+    generateDummyRoboters(5, 40, 1, 2);
   }
 
   /**
