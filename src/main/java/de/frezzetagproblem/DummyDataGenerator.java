@@ -19,14 +19,21 @@ import java.util.Random;
  */
 public class DummyDataGenerator {
 
+  public static void main(String[] args) throws IOException {
+    generateDummyRoboters(5, 40, 5, 2);
+  }
+
   /**
-   * @param args
+   * Die Methode generiert Dummy-Roboters in Json-Files.
+   * @param robotsCount Anzahl der Roboter in den ersten (filesCount) Json-Files. (im ersten Experiment)
+   * @param totalRobotsCount Anzahl der Roboter in den letzten (filesCount) Json-Files. (im letzten Experiment)
+   * @param filesCount  Anzahl der Json-Files.
+   * @param offset      Unterschied zu dem nächsten Experiment.
    * @throws IOException
    */
-  public static void main(String[] args) throws IOException {
-    int x = 5;
-    while (x < 41) {
-      for (int j = 0; j < 5; j++) {
+  private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount, int offset) throws IOException {
+    while (robotsCount <= totalRobotsCount) {
+      for (int j = 0; j < filesCount; j++) {
         List<Robot> robots = new ArrayList<>();
 
         // der erste aktive Roboter
@@ -35,12 +42,12 @@ public class DummyDataGenerator {
         robots.get(0).status = Status.ON;
 
         // Hier werden die anderen schlafenden Roboter generiert.
-        for (int i = 1; i < x; i++) {
+        for (int i = 1; i < robotsCount; i++) {
           randomLocation = getRandomLocation();
           robots.add(new Robot(String.valueOf(i), randomLocation, false));
         }
 
-        String directory = "dummy-data/" + x + "/";
+        String directory = "dummy-data/" + robotsCount + "/";
         File dir = new File(directory);
         if (!dir.exists()) {
           dir.mkdirs();
@@ -48,13 +55,12 @@ public class DummyDataGenerator {
 
         save(directory + j + ".json", robots);
       }
-      x = x * 2;
+      robotsCount *= offset;
     }
   }
 
   /**
-   * erzeugt rondom-location.
-   * @return
+   * @return random Location
    */
   private static Location getRandomLocation() {
     Random random = new Random();
@@ -63,8 +69,8 @@ public class DummyDataGenerator {
 
   /**
    * erzeugt ein Json-File mit dummy-data.
-   * @param file
-   * @param robots
+   * @param file um Ergebnisse zu speichern
+   * @param robots die random-erzeugte Roboters
    * @throws IOException
    */
   private static void save(String file, List<Robot> robots) throws IOException {

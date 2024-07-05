@@ -34,6 +34,9 @@ public class FrezzeTag {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
+      /**
+       * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
+       */
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
@@ -53,12 +56,18 @@ public class FrezzeTag {
           }
         }
 
+        /**
+         * timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
+         */
         int timeunit = 0;
         while (!off.isEmpty()) {
           for (Robot r : on) {
             r.run(off);
           }
 
+          /**
+           * ON- und OFF-Listen werden aktualisiert.
+           */
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
             Robot robot = iterator.next();
             if (robot.status == Status.ON) {
@@ -70,7 +79,7 @@ public class FrezzeTag {
         }
       }
 
-      x = x + 40;
+      x = x * 2;
     }
   }
 
