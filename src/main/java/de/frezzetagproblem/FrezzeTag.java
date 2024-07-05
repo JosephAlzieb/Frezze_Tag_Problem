@@ -70,7 +70,7 @@ public class FrezzeTag {
         }
       }
 
-      x = x * 2;
+      x = x + 40;
     }
   }
 

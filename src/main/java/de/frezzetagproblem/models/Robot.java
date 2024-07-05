@@ -40,12 +40,28 @@ public class Robot {
    * @param off List of Robots with status "OFF"
    */
   public void run(List<Robot> off) {
+    //TODO immer beginnen wir hier mit dem ersten Roboter. hier müssen wir auch alle ON-Roboter übergeben. Bsp. Es gibt noch einen Robot zu aktivieren, und der erste Robot "0" wäre sehr weit weg von dem. aber der "3" sehr nah.
     if (this.targetRobot == null) {
       this.targetRobot = this.getNearestNeighbor(off);
       if (this.targetRobot != null && !this.targetRobot.declared) {
         //Robot markiert sein Goal
+        System.out.println(this.id + " markiert " + this.targetRobot.id);
         this.targetRobot.declared = true;
+
+        //Hier könnte sich der Robot direkt zu seinem Target bewegen, und ihn aktivieren. Dann schaffen wir das in 1-Zeiteinheit
       }
+    } else if (Arrays.equals(this.location.toArray(), this.targetRobot.location.toArray())){
+        //Robot hat sein Goal erreicht, und er weckt ihn auf. Status vom Target ist ON
+        this.targetRobot.status = Status.ON;
+        //Target vom Roboter ist wieder null, um neue Roboter aufwecken zu können
+      System.out.println(this.id + " aktiviert " + this.targetRobot.id);
+      this.targetRobot = null;
+    } else {
+      //Robot ist bei seinem Target gelandet.
+      this.location.x = this.targetRobot.location.x;
+      this.location.y = this.targetRobot.location.y;
+      System.out.println(this.id + " geht zu " + this.targetRobot.id);
+
     }
   }
 
