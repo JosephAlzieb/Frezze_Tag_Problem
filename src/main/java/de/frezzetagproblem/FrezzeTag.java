@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +52,22 @@ public class FrezzeTag {
             off.add(r);
           }
         }
-        System.out.println(off);
+
+        int timeunit = 0;
+        while (!off.isEmpty()) {
+          for (Robot r : on) {
+            r.run(off);
+          }
+
+          for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
+            Robot robot = iterator.next();
+            if (robot.status == Status.ON) {
+              on.add(robot);
+              iterator.remove();
+            }
+          }
+          timeunit++;
+        }
       }
 
       x = x * 2;
