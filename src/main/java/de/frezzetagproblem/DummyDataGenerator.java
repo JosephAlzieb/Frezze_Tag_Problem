@@ -31,13 +31,13 @@ public class DummyDataGenerator {
 
         // der erste aktive Roboter
         Location randomLocation = getRandomLocation();
-        robots.add(new Robot("0", randomLocation));
+        robots.add(new Robot("0", randomLocation, false));
         robots.get(0).status = Status.ON;
 
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < x; i++) {
           randomLocation = getRandomLocation();
-          robots.add(new Robot(String.valueOf(i), randomLocation));
+          robots.add(new Robot(String.valueOf(i), randomLocation, false));
         }
 
         String directory = "dummy-data/" + x + "/";
