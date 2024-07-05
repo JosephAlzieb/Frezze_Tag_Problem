@@ -74,6 +74,7 @@ public class DummyDataGenerator {
     for (Robot robot : robots) {
       JsonObject robotJson = new JsonObject();
       JsonObject locationJson = new JsonObject();
+      robotJson.addProperty("id", robot.id);
       locationJson.addProperty("x", robot.location.x);
       locationJson.addProperty("y", robot.location.y);
       robotJson.add("location", locationJson);

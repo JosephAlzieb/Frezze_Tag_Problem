@@ -15,4 +15,12 @@ public class Location {
   public int[] toArray() {
     return new int[]{this.x, this.y};
   }
+
+  @Override
+  public String toString() {
+    return "Location{" +
+        "x=" + x +
+        ", y=" + y +
+        '}';
+  }
 }
