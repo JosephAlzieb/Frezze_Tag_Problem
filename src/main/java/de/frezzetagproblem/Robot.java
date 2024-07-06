@@ -56,6 +56,8 @@ public class Robot {
       this.targetRobot.aktive();
       time.add(this.distance(this.targetRobot));
 
+      //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
+      this.move(this.targetRobot.location);
       this.targetRobot.removeTargetRobot();
     }
   }
@@ -90,8 +92,7 @@ public class Robot {
         this.removeTargetRobot();
     } else {
       //Robot ist bei seinem Target gelandet.
-      this.location.x = this.targetRobot.location.x;
-      this.location.y = this.targetRobot.location.y;
+      this.move(this.targetRobot.location);
       System.out.println(this.id + " geht zu " + this.targetRobot.id);
     }
     time.add(unit);
@@ -170,6 +171,10 @@ public class Robot {
 
   public double getLocation_y(){
     return this.location.y;
+  }
+
+  public void move(Location location){
+    this.location = location;
   }
   @Override
   public String toString() {
