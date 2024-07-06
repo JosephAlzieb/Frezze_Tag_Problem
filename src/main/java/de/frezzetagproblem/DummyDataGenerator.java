@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Robot;
-import de.frezzetagproblem.models.Status;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import java.util.Random;
 public class DummyDataGenerator {
 
   public static void main(String[] args) throws IOException {
-    generateDummyRoboters(5, 40, 1, 2);
+    generateDummyRoboters(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT, Properties.FILE_COUNT, Properties.OFFSET);
   }
 
   /**
@@ -39,7 +38,7 @@ public class DummyDataGenerator {
         // der erste aktive Roboter
         Location randomLocation = getRandomLocation();
         robots.add(new Robot("0", randomLocation, false));
-        robots.get(0).status = Status.ON;
+        robots.get(0).aktive();
 
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < robotsCount; i++) {
@@ -80,12 +79,12 @@ public class DummyDataGenerator {
     for (Robot robot : robots) {
       JsonObject robotJson = new JsonObject();
       JsonObject locationJson = new JsonObject();
-      robotJson.addProperty("id", robot.id);
-      locationJson.addProperty("x", robot.location.x);
-      locationJson.addProperty("y", robot.location.y);
+      robotJson.addProperty("id", robot.getId());
+      locationJson.addProperty("x", robot.getLocation_x());
+      locationJson.addProperty("y", robot.getLocation_y());
       robotJson.add("location", locationJson);
-      robotJson.addProperty("status", robot.status.name());
-      robotsJson.add(robot.id, robotJson);
+      robotJson.addProperty("status", robot.getStatus().name());
+      robotsJson.add(robot.getId(), robotJson);
     }
 
     JsonObject rootJson = new JsonObject();

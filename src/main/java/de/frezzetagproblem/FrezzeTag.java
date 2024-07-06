@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,14 +25,14 @@ import java.util.Map;
 public class FrezzeTag {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(5,40, 2);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
   }
 
   private static void runExperiments(int robotCount, int totalRobotsCount, int offset) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     while (robotCount <= totalRobotsCount) {
-      Map<String, Integer> results = new HashMap<>();
+      Map<String, Double> results = new HashMap<>();
       Path dir = Paths.get("dummy-data/" + robotCount);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
@@ -54,20 +55,22 @@ public class FrezzeTag {
           JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
           Robot r = gson.fromJson(robotObj, Robot.class);
 
-          if (Status.ON == r.status) {
+          if (r.isAktive()) {
             on.add(r);
-          } else if (Status.OFF == r.status) {
+          } else {
             off.add(r);
           }
         }
 
         /**
-         * timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
+         * Hier wird das Algorithms ausgeführt
+         * Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
          */
-        int timeunit = 0;
+        double timeunit = 0;
+        List<Double> timeUnits = new ArrayList<Double>();
         while (!off.isEmpty()) {
           for (Robot r : on) {
-            r.run(off);
+            r.run(off, timeUnits);
           }
 
           /**
@@ -75,12 +78,13 @@ public class FrezzeTag {
            */
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
             Robot robot = iterator.next();
-            if (robot.status == Status.ON) {
+            if (robot.isAktive()) {
               on.add(robot);
               iterator.remove();
             }
           }
-          timeunit++;
+          timeunit += updateTimeUnit(timeUnits);
+          timeUnits.clear();
         }
 
         results.put(entry.getFileName().toString(), timeunit);
@@ -92,7 +96,11 @@ public class FrezzeTag {
     }
   }
 
-  private static void saveResults(int robotCount, Gson gson, Map<String, Integer> results)
+  private static double updateTimeUnit(List<Double> timeUnits) {
+    return Collections.max(timeUnits);
+  }
+
+  private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
       throws IOException {
     String resultDirectory= "results/";
     File resDir = new File(resultDirectory);
