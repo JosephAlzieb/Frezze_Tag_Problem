@@ -1,4 +1,4 @@
-package de.frezzetagproblem.models;
+package de.frezzetagproblem;
 
 /**
  * @Author Joseph Alzieb

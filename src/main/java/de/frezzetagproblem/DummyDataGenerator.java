@@ -3,8 +3,6 @@ package de.frezzetagproblem;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import de.frezzetagproblem.models.Location;
-import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,12 +21,13 @@ public class DummyDataGenerator {
   }
 
   /**
-   * Die Methode generiert Dummy-Roboters in Json-Files.
-   * @param robotsCount Anzahl der Roboter in den ersten (filesCount) Json-Files. (im ersten Experiment)
-   * @param totalRobotsCount Anzahl der Roboter in den letzten (filesCount) Json-Files. (im letzten Experiment)
-   * @param filesCount  Anzahl der Json-Files.
-   * @param offset      Unterschied zu dem nächsten Experiment.
-   * @throws IOException
+   * Generiert Dummy-Roboter in JSON-Dateien.
+   *
+   * @param robotsCount         Anzahl der Roboter in den ersten (filesCount) JSON-Dateien (im ersten Experiment).
+   * @param totalRobotsCount    Anzahl der Roboter in den letzten (filesCount) JSON-Dateien (im letzten Experiment).
+   * @param filesCount          Anzahl der JSON-Dateien.
+   * @param offset              Differenz zur Anzahl der Roboter im nächsten Experiment.
+   * @throws IOException        Wenn ein E/A-Fehler auftritt.
    */
   private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount, int offset) throws IOException {
     while (robotsCount <= totalRobotsCount) {
@@ -67,10 +66,11 @@ public class DummyDataGenerator {
   }
 
   /**
-   * erzeugt ein Json-File mit dummy-data.
-   * @param file um Ergebnisse zu speichern
-   * @param robots die random-erzeugte Roboters
-   * @throws IOException
+   * Erzeugt eine JSON-Datei mit Dummy-Daten.
+   *
+   * @param file   Die Datei, in der die Ergebnisse gespeichert werden sollen.
+   * @param robots Die zufällig erzeugten Roboter.
+   * @throws IOException Wenn ein E/A-Fehler auftritt.
    */
   private static void save(String file, List<Robot> robots) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();

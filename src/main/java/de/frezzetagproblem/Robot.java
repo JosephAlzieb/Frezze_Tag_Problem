@@ -1,11 +1,11 @@
-package de.frezzetagproblem.models;
+package de.frezzetagproblem;
 
-import de.frezzetagproblem.Properties;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 /**
+ * Robot
  * @Author Joseph Alzieb
  */
 public class Robot {
@@ -34,10 +34,29 @@ public class Robot {
    * @return
    */
   public void run(List<Robot> off, List<Double> time) {
-    //TODO immer beginnen wir hier mit dem ersten Roboter. hier müssen wir auch alle ON-Roboter übergeben. Bsp. Es gibt noch einen Robot zu aktivieren, und der erste Robot "0" wäre sehr weit weg von dem. aber der "3" sehr nah.
-
-    if (Properties.ALGORITHM.equals(Properties.Greedy_1)){
+    //TODO Immer beginnen wir hier mit dem ersten Roboter. hier müssen wir auch alle ON-Roboter übergeben. Bsp. Es gibt noch einen Robot zu aktivieren, und der erste Robot "0" wäre sehr weit weg von dem. aber der "3" sehr nah.
+    //TODO Was ist mit der Rheinfolge der ON-Roboter. Es kann sein, dass ON-Robot "0" sehr weit weg von OFF-Robot "2", wobei ON-Robot "1" sehr nah an "2" ist.
+    if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_TIMEUNITS_1)){
       runGreedyAlgo_1(off, time);
+    } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)){
+      runGreedyAlgo_Dis(off, time);
+    }
+  }
+
+  /**
+   * Hier sucht Robot (this) das näherte Nachbar, und aktiviert ihn.
+   * Die Zeit, die zu aktivierung benötigt wird, wäre den Abstand zwischen den Robotern.
+   * @param off List of Robots with status "OFF".
+   * @param time List of Timeunits.
+   */
+  private void runGreedyAlgo_Dis(List<Robot> off, List<Double> time) {
+    this.targetRobot = this.getNearestNeighbor(off);
+    if (this.targetRobot != null) {
+      this.targetRobot.declare();
+      this.targetRobot.aktive();
+      time.add(this.distance(this.targetRobot));
+
+      this.targetRobot.removeTargetRobot();
     }
   }
 
@@ -49,7 +68,8 @@ public class Robot {
    *
    * 2: Robot (this) hat seinen Target-Robot erreicht, und weckt ihn auf.
    * 3: Robot (this) muss sich zu seinem Target-Robot bewegen.
-   * @param off List of Robots with status "OFF"
+   * @param off List of Robots with status "OFF".
+   * @param time List of Timeunits.
    */
   private void runGreedyAlgo_1(List<Robot> off, List<Double> time) {
     double unit = 1;
@@ -97,13 +117,19 @@ public class Robot {
   }
 
   /**
-   * Die Methode berechnet den Abstand zwischen zwei Punkten. (Euklidische Distanz)
+   * Die Methode berechnet den Abstand zwischen zwei Punkten.
+   * Je nachdem welche Metrik in {@link Properties} (L1, oder L2) gesetzt ist, wird diese Metrik zur Berechnung
+   * der Distanz verwendet.
    * @param that other Robot
-   * @return
+   * @return Distance from Robot (this) to Robot (that)
    */
   public double distance(Robot that) {
-    //return Math.abs(this.location.x - that.location.x) + Math.abs(this.location.y - that.location.y);
-    return Math.sqrt(Math.pow(this.location.x - that.location.x, 2) + Math.pow(this.location.y - that.location.y, 2));
+    if (Properties.METRIK.equals(Properties.L_1)) {
+      return Math.abs(this.location.x - that.location.x) + Math.abs(this.location.y - that.location.y);
+    } else {
+      return Math.sqrt(Math.pow(this.location.x - that.location.x, 2) + Math.pow(this.location.y - that.location.y, 2));
+    }
+
   }
 
   public String getId() {

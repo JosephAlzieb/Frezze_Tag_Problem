@@ -1,4 +1,4 @@
-package de.frezzetagproblem.models;
+package de.frezzetagproblem;
 
 /**
  * Status eines Robots kann entweder ON, oder OFF sein.
