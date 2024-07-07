@@ -74,6 +74,7 @@ public class Robot {
    * @param time List of Timeunits.
    */
   private void runGreedyAlgo_1(List<Robot> off, List<Double> time) {
+    // wenn wir hier alles in einem Schritt machen, dann ist das ähnlich wie der Theorem 1 von (Freeze-Tag in L1 has Wake-up Time Five)
     double unit = 1;
     if (!hasTargetRobot()) {
       this.targetRobot = this.getNearestNeighbor(off);
@@ -165,11 +166,11 @@ public class Robot {
     this.targetRobot = null;
   }
 
-  public double getLocation_x(){
+  public int getLocation_x(){
     return this.location.x;
   }
 
-  public double getLocation_y(){
+  public int getLocation_y(){
     return this.location.y;
   }
 

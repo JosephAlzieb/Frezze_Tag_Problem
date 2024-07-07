@@ -35,13 +35,13 @@ public class DummyDataGenerator {
         List<Robot> robots = new ArrayList<>();
 
         // der erste aktive Roboter
-        Location randomLocation = getRandomLocation();
-        robots.add(new Robot("0", randomLocation, false));
+        //Location randomLocation = getRandomLocation();
+        robots.add(new Robot("0", new Location(0,0), false));
         robots.get(0).aktive();
 
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < robotsCount; i++) {
-          randomLocation = getRandomLocation();
+          Location randomLocation = getRandomLocation();
           robots.add(new Robot(String.valueOf(i), randomLocation, false));
         }
 
@@ -62,7 +62,12 @@ public class DummyDataGenerator {
    */
   private static Location getRandomLocation() {
     Random random = new Random();
-    return new Location(random.nextInt(1000), random.nextInt(1000));
+    int min = -500;
+    int max = 500;
+    int x = random.nextInt((max - min) + 1) + min;
+    int y = random.nextInt((max - min) + 1) + min;
+
+    return new Location(x, y);
   }
 
   /**
