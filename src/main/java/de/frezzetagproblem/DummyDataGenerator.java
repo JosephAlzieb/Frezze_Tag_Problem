@@ -53,7 +53,11 @@ public class DummyDataGenerator {
 
         save(directory + j + ".json", robots);
       }
-      robotsCount *= offset;
+      if (robotsCount < 100){
+        robotsCount += 5;
+      }else {
+        robotsCount += 50;
+      }
     }
   }
 

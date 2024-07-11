@@ -26,12 +26,12 @@ public class FrezzeTag {
     runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
   }
 
-  private static void runExperiments(int robotCount, int totalRobotsCount, int offset) throws IOException {
+  private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    while (robotCount <= totalRobotsCount) {
+    while (robotsCount <= totalRobotsCount) {
       Map<String, Double> results = new HashMap<>();
-      Path dir = Paths.get("dummy-data/" + robotCount);
+      Path dir = Paths.get("dummy-data/" + robotsCount);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }
@@ -93,9 +93,13 @@ public class FrezzeTag {
         results.put(entry.getFileName().toString(), timeunit);
       }
 
-      saveResults(robotCount, gson, results);
+      saveResults(robotsCount, gson, results);
 
-      robotCount *= offset;
+      if (robotsCount < 100){
+        robotsCount += 5;
+      }else {
+        robotsCount += 50;
+      }
     }
   }
 

@@ -11,6 +11,7 @@ public class Properties {
    */
   public static String Greedy_WITH_TIMEUNITS_1 = "Greedy_TimeUnits";
   public static String Greedy_WITH_DISTANCE = "Greedy_Distance";
+  public static String Greedy_SIMULATION = "Greedy_Simulation";
   public static String L_1 = "L1";
   public static String L_2 = "L2";
 
@@ -18,8 +19,8 @@ public class Properties {
    * Variablen
    */
   public static int ROBOTS_COUNT = 5;
-  public static int FILE_COUNT = 1;
-  public static int TOTAL_ROBOTS_COUNT = 40;
+  public static int FILE_COUNT = 5;
+  public static int TOTAL_ROBOTS_COUNT = 1000;
   public static int OFFSET = 2;
 
   /**
