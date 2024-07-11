@@ -20,7 +20,7 @@ public class RobotTest {
         new Robot("3", new Location(3, 3), true)
     );
 
-    Robot result = robot.getNearestNeighbor(robots);
+    Robot result = robot.getNearestRobot(robots);
     assertNull(result); //Expected null when all robots are declared
   }
 
@@ -33,7 +33,7 @@ public class RobotTest {
         new Robot("3", new Location(3, 3), false)
     );
 
-    Robot result = robot.getNearestNeighbor(robots);
+    Robot result = robot.getNearestRobot(robots);
     assertEquals(robots.get(0), result); //Expected the nearest robot to be the first one when none are declared
   }
 
@@ -47,7 +47,7 @@ public class RobotTest {
         new Robot("4", new Location(1, 1), false)
         );
 
-    Robot result = robot.getNearestNeighbor(robots);
+    Robot result = robot.getNearestRobot(robots);
     assertEquals(robots.get(3), result); //Expected the nearest undeclared robot with id = 4
   }
 
@@ -56,7 +56,7 @@ public class RobotTest {
     Robot robot = new Robot("0", new Location(0, 0), false);
     List<Robot> robots = new ArrayList<>();
 
-    Robot result = robot.getNearestNeighbor(robots);
+    Robot result = robot.getNearestRobot(robots);
     assertNull(result); //Expected null when the list is empty
   }
 

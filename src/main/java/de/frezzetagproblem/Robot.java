@@ -50,26 +50,24 @@ public class Robot {
    * @param time List of Timeunits.
    */
   private void runGreedyAlgo_Dis(List<Robot> off, List<Double> time) {
-    this.targetRobot = this.getNearestNeighbor(off);
+    this.targetRobot = this.getNearestRobot(off);
     if (this.targetRobot != null) {
       this.targetRobot.declare();
       this.targetRobot.aktive();
       time.add(this.distance(this.targetRobot));
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
-      this.move(this.targetRobot.location);
-      this.targetRobot.removeTargetRobot();
+      this.moveTo(this.targetRobot.location);
+      this.removeTargetRobot();
     }
   }
 
   /**
-   * Wir unterscheiden 3 Fällen:
+   * Hier passiert folgendes:
    * 1: Robot (this) ist ON, und hat noch kein Robot gefunden, den er aufweckt.
-   * -> Es wird nach Target-Robot gesucht (der nächste Nachbar), und ihn markiert,
-   * -> damit er nicht von einem anderen Roboter markiert wird.
+   * -> Es wird nach Target-Robot gesucht (der nächste Nachbar)
    *
-   * 2: Robot (this) hat seinen Target-Robot erreicht, und weckt ihn auf.
-   * 3: Robot (this) muss sich zu seinem Target-Robot bewegen.
+   * 2: Robot (this) fährt zu seinem Target-Robot, und weckt ihn auf.
    * @param off List of Robots with status "OFF".
    * @param time List of Timeunits.
    */
@@ -77,24 +75,13 @@ public class Robot {
     // wenn wir hier alles in einem Schritt machen, dann ist das ähnlich wie der Theorem 1 von (Freeze-Tag in L1 has Wake-up Time Five)
     double unit = 1;
     if (!hasTargetRobot()) {
-      this.targetRobot = this.getNearestNeighbor(off);
+      this.targetRobot = this.getNearestRobot(off);
       if (this.targetRobot != null && !this.targetRobot.isDeclared()) {
-        //Robot markiert sein Goal
-        System.out.println(this.id + " markiert " + this.targetRobot.id);
         this.targetRobot.declare();
-
-        //Hier könnte sich der Robot direkt zu seinem Target bewegen, und ihn aktivieren. Dann schaffen wir das in 1-Zeiteinheit
-      }
-    } else if (Arrays.equals(this.location.toArray(), this.targetRobot.location.toArray())){
-        //Robot hat sein Goal erreicht, und er weckt ihn auf. Status vom Target ist ON
         this.targetRobot.aktive();
-        //Target vom Roboter ist wieder null, um neue Roboter aufwecken zu können
-        System.out.println(this.id + " aktiviert " + this.targetRobot.id);
+        this.moveTo(this.targetRobot.location);
         this.removeTargetRobot();
-    } else {
-      //Robot ist bei seinem Target gelandet.
-      this.move(this.targetRobot.location);
-      System.out.println(this.id + " geht zu " + this.targetRobot.id);
+      }
     }
     time.add(unit);
   }
@@ -104,7 +91,7 @@ public class Robot {
    * @param off List of Roboter with Status "OFF"
    * @return
    */
-  public Robot getNearestNeighbor(List<Robot> off) {
+  public Robot getNearestRobot(List<Robot> off) {
     Robot nearest = null;
     for (Robot r : off) {
       if (!r.isDeclared() && nearest == null) {
@@ -174,7 +161,7 @@ public class Robot {
     return this.location.y;
   }
 
-  public void move(Location location){
+  public void moveTo(Location location){
     this.location = location;
   }
   @Override
