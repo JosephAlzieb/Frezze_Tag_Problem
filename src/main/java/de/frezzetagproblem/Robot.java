@@ -137,6 +137,7 @@ public class Robot {
     this.status = Status.ON;
   }
 
+  //von The Visibility Freeze-Tag Problem (FTP in Euclidean Space)
   public boolean isDeclared() {
     return this.declared;
   }
