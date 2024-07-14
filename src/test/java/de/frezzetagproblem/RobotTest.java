@@ -1,4 +1,4 @@
-package de.frezzetagproblem.models;
+package de.frezzetagproblem;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
