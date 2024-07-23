@@ -22,6 +22,8 @@ public class Properties {
   public static int FILE_COUNT = 5;
   public static int TOTAL_ROBOTS_COUNT = 1000;
   public static int OFFSET = 2;
+  public static Location START_Location = new Location(0,0);
+  public static int R = 500;
 
   /**
    * Mit welchem Algorithms soll die App laufen

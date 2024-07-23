@@ -62,16 +62,22 @@ public class DummyDataGenerator {
   }
 
   /**
+   * Alle Punkte müssen im Kreis liegen für L2. oder im Quadrat für L1.
+   * Für L2 muss die Distanz zwischen der Random-Location und der Start-Location < Radius sein.
    * @return random Location
    */
   private static Location getRandomLocation() {
-    Random random = new Random();
-    int min = -500;
-    int max = 500;
-    int x = random.nextInt((max - min) + 1) + min;
-    int y = random.nextInt((max - min) + 1) + min;
-
-    return new Location(x, y);
+    while (true) {
+      Random random = new Random();
+      int min = -500;
+      int max = 500;
+      int x = random.nextInt((max - min) + 1) + min;
+      int y = random.nextInt((max - min) + 1) + min;
+      Location location = new Location(x, y);
+      if (location.distance(Properties.START_Location) < Properties.R){
+        return location;
+      }
+    }
   }
 
   /**
