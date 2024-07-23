@@ -95,9 +95,11 @@ public class FrezzeTag {
 
       saveResults(robotsCount, gson, results);
 
-      if (robotsCount < 100){
+      if (robotsCount < 10){
+        robotsCount++;
+      } else if (robotsCount < 100){
         robotsCount += 5;
-      }else {
+      } else {
         robotsCount += 50;
       }
     }
