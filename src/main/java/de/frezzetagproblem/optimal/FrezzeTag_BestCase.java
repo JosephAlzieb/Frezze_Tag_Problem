@@ -1,10 +1,11 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.optimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import de.frezzetagproblem.Properties;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,13 +18,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class FrezzeTag {
+public class FrezzeTag_BestCase {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
+    runExperiments(Properties.ROBOTS_COUNT,8, Properties.OFFSET);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
@@ -42,8 +45,8 @@ public class FrezzeTag {
        * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
        */
       for (Path entry : stream) {
-        List<Robot> off = new ArrayList<>();
-        List<Robot> on = new ArrayList<>();
+        List<Robot_BestCase> off = new ArrayList<>();
+        List<Robot_BestCase> on = new ArrayList<>();
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -51,7 +54,7 @@ public class FrezzeTag {
 
         for (Map.Entry<String, JsonElement> robotEntry : robotsJson.entrySet()) {
           JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
-          Robot r = gson.fromJson(robotObj, Robot.class);
+          Robot_BestCase r = gson.fromJson(robotObj, Robot_BestCase.class);
 
           if (r.isAktive()) {
             on.add(r);
@@ -60,22 +63,30 @@ public class FrezzeTag {
           }
         }
 
-        /**
-         * Hier wird das Algorithms ausgeführt
-         * Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
-         */
         double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<Double>();
+        List<Double> timeUnits = new ArrayList<>();
+        List<Double> timeUnits_puffer = new ArrayList<>();
         while (!off.isEmpty()) {
-          for (Robot r : on) {
-            r.run(off, timeUnits);
+
+          List<List<Robot_BestCase>> permutations = generatePermutations(on);
+          TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
+
+          for (List<Robot_BestCase> permutation : permutations) {
+            for (Robot_BestCase r : permutation) {
+              r.computeDistance(off,possibleSolutions);
+            }
+            timeUnits_puffer.clear();
+          }
+
+          for (Robot_BestCase r : on) {
+            r.run(off, timeUnits, possibleSolutions);
           }
 
           /**
            * ON- und OFF-Listen werden aktualisiert.
            */
-          for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
-            Robot robot = iterator.next();
+          for (Iterator<Robot_BestCase> iterator = off.iterator(); iterator.hasNext(); ) {
+            Robot_BestCase robot = iterator.next();
             if (robot.isAktive()) {
               on.add(robot);
               iterator.remove();
@@ -86,11 +97,12 @@ public class FrezzeTag {
            * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
            * die Liste der TimeUnits für den nächsten Durchlauf geleert.
            */
-          timeunit += updateTimeUnit(timeUnits);
+          timeunit += getMaxValue(timeUnits);
           timeUnits.clear();
         }
 
         results.put(entry.getFileName().toString(), timeunit);
+        System.out.println("-------------------------------------------------");
       }
 
       saveResults(robotsCount, gson, results);
@@ -105,20 +117,36 @@ public class FrezzeTag {
     }
   }
 
-  /**
-   * Aktualisiert die Zeit, nachdem sich alle aktiven Roboter (ON-Roboter) um einen Schritt bewegt haben.
-   * Da die Roboter parallel arbeiten, wird die Zeit um die maximale Dauer eines Schrittes erhöht.
-   *
-   * @param timeUnits Eine Liste von Zeiteinheiten, die die Dauer jedes Schrittes der Roboter darstellen.
-   * @return Der maximale Wert in der Liste der Zeiteinheiten.
-   */
-  private static double updateTimeUnit(List<Double> timeUnits) {
-    return Collections.max(timeUnits);
+  private static double getMaxValue(List<Double> list) {
+    return Collections.max(list);
+  }
+
+  private static double getMinValue(List<Double> list) {
+    return Collections.min(list);
+  }
+
+  public static <T> List<List<T>> generatePermutations(List<T> list) {
+    List<List<T>> lists = new LinkedList<>();
+    permute(list, 0, lists);
+    return lists;
+  }
+
+  private static <T> void permute(List<T> list, int start, List<List<T>> lists) {
+    if (start >= list.size() - 1) {
+      lists.add(new ArrayList<>(list));
+      return;
+    }
+
+    for (int i = start; i < list.size(); i++) {
+      Collections.swap(list, start, i);
+      permute(list, start + 1, lists);
+      Collections.swap(list, start, i); // Rückgängig machen des Tauschs
+    }
   }
 
   private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
       throws IOException {
-    String resultDirectory= "results/greedy/";
+    String resultDirectory= "results/bestCase/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
