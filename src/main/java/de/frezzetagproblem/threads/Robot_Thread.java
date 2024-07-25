@@ -1,4 +1,4 @@
-package de.frezzetagproblem.optimal;
+package de.frezzetagproblem.threads;
 
 import de.frezzetagproblem.Location;
 import de.frezzetagproblem.Properties;

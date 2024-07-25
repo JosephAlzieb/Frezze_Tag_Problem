@@ -65,19 +65,24 @@ public class FrezzeTag_BestCase {
 
         double timeunit = 0;
         List<Double> timeUnits = new ArrayList<>();
-        List<Double> timeUnits_puffer = new ArrayList<>();
         while (!off.isEmpty()) {
 
-          List<List<Robot_BestCase>> permutations = generatePermutations(on);
           TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
 
-          for (List<Robot_BestCase> permutation : permutations) {
-            for (Robot_BestCase r : permutation) {
-              r.computeDistance(off,possibleSolutions);
-            }
-            timeUnits_puffer.clear();
+
+          if (on.size() > 3) {
+            //Hier werden alle möglichen Permutationen einer Liste erzeugt
+           List<List<Robot_BestCase>> permutations = generatePermutations(on);
+
+           for (List<Robot_BestCase> permutation : permutations) {
+             for (Robot_BestCase r : permutation) {
+               //Hier werden alle möglichen Lösungen gespeichert. z.b. Robot_1 zu Robot_2 benötigt X
+               r.computeDistance(off,possibleSolutions);
+             }
+           }
           }
 
+          //Hier wird das Algorithmus zu Aktivierung der Roboter ausgeführt.
           for (Robot_BestCase r : on) {
             r.run(off, timeUnits, possibleSolutions);
           }

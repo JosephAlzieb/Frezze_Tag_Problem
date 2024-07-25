@@ -1,4 +1,4 @@
-package de.frezzetagproblem.optimal;
+package de.frezzetagproblem.threads;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,7 +6,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
-import de.frezzetagproblem.Robot;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -35,7 +33,6 @@ public class FrezzeTag_Threads {
 
   private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    ExecutorService executor = Executors.newCachedThreadPool();
 
 
     while (robotsCount <= totalRobotsCount) {
@@ -70,6 +67,8 @@ public class FrezzeTag_Threads {
         }
 
         long startTime = System.nanoTime();
+        ExecutorService executor = Executors.newCachedThreadPool();
+
 
         while (!off.isEmpty()) {
           List<Future<?>> futures = new ArrayList<>();
@@ -103,6 +102,15 @@ public class FrezzeTag_Threads {
 
         System.out.println(durationInMilliseconds);
         results.put(entry.getFileName().toString(), durationInMilliseconds);
+
+        executor.shutdown();
+        try {
+          if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+            executor.shutdownNow();
+          }
+        } catch (InterruptedException e) {
+          executor.shutdownNow();
+        }
       }
 
       saveResults(robotsCount, gson, results);
@@ -114,15 +122,6 @@ public class FrezzeTag_Threads {
       } else {
         robotsCount += 50;
       }
-    }
-
-    executor.shutdown();
-    try {
-      if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-        executor.shutdownNow();
-      }
-    } catch (InterruptedException e) {
-      executor.shutdownNow();
     }
   }
 

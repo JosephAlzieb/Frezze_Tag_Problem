@@ -37,6 +37,7 @@ public class Robot_BestCase {
     if (this.targetRobot != null) {
       double distance = this.distance(this.targetRobot);
 
+      //Wenn eine besser Lösung gibt, um das Target zu aktivieren, wird nach ihr gesucht.
       if (existsBetterSolution(possibleSolutions, distance).get()){
         this.removeTargetRobot();
         return;
