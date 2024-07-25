@@ -37,7 +37,11 @@ public class FrezzeTag_Threads {
 
     while (robotsCount <= totalRobotsCount) {
       Map<String, Double> results = new HashMap<>();
-      Path dir = Paths.get("dummy-data/" + robotsCount);
+      Path dir = Paths.get(
+          Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+              Properties.WORST_CASE_FILE_NAME:
+              Properties.NORMAL_CASE_FILE_NAME
+                  + robotsCount);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }

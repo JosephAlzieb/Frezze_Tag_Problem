@@ -35,7 +35,8 @@ public class FrezzeTag_WorstCase {
 
     while (robotsCount <= totalRobotsCount) {
       Map<String, Double> results = new HashMap<>();
-      Path dir = Paths.get("dummy-data/" + robotsCount);
+      String fileName = Properties.WORST_CASE_FILE_NAME + robotsCount;
+      Path dir = Paths.get(fileName);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }

@@ -22,8 +22,22 @@ public class Properties {
   public static int FILE_COUNT = 5;
   public static int TOTAL_ROBOTS_COUNT = 1000;
   public static int OFFSET = 2;
+
+  /**
+   * Properties für Random-Locations
+   */
   public static Location START_Location = new Location(0,0);
   public static int R = 500;
+
+  public static int MIN = -500;
+
+  public static int MAX = 500;
+
+  public static String WORST_CASE_FILE_NAME = "dummy-data/worstcase/";
+
+  public static String NORMAL_CASE_FILE_NAME = "dummy-data/normal/";
+
+  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
   /**
    * Mit welchem Algorithms soll die App laufen

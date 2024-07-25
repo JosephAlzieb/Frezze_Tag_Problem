@@ -35,23 +35,32 @@ public class DummyDataGenerator {
         List<Robot> robots = new ArrayList<>();
 
         // der erste aktive Roboter
-        //Location randomLocation = getRandomLocation();
         robots.add(new Robot("0", new Location(0,0), false));
         robots.get(0).aktive();
 
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = 1; i < robotsCount; i++) {
-          Location randomLocation = getRandomLocation();
+          Location randomLocation = null;
+          if (Properties.ALLOW_GENERATE_WORSTCASE_DATA){
+             randomLocation = getRandomLocationOnEdge();
+          } else{
+            randomLocation = getRandomLocation();
+
+          }
           robots.add(new Robot(String.valueOf(i), randomLocation, false));
         }
 
-        String directory = "dummy-data/" + robotsCount + "/";
-        File dir = new File(directory);
+        String directory =
+            Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+                Properties.WORST_CASE_FILE_NAME:
+                Properties.NORMAL_CASE_FILE_NAME;
+        String pathname = directory + robotsCount + "/";
+        File dir = new File(pathname);
         if (!dir.exists()) {
           dir.mkdirs();
         }
 
-        save(directory + j + ".json", robots);
+        save(pathname + j + ".json", robots);
       }
       if (robotsCount < 10){
         robotsCount++;
@@ -69,18 +78,51 @@ public class DummyDataGenerator {
    * @return random Location
    */
   private static Location getRandomLocation() {
+    Random random = new Random();
     while (true) {
-      Random random = new Random();
-      int min = -500;
-      int max = 500;
-      int x = random.nextInt((max - min) + 1) + min;
-      int y = random.nextInt((max - min) + 1) + min;
+      int x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
+      int y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
       Location location = new Location(x, y);
       if (location.distance(Properties.START_Location) < Properties.R){
         return location;
       }
     }
   }
+
+
+  private static Location getRandomLocationOnEdge() {
+    Random random = new Random();
+    int edge = random.nextInt(4); // 0: top, 1: right, 2: bottom, 3: left
+    int x, y;
+
+    while (true){
+      switch (edge) {
+        case 0: // top edge
+          x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
+          y = Properties.MAX - 10;
+          break;
+        case 1: // right edge
+          x = Properties.MAX - 10;
+          y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
+          break;
+        case 2: // bottom edge
+          x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
+          y = Properties.MIN + 10;
+          break;
+        case 3: // left edge
+        default:
+          x = Properties.MIN + 10;
+          y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
+          break;
+      }
+      Location location = new Location(x, y);
+
+      if (location.distance(Properties.START_Location) < Properties.R){
+        return location;
+      }
+    }
+  }
+
 
   /**
    * Erzeugt eine JSON-Datei mit Dummy-Daten.
