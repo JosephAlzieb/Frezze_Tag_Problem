@@ -3,7 +3,7 @@ package de.frezzetagproblem.worstcase;
 import de.frezzetagproblem.Location;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.Status;
-import de.frezzetagproblem.optimal.Pair;
+import de.frezzetagproblem.Pair;
 import java.util.List;
 import java.util.Objects;
 import java.util.TreeMap;

@@ -1,6 +1,7 @@
 package de.frezzetagproblem.optimal;
 
 import de.frezzetagproblem.Location;
+import de.frezzetagproblem.Pair;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.Status;
 import java.util.List;

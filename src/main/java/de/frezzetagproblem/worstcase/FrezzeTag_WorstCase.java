@@ -6,7 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
-import de.frezzetagproblem.optimal.Pair;
+import de.frezzetagproblem.Pair;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
