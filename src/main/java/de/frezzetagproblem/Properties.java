@@ -39,6 +39,8 @@ public class Properties {
 
   public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
+  public static boolean ALLOW_MULTIPLE_ROBOTS = true;
+
   /**
    * Mit welchem Algorithms soll die App laufen
    */

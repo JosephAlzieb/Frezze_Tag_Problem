@@ -37,9 +37,26 @@ public class DummyDataGenerator {
         // der erste aktive Roboter
         robots.add(new Robot("0", new Location(0,0), false));
         robots.get(0).aktive();
+        int index = 1;
+
+        if (Properties.ALLOW_MULTIPLE_ROBOTS && robotsCount >= 50){
+          robots.add(new Robot("1", new Location(490,490), false));
+          robots.get(1).aktive();
+
+          robots.add(new Robot("2", new Location(490,-490), false));
+          robots.get(2).aktive();
+
+          robots.add(new Robot("3", new Location(-490,490), false));
+          robots.get(3).aktive();
+
+          robots.add(new Robot("4", new Location(-490,-490), false));
+          robots.get(4).aktive();
+
+          index = 5;
+        }
 
         // Hier werden die anderen schlafenden Roboter generiert.
-        for (int i = 1; i < robotsCount; i++) {
+        for (int i = index; i < robotsCount; i++) {
           Location randomLocation = null;
           if (Properties.ALLOW_GENERATE_WORSTCASE_DATA){
              randomLocation = getRandomLocationOnEdge();
