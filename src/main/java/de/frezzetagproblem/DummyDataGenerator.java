@@ -1,5 +1,7 @@
 package de.frezzetagproblem;
 
+import static de.frezzetagproblem.Properties.R;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -40,16 +42,16 @@ public class DummyDataGenerator {
         int index = 1;
 
         if (Properties.ALLOW_MULTIPLE_ROBOTS && robotsCount >= 50){
-          robots.add(new Robot("1", new Location(490,490), false));
+          robots.add(new Robot("1", new Location(R/2,R/2), false));
           robots.get(1).aktive();
 
-          robots.add(new Robot("2", new Location(490,-490), false));
+          robots.add(new Robot("2", new Location(R/2,-R/2), false));
           robots.get(2).aktive();
 
-          robots.add(new Robot("3", new Location(-490,490), false));
+          robots.add(new Robot("3", new Location(-R/2,R/2), false));
           robots.get(3).aktive();
 
-          robots.add(new Robot("4", new Location(-490,-490), false));
+          robots.add(new Robot("4", new Location(-R/2,-R/2), false));
           robots.get(4).aktive();
 
           index = 5;
@@ -100,7 +102,7 @@ public class DummyDataGenerator {
       int x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
       int y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
       Location location = new Location(x, y);
-      if (location.distance(Properties.START_Location) < Properties.R){
+      if (location.distance(Properties.START_Location) < R){
         return location;
       }
     }
@@ -134,7 +136,7 @@ public class DummyDataGenerator {
       }
       Location location = new Location(x, y);
 
-      if (location.distance(Properties.START_Location) < Properties.R){
+      if (location.distance(Properties.START_Location) < R){
         return location;
       }
     }
