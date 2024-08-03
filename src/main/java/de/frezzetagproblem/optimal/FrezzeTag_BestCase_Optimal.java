@@ -78,15 +78,15 @@ public class FrezzeTag_BestCase_Optimal {
 
         List<List<Robot_BestCase_Optimal>> permutations = generatePermutations(off);
 
-        double timeunit = 0;
         List<Double> timeUnits = new ArrayList<>();
         List<String> wake_up = new ArrayList<>();
+
         List<Robot_BestCase_Optimal> puffer_aktive_robots = new ArrayList<>();
         for (List<Robot_BestCase_Optimal> permutation : permutations) {
-          List<Robot_BestCase_Optimal> p_off = new ArrayList<>(List.copyOf(permutation));
-          p_off.forEach(r -> r.deaktive());
+          List<Robot_BestCase_Optimal> p_off = copyRobots(permutation);
+          List<Robot_BestCase_Optimal> p_on = copyRobots(on);
+          double timeunit = 0;
 
-          List<Robot_BestCase_Optimal> p_on = new ArrayList<>(List.copyOf(on));
 
           while (!p_off.isEmpty()) {
 
@@ -119,7 +119,10 @@ public class FrezzeTag_BestCase_Optimal {
         }
         results.add(result);
       }
-      saveResults(robotsCount, gson, results);
+      saveResults(robotsCount, gson, results, false);
+
+      List<Result> optimalResults = Result.getOptimalResults(results);
+      saveResults(robotsCount, gson, optimalResults, true);
 
       if (robotsCount < 10){
         robotsCount++;
@@ -129,6 +132,19 @@ public class FrezzeTag_BestCase_Optimal {
         robotsCount += 50;
       }
     }
+  }
+
+  private static List<Robot_BestCase_Optimal> copyRobots(List<Robot_BestCase_Optimal> robots) {
+    List<Robot_BestCase_Optimal> l = new ArrayList<>();
+    for (Robot_BestCase_Optimal robot : robots) {
+      try {
+        Robot_BestCase_Optimal copy = (Robot_BestCase_Optimal) robot.clone();
+        l.add(copy);
+      } catch (CloneNotSupportedException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    return l;
   }
 
   private static double getMaxValue(List<Double> list) {
@@ -158,14 +174,19 @@ public class FrezzeTag_BestCase_Optimal {
     }
   }
 
-  private static void saveResults(int robotCount, Gson gson, List<Result> results)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results, boolean optimal)
       throws IOException {
     String resultDirectory= "results/bestCase_optimal/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
     }
-    String resultFileName =  resultDirectory + robotCount + "-results.json";
+    String resultFileName =  null;
+    if (optimal){
+      resultFileName = resultDirectory + robotCount + "-optimal-results.json";
+    } else {
+      resultFileName = resultDirectory + robotCount + "-results.json";
+    }
     try (FileWriter writer = new FileWriter(resultFileName)) {
       gson.toJson(results, writer);
     }

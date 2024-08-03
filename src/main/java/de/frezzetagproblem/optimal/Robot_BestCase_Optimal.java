@@ -1,19 +1,16 @@
 package de.frezzetagproblem.optimal;
 
 import de.frezzetagproblem.Location;
-import de.frezzetagproblem.Pair;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.Status;
 import java.util.List;
 import java.util.Objects;
-import java.util.TreeMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Robot
  * @Author Joseph Alzieb
  */
-public class Robot_BestCase_Optimal {
+public class Robot_BestCase_Optimal implements  Cloneable {
 
   private String id;
   private Location location;
@@ -109,6 +106,11 @@ public class Robot_BestCase_Optimal {
     }
     return Objects.equals(id, robot.id) && Objects.equals(location,
         robot.location);
+  }
+
+  @Override
+  protected Object clone() throws CloneNotSupportedException {
+    return super.clone();
   }
 
   @Override
