@@ -1,6 +1,5 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.models;
 
-import de.frezzetagproblem.optimal.Robot_BestCase_Optimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Result {
     this.details = details;
   }
 
-  public void add (double totalTimeUnit, List<String> wakeUpTree, List<Robot_BestCase_Optimal> permutation){
+  public void add (double totalTimeUnit, List<String> wakeUpTree, List<Robot> permutation){
     details.add(new ResultDetails(totalTimeUnit, wakeUpTree, permutation));
   }
   public static List<Result> getOptimalResults(List<Result> results) {

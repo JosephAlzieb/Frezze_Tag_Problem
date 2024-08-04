@@ -1,4 +1,4 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.models;
 
 public class Pair<T1 extends Comparable<T1>, T2 extends Comparable<T2>> implements Comparable<Pair<T1, T2>> {
 

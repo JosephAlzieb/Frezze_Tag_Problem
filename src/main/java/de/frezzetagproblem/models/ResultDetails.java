@@ -1,15 +1,14 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.models;
 
-import de.frezzetagproblem.optimal.Robot_BestCase_Optimal;
 import java.util.List;
 
 public class ResultDetails {
   double totalTimeUnit;
   List<String> wakeUpTree;
-  List<Robot_BestCase_Optimal> permutation;
+  List<Robot> permutation;
 
   public ResultDetails(double totalTimeUnit, List<String> wakeUpTree,
-      List<Robot_BestCase_Optimal> permutation) {
+      List<Robot> permutation) {
     this.totalTimeUnit = totalTimeUnit;
     this.wakeUpTree = wakeUpTree;
     this.permutation = permutation;

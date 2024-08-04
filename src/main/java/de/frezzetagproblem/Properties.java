@@ -1,5 +1,7 @@
 package de.frezzetagproblem;
 
+import de.frezzetagproblem.models.Location;
+
 /**
  * Die Kasse ist dafür gedacht, Variablen und Konstanten an einer Stelle zu definieren.
  * @Author Joseph Alzieb
@@ -39,7 +41,7 @@ public class Properties {
 
   public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
-  public static boolean ALLOW_MULTIPLE_ROBOTS = true;
+  public static boolean ALLOW_MULTIPLE_ROBOTS = false;
 
   /**
    * Mit welchem Algorithms soll die App laufen

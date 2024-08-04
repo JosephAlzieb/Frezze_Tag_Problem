@@ -1,20 +1,22 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.models;
 
+import de.frezzetagproblem.Properties;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Robot
  * @Author Joseph Alzieb
  */
-public class Robot {
-
+public class Robot implements Cloneable{
   private String id;
   private Location location;
   private Status status;
   private boolean declared;
-  private int velocity;
+  private double[] velocity;
   private Robot targetRobot;
 
   public Robot(String id, Location location, boolean declared) {
@@ -41,6 +43,57 @@ public class Robot {
     } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)){
       runGreedyAlgo_Dis(off, time);
     }
+  }
+
+  /**
+   * Bessere Lösung - Algorithms
+   * @param off
+   * @param time
+   * @param possibleSolutions
+   */
+  public void run(List<Robot> off, List<Double> time,
+      TreeMap<Pair<String, String>, Double> possibleSolutions) {
+    this.targetRobot = this.getNearestRobot(off);
+    if (this.targetRobot != null) {
+      double distance = this.distance(this.targetRobot);
+
+      //Wenn eine besser Lösung gibt, um das Target zu aktivieren, wird nach ihr gesucht.
+      if (existsBetterSolution(possibleSolutions, distance).get()){
+        this.removeTargetRobot();
+        return;
+      }
+      this.targetRobot.declare();
+      targetRobot.aktive();
+      time.add(distance);
+
+      //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
+      this.moveTo(this.targetRobot.location);
+      this.removeTargetRobot();
+    }
+  }
+
+  private AtomicBoolean existsBetterSolution(TreeMap<Pair<String, String>, Double> possibleSolutions, Double distance){
+    AtomicBoolean b = new AtomicBoolean(false);
+    possibleSolutions.forEach((x,y)->{
+      if (this.targetRobot.id.equals(x.getSecond()) && y < distance){
+        b.set(true);
+        return;
+      }
+    });
+
+    return b;
+  }
+
+  public void computeDistance(List<Robot> off,
+      TreeMap<Pair<String, String>, Double> possibleSolutions) {
+    var targetRobot = this.getNearestRobot(off);
+    if (targetRobot != null) {
+      possibleSolutions.put(getKey(targetRobot), this.distance(targetRobot));
+    }
+  }
+
+  private Pair<String, String> getKey(Robot targetRobot) {
+    return new Pair (this.id, targetRobot.id);
   }
 
   /**
@@ -87,6 +140,56 @@ public class Robot {
   }
 
   /**
+   * Gedacht für Simulator Hier unterscheiden wir 3 Fälle: 1: Robot (this) ist ON, und hat noch kein
+   * Robot gefunden, den er aufweckt. -> Es wird nach Target-Robot gesucht (der nächste Nachbar),
+   * und ihn markiert, -> damit er nicht von einem anderen Roboter markiert wird.
+   * <p>
+   * 2: Robot (this) hat seinen Target-Robot erreicht, und weckt ihn auf. 3: Robot (this) muss sich
+   * zu seinem Target-Robot bewegen.
+   *
+   * @param off               List of Robots with status "OFF".
+   * @param timeUnits
+   * @param possibleSolutions
+   * @param wake_up_tree
+   */
+  public void run(List<Robot> off) {
+    if (this.targetRobot == null) {
+      this.targetRobot = this.getNearestRobot(off);
+      if (this.targetRobot != null && !this.targetRobot.declared) {
+        System.out.println("Robot " + this.id + " declare " + this.targetRobot.id);
+        this.targetRobot.declared = true;
+      }
+    } else {
+      if (Arrays.equals(this.location.toArray(), this.targetRobot.location.toArray())) {
+        System.out.println("Robot " + this.id + " wakes robot " + this.targetRobot.id);
+        this.targetRobot.aktive();
+        removeTargetRobot();
+      } else {
+        this.setVelocity();
+        System.out.println("Robot " + this.id + " moves from " + Arrays.toString(this.location.toArray()) + " to " +
+            Arrays.toString(new Location((int) Math.round(this.location.x + this.velocity[0]), (int) Math.round(this.location.y + this.velocity[1])).toArray()) +
+            " toward robot " + this.targetRobot.id + " at " + Arrays.toString(this.targetRobot.location.toArray()));
+        this.location.x += Math.round(this.velocity[0]);
+        this.location.y += Math.round(this.velocity[1]);
+      }
+    }
+  }
+
+  public void setVelocity() {
+    double rad = this.getAngleToTarget();
+    this.velocity = new double[]{Math.cos(rad), Math.sin(rad)};
+    this.velocity[0] *= 1;
+    this.velocity[1] *= 1;
+    System.out.println("Setting robot " + this.id + " velocity to " + Arrays.toString(this.velocity));
+  }
+
+  public double getAngleToTarget() {
+    double xdiff = this.targetRobot.getLocation_x() - this.location.x;
+    double ydiff = this.targetRobot.getLocation_y() - this.location.y;
+    return Math.atan2(ydiff, xdiff);
+  }
+
+  /**
    * Hier wird einfach über alle OFF-Roboter iteriert, und den nährten Roboter für (this) gefunden.
    * @param off List of Roboter with Status "OFF"
    * @return
@@ -99,6 +202,49 @@ public class Robot {
       } else if (!r.isDeclared() && nearest != null) {
         if (this.distance(nearest) > this.distance(r)) {
           nearest = r;
+        }
+      }
+    }
+    return nearest;
+  }
+
+  /**
+   * @param off List of Roboter with Status "OFF"
+   * @return Gibt den nächsten inaktiven Robot in der Liste "off" zurück.
+   */
+  public Robot getNextRobot(List<Robot> off) {
+    Robot nearest = null;
+    for (Robot r : off) {
+      if (!r.isAktive() && nearest == null) {
+        nearest = r;
+      }
+    }
+    return nearest;
+  }
+
+  /**
+   *
+   * @param on Liste der aktiven Roboter
+   * @param off Liste der inaktiven Roboter
+   * @return den näherten Robot mit Berücksichtigung der aktiven Roboter.
+   */
+  public Robot getNearestRobot(List<Robot> on, List<Robot> off) {
+    Robot nearest = null;
+    for (Robot r : off) {
+      if (!r.isDeclared() && nearest == null) {
+        nearest = r;
+      } else if (!r.isDeclared() && nearest != null) {
+        if (this.distance(nearest) > this.distance(r)) {
+          nearest = r;
+        }
+      }
+    }
+
+    // Besonders gut für kleine n. bis n = 10
+    if (nearest != null){
+      for (Robot r:on) {
+        if (this.distance(nearest) > r.distance(nearest)){
+          return null;
         }
       }
     }
@@ -192,5 +338,18 @@ public class Robot {
   @Override
   public int hashCode() {
     return Objects.hash(id, location);
+  }
+
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+
+  public Location getLocation() {
+    return location;
+  }
+
+  public void setLocation(Location location) {
+    this.location = location;
   }
 }

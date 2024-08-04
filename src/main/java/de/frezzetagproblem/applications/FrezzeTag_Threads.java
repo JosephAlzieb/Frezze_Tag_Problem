@@ -1,4 +1,4 @@
-package de.frezzetagproblem.optimal;
+package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,13 +16,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-public class FrezzeTag_Optimal {
+public class FrezzeTag_Threads {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
@@ -30,14 +35,14 @@ public class FrezzeTag_Optimal {
   private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+
     while (robotsCount <= totalRobotsCount) {
       Map<String, Double> results = new HashMap<>();
-      String pathName = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-          Properties.WORST_CASE_FILE_NAME :
-          Properties.NORMAL_CASE_FILE_NAME;
-
-      String fileName = pathName + robotsCount;
-      Path dir = Paths.get(fileName);
+      Path dir = Paths.get(
+          Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+              Properties.WORST_CASE_FILE_NAME:
+              Properties.NORMAL_CASE_FILE_NAME
+                  + robotsCount);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }
@@ -48,8 +53,8 @@ public class FrezzeTag_Optimal {
        * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
        */
       for (Path entry : stream) {
-        List<Robot_Optimal> off = new ArrayList<>();
-        List<Robot_Optimal> on = new ArrayList<>();
+        List<Robot> off = new ArrayList<>();
+        List<Robot> on = new ArrayList<>();
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -57,7 +62,7 @@ public class FrezzeTag_Optimal {
 
         for (Map.Entry<String, JsonElement> robotEntry : robotsJson.entrySet()) {
           JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
-          Robot_Optimal r = gson.fromJson(robotObj, Robot_Optimal.class);
+          Robot r = gson.fromJson(robotObj, Robot.class);
 
           if (r.isAktive()) {
             on.add(r);
@@ -66,37 +71,51 @@ public class FrezzeTag_Optimal {
           }
         }
 
-        /**
-         * Hier wird das Algorithms ausgeführt
-         * Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
-         */
-        double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<Double>();
+        long startTime = System.nanoTime();
+        ExecutorService executor = Executors.newCachedThreadPool();
+
+
         while (!off.isEmpty()) {
-          for (Robot_Optimal r : on) {
-            r.run(on, off, timeUnits);
+          List<Future<?>> futures = new ArrayList<>();
+          for (Robot r : on) {
+            Future<?> future = executor.submit(() -> r.run(off));
+            futures.add(future);
           }
 
-          /**
-           * ON- und OFF-Listen werden aktualisiert.
-           */
-          for (Iterator<Robot_Optimal> iterator = off.iterator(); iterator.hasNext(); ) {
-            Robot_Optimal robot = iterator.next();
+          // Warte auf das Ende aller gestarteten Tasks
+          for (Future<?> future : futures) {
+            try {
+              future.get();
+            } catch (InterruptedException | ExecutionException e) {
+              e.printStackTrace();
+            }
+          }
+
+          for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
+            Robot robot = iterator.next();
             if (robot.isAktive()) {
               on.add(robot);
               iterator.remove();
             }
           }
-
-          /**
-           * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-           * die Liste der TimeUnits für den nächsten Durchlauf geleert.
-           */
-          timeunit += updateTimeUnit(timeUnits);
-          timeUnits.clear();
         }
 
-        results.put(entry.getFileName().toString(), timeunit);
+
+        long endTime = System.nanoTime();
+        long durationInNanoseconds = endTime - startTime;
+        double durationInMilliseconds = durationInNanoseconds / 1_000_000.0;
+
+        System.out.println(durationInMilliseconds);
+        results.put(entry.getFileName().toString(), durationInMilliseconds);
+
+        executor.shutdown();
+        try {
+          if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+            executor.shutdownNow();
+          }
+        } catch (InterruptedException e) {
+          executor.shutdownNow();
+        }
       }
 
       saveResults(robotsCount, gson, results);
@@ -111,20 +130,9 @@ public class FrezzeTag_Optimal {
     }
   }
 
-  /**
-   * Aktualisiert die Zeit, nachdem sich alle aktiven Roboter (ON-Roboter) um einen Schritt bewegt haben.
-   * Da die Roboter parallel arbeiten, wird die Zeit um die maximale Dauer eines Schrittes erhöht.
-   *
-   * @param timeUnits Eine Liste von Zeiteinheiten, die die Dauer jedes Schrittes der Roboter darstellen.
-   * @return Der maximale Wert in der Liste der Zeiteinheiten.
-   */
-  private static double updateTimeUnit(List<Double> timeUnits) {
-    return Collections.max(timeUnits);
-  }
-
   private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
       throws IOException {
-    String resultDirectory= "results/optimal/";
+    String resultDirectory= "results/threads/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();

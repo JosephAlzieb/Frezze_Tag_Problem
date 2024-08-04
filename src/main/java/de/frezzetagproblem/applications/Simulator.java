@@ -1,11 +1,11 @@
-package de.frezzetagproblem.simulator;
+package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import de.frezzetagproblem.Location;
+import de.frezzetagproblem.models.Robot;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.FileReader;
@@ -24,13 +24,13 @@ import javax.swing.Timer;
 
 public class Simulator {
 
-  List<Robot_Simulator> robots;
-  List<Robot_Simulator> on;
-  List<Robot_Simulator> off;
+  List<Robot> robots;
+  List<Robot> on;
+  List<Robot> off;
 
   public static void main(String[] args) throws IOException {
     Simulator simulator = new Simulator();
-    simulator.runExperiments(5);
+    simulator.runExperiments(1000);
   }
 
   private void runExperiments(int robotCount) throws IOException {
@@ -50,7 +50,7 @@ public class Simulator {
 
     for (Map.Entry<String, JsonElement> robotEntry : robotsJson.entrySet()) {
       JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
-      Robot_Simulator r = gson.fromJson(robotObj, Robot_Simulator.class);
+      Robot r = gson.fromJson(robotObj, Robot.class);
 
       if (r.isAktive()) {
         on.add(r);
@@ -77,11 +77,11 @@ public class Simulator {
 
   public class FTPGraph extends JFrame {
 
-    private List<Robot_Simulator> robots;
+    private List<Robot> robots;
     private int padding = 50; // Puffer, damit die Punkte nicht direkt am Rand sind
 
 
-    public FTPGraph(List<Robot_Simulator> robots) {
+    public FTPGraph(List<Robot> robots) {
       this.robots = robots;
       setTitle("FTP - Simulator");
       setSize(800, 600);
@@ -90,32 +90,12 @@ public class Simulator {
       GraphPanel graphPanel = new GraphPanel();
       add(graphPanel);
 
-      double timeunit = 0;
-      List<Double> timeUnits = new ArrayList<>();
       Timer timer = new Timer(100, e -> {
-//        while (!off.isEmpty()) {
-//
-//
-//          /**
-//           * ON- und OFF-Listen werden aktualisiert.
-//           */
-//          for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
-//            Robot robot = iterator.next();
-//            if (robot.isAktive()) {
-//              on.add(robot);
-//              iterator.remove();
-//            }
-//          }
-//          updateRobots();
-//          graphPanel.repaint();
-//        }
-        //movePoints();
-        //graphPanel.repaint();
-        for (Robot_Simulator ro : on) {
-          ro.run(off, timeUnits);
+        for (Robot ro : on) {
+          ro.run(off, timeUnits, possibleSolutions, wake_up_tree);
         }
-        for (Iterator<Robot_Simulator> iterator = off.iterator(); iterator.hasNext(); ) {
-          Robot_Simulator robot = iterator.next();
+        for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
+          Robot robot = iterator.next();
           if (robot.isAktive()) {
             on.add(robot);
             iterator.remove();
@@ -124,16 +104,7 @@ public class Simulator {
           updateRobots();
           graphPanel.repaint();
       });
-      //timer.setRepeats(false);
       timer.start();
-    }
-
-    private void movePoints() {
-      for (Robot_Simulator point : robots) {
-        var x = point.getLocation_x();
-        var y = point.getLocation_y();
-        point.move(new Location(x+1, y+1));
-      }
     }
 
     private class GraphPanel extends JPanel {
@@ -145,26 +116,6 @@ public class Simulator {
       }
 
       private void drawGraph(Graphics g) {
-        /*g.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
-        g.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2);
-
-        // Zeichne die Punkte
-        for (Robot point : robots) {
-          int x = getWidth() / 2 + point.getLocation_x();
-          int y = getHeight() / 2 - point.getLocation_y(); // invertiere y, da die y-Koordinate in Swing von oben nach unten geht
-
-          if (point.isDeclared()) {
-            g.setColor(Color.GREEN);
-          } else {
-            g.setColor(Color.BLACK);
-          }
-
-          g.fillOval(x - 3, y - 3, 6, 6);
-        }*/
-        // Zeichne die Achsen
-        //g.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
-        //g.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2);
-
         int width = getWidth();
         int height = getHeight();
 
@@ -174,7 +125,7 @@ public class Simulator {
         int minY = Integer.MAX_VALUE;
         int maxY = Integer.MIN_VALUE;
 
-        for (Robot_Simulator robot : robots) {
+        for (Robot robot : robots) {
           if (robot.getLocation_x() < minX) minX = robot.getLocation_x();
           if (robot.getLocation_x() > maxX) maxX = robot.getLocation_x();
           if (robot.getLocation_y() < minY) minY = robot.getLocation_y();
@@ -191,7 +142,7 @@ public class Simulator {
 
 
         // Zeichne die Punkte
-        for (Robot_Simulator robot : robots) {
+        for (Robot robot : robots) {
           int x = (int) ((robot.getLocation_x() - minX) * xScale) + padding;
           int y = height - padding - (int) ((robot.getLocation_y() - minY) * yScale); // invertiere y
 
@@ -202,7 +153,6 @@ public class Simulator {
           }
 
           g.fillOval(x - 3, y - 3, 10, 10);
-          //g.drawString("R_"+robot.getId(), x - 3, y - 3);
         }
       }
     }

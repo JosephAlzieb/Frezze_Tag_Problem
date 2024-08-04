@@ -3,8 +3,8 @@ package de.frezzetagproblem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import de.frezzetagproblem.Location;
-import de.frezzetagproblem.Robot;
+import de.frezzetagproblem.models.Location;
+import de.frezzetagproblem.models.Robot;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

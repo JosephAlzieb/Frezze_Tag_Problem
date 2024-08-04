@@ -1,4 +1,4 @@
-package de.frezzetagproblem.worstcase;
+package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,7 +6,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
-import de.frezzetagproblem.Pair;
+import de.frezzetagproblem.models.Result;
+import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,14 +18,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
-public class FrezzeTag_WorstCase {
+public class FrezzeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT,8, Properties.OFFSET);
@@ -34,8 +31,12 @@ public class FrezzeTag_WorstCase {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     while (robotsCount <= totalRobotsCount) {
-      Map<String, Double> results = new HashMap<>();
-      String fileName = Properties.WORST_CASE_FILE_NAME + robotsCount;
+      List<Result> results = new ArrayList<>();
+      String pathName = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+          Properties.WORST_CASE_FILE_NAME :
+          Properties.NORMAL_CASE_FILE_NAME;
+
+      String fileName = pathName + robotsCount;
       Path dir = Paths.get(fileName);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
@@ -47,8 +48,13 @@ public class FrezzeTag_WorstCase {
        * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
        */
       for (Path entry : stream) {
-        List<Robot_WorstCase> off = new ArrayList<>();
-        List<Robot_WorstCase> on = new ArrayList<>();
+        List<Robot> off = new ArrayList<>();
+        List<Robot> on = new ArrayList<>();
+
+        String f = entry.getFileName().toString();
+        Result  result = new Result(f);
+
+
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -56,7 +62,7 @@ public class FrezzeTag_WorstCase {
 
         for (Map.Entry<String, JsonElement> robotEntry : robotsJson.entrySet()) {
           JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
-          Robot_WorstCase r = gson.fromJson(robotObj, Robot_WorstCase.class);
+          Robot r = gson.fromJson(robotObj, Robot.class);
 
           if (r.isAktive()) {
             on.add(r);
@@ -65,49 +71,51 @@ public class FrezzeTag_WorstCase {
           }
         }
 
-        double timeunit = 0;
+        List<List<Robot>> permutations = generatePermutations(off);
+
         List<Double> timeUnits = new ArrayList<>();
-        List<Double> timeUnits_puffer = new ArrayList<>();
-        while (!off.isEmpty()) {
+        List<String> wake_up = new ArrayList<>();
 
-          List<List<Robot_WorstCase>> permutations = generatePermutations(on);
-          TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
+        List<Robot> puffer_aktive_robots = new ArrayList<>();
+        for (List<Robot> permutation : permutations) {
+          List<Robot> p_off = copyRobots(permutation);
+          List<Robot> p_on = copyRobots(on);
+          double timeunit = 0;
 
-          for (List<Robot_WorstCase> permutation : permutations) {
-            for (Robot_WorstCase r : permutation) {
-              r.computeDistance(off,possibleSolutions);
+
+          while (!p_off.isEmpty()) {
+
+            for (Robot r : p_on) {
+              if (!p_off.isEmpty()){
+                Robot targetRobot = r.getNextRobot(p_off);
+                if (targetRobot != null){
+                  targetRobot.aktive();
+                  double distance = r.distance(targetRobot);
+                  wake_up.add(String.format("%s wake %s up in (%s)", r.getId(), targetRobot.getId(), (int) distance));
+                  timeUnits.add(distance);
+                  r.moveTo(targetRobot.getLocation());
+                  p_off.remove(targetRobot);
+                  puffer_aktive_robots.add(targetRobot);
+                }
+              }
             }
-            timeUnits_puffer.clear();
-          }
 
-          for (Robot_WorstCase r : on) {
-            r.run(off, timeUnits, possibleSolutions);
-          }
+            p_on.addAll(puffer_aktive_robots);
+            puffer_aktive_robots.clear();
 
-          /**
-           * ON- und OFF-Listen werden aktualisiert.
-           */
-          for (Iterator<Robot_WorstCase> iterator = off.iterator(); iterator.hasNext(); ) {
-            Robot_WorstCase robot = iterator.next();
-            if (robot.isAktive()) {
-              on.add(robot);
-              iterator.remove();
-            }
+            timeunit += getMaxValue(timeUnits);
+            timeUnits.clear();
           }
+          result.add(timeunit, List.copyOf(wake_up), permutation);
 
-          /**
-           * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-           * die Liste der TimeUnits für den nächsten Durchlauf geleert.
-           */
-          timeunit += getMaxValue(timeUnits);
-          timeUnits.clear();
+          wake_up.clear();
         }
-
-        results.put(entry.getFileName().toString(), timeunit);
-        System.out.println("-------------------------------------------------");
+        results.add(result);
       }
+      saveResults(robotsCount, gson, results, false);
 
-      saveResults(robotsCount, gson, results);
+      List<Result> optimalResults = Result.getOptimalResults(results);
+      saveResults(robotsCount, gson, optimalResults, true);
 
       if (robotsCount < 10){
         robotsCount++;
@@ -117,6 +125,19 @@ public class FrezzeTag_WorstCase {
         robotsCount += 50;
       }
     }
+  }
+
+  private static List<Robot> copyRobots(List<Robot> robots) {
+    List<Robot> l = new ArrayList<>();
+    for (Robot robot : robots) {
+      try {
+        Robot copy = (Robot) robot.clone();
+        l.add(copy);
+      } catch (CloneNotSupportedException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    return l;
   }
 
   private static double getMaxValue(List<Double> list) {
@@ -146,14 +167,19 @@ public class FrezzeTag_WorstCase {
     }
   }
 
-  private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results, boolean optimal)
       throws IOException {
-    String resultDirectory= "results/worstCase/";
+    String resultDirectory= "results/all_possible_solutions/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
     }
-    String resultFileName =  resultDirectory + robotCount + "-results.json";
+    String resultFileName =  null;
+    if (optimal){
+      resultFileName = resultDirectory + robotCount + "-optimal-results.json";
+    } else {
+      resultFileName = resultDirectory + robotCount + "-results.json";
+    }
     try (FileWriter writer = new FileWriter(resultFileName)) {
       gson.toJson(results, writer);
     }

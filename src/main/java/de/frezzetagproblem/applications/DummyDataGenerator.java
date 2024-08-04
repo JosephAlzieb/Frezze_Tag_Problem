@@ -1,10 +1,13 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.applications;
 
 import static de.frezzetagproblem.Properties.R;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import de.frezzetagproblem.models.Location;
+import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

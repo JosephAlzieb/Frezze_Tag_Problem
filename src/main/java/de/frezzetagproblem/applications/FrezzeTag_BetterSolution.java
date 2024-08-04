@@ -1,10 +1,13 @@
-package de.frezzetagproblem;
+package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import de.frezzetagproblem.models.Pair;
+import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,13 +20,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class FrezzeTag {
+public class FrezzeTag_BetterSolution {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
+    runExperiments(Properties.ROBOTS_COUNT,8, Properties.OFFSET);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
@@ -65,15 +70,29 @@ public class FrezzeTag {
           }
         }
 
-        /**
-         * Hier wird das Algorithms ausgeführt
-         * Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
-         */
         double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<Double>();
+        List<Double> timeUnits = new ArrayList<>();
+        List<String> wake_up_tree = new ArrayList<>();
         while (!off.isEmpty()) {
+
+          TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
+
+
+          if (on.size() > 3) {
+            //Hier werden alle möglichen Permutationen einer Liste erzeugt
+           List<List<Robot>> permutations = generatePermutations(on);
+
+           for (List<Robot> permutation : permutations) {
+             for (Robot r : permutation) {
+               //Hier werden alle möglichen Lösungen gespeichert. z.b. Robot_1 zu Robot_2 benötigt X
+               r.computeDistance(off,possibleSolutions);
+             }
+           }
+          }
+
+          //Hier wird das Algorithmus zu Aktivierung der Roboter ausgeführt.
           for (Robot r : on) {
-            r.run(off, timeUnits);
+            r.run(off, timeUnits, possibleSolutions);
           }
 
           /**
@@ -91,7 +110,7 @@ public class FrezzeTag {
            * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
            * die Liste der TimeUnits für den nächsten Durchlauf geleert.
            */
-          timeunit += updateTimeUnit(timeUnits);
+          timeunit += getMaxValue(timeUnits);
           timeUnits.clear();
         }
 
@@ -110,20 +129,36 @@ public class FrezzeTag {
     }
   }
 
-  /**
-   * Aktualisiert die Zeit, nachdem sich alle aktiven Roboter (ON-Roboter) um einen Schritt bewegt haben.
-   * Da die Roboter parallel arbeiten, wird die Zeit um die maximale Dauer eines Schrittes erhöht.
-   *
-   * @param timeUnits Eine Liste von Zeiteinheiten, die die Dauer jedes Schrittes der Roboter darstellen.
-   * @return Der maximale Wert in der Liste der Zeiteinheiten.
-   */
-  private static double updateTimeUnit(List<Double> timeUnits) {
-    return Collections.max(timeUnits);
+  private static double getMaxValue(List<Double> list) {
+    return Collections.max(list);
+  }
+
+  private static double getMinValue(List<Double> list) {
+    return Collections.min(list);
+  }
+
+  public static <T> List<List<T>> generatePermutations(List<T> list) {
+    List<List<T>> lists = new LinkedList<>();
+    permute(list, 0, lists);
+    return lists;
+  }
+
+  private static <T> void permute(List<T> list, int start, List<List<T>> lists) {
+    if (start >= list.size() - 1) {
+      lists.add(new ArrayList<>(list));
+      return;
+    }
+
+    for (int i = start; i < list.size(); i++) {
+      Collections.swap(list, start, i);
+      permute(list, start + 1, lists);
+      Collections.swap(list, start, i); // Rückgängig machen des Tauschs
+    }
   }
 
   private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
       throws IOException {
-    String resultDirectory= "results/greedy/";
+    String resultDirectory= "results/better_Solution/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
