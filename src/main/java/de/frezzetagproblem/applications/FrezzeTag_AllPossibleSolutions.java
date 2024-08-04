@@ -24,10 +24,10 @@ import java.util.Map;
 public class FrezzeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,8, Properties.OFFSET);
+    runExperiments(Properties.ROBOTS_COUNT,8);
   }
 
-  private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
+  private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     while (robotsCount <= totalRobotsCount) {
@@ -44,9 +44,6 @@ public class FrezzeTag_AllPossibleSolutions {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
-      /**
-       * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
-       */
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
@@ -91,7 +88,7 @@ public class FrezzeTag_AllPossibleSolutions {
                 if (targetRobot != null){
                   targetRobot.aktive();
                   double distance = r.distance(targetRobot);
-                  wake_up.add(String.format("%s wake %s up in (%s)", r.getId(), targetRobot.getId(), (int) distance));
+                  wake_up.add(String.format("%s wakes %s in (%s)", r.getId(), targetRobot.getId(), (int) distance));
                   timeUnits.add(distance);
                   r.moveTo(targetRobot.getLocation());
                   p_off.remove(targetRobot);
@@ -112,10 +109,13 @@ public class FrezzeTag_AllPossibleSolutions {
         }
         results.add(result);
       }
-      saveResults(robotsCount, gson, results, false);
+      saveResults(robotsCount, gson, results, null);
 
       List<Result> optimalResults = Result.getOptimalResults(results);
-      saveResults(robotsCount, gson, optimalResults, true);
+      saveResults(robotsCount, gson, optimalResults, "-bestCase");
+
+      List<Result> worstCaseResults = Result.getWorstCaseResults(results);
+      saveResults(robotsCount, gson, worstCaseResults, "-worstCase");
 
       if (robotsCount < 10){
         robotsCount++;
@@ -144,10 +144,6 @@ public class FrezzeTag_AllPossibleSolutions {
     return Collections.max(list);
   }
 
-  private static double getMinValue(List<Double> list) {
-    return Collections.min(list);
-  }
-
   public static <T> List<List<T>> generatePermutations(List<T> list) {
     List<List<T>> lists = new LinkedList<>();
     permute(list, 0, lists);
@@ -167,16 +163,16 @@ public class FrezzeTag_AllPossibleSolutions {
     }
   }
 
-  private static void saveResults(int robotCount, Gson gson, List<Result> results, boolean optimal)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results, String str)
       throws IOException {
     String resultDirectory= "results/all_possible_solutions/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
     }
-    String resultFileName =  null;
-    if (optimal){
-      resultFileName = resultDirectory + robotCount + "-optimal-results.json";
+    String resultFileName;
+    if (str != null){
+      resultFileName = resultDirectory + robotCount + str + "-results.json";
     } else {
       resultFileName = resultDirectory + robotCount + "-results.json";
     }

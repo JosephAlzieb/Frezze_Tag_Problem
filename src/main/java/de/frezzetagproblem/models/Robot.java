@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @Author Joseph Alzieb
  */
 public class Robot implements Cloneable{
-  private String id;
+  private final String id;
   private Location location;
   private Status status;
   private boolean declared;
@@ -26,33 +26,34 @@ public class Robot implements Cloneable{
     this.status = Status.OFF;
   }
 
-  public Robot() {
-  }
-
   /**
    * Hier wird das Algorithms ausgeführt, das in der Klasse {@link Properties} definiert ist.
-   * @param off
-   * @param time
-   * @return
+   * @param off inakive Robots
+   * @param time time-units
    */
-  public void run(List<Robot> off, List<Double> time) {
-    //TODO Immer beginnen wir hier mit dem ersten Roboter. hier müssen wir auch alle ON-Roboter übergeben. Bsp. Es gibt noch einen Robot zu aktivieren, und der erste Robot "0" wäre sehr weit weg von dem. aber der "3" sehr nah.
-    //TODO Was ist mit der Rheinfolge der ON-Roboter. Es kann sein, dass ON-Robot "0" sehr weit weg von OFF-Robot "2", wobei ON-Robot "1" sehr nah an "2" ist.
+  public void run(
+      List<Robot> off,
+      List<Double> time,
+      List<String> wake_up_tree) {
     if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_TIMEUNITS_1)){
-      runGreedyAlgo_1(off, time);
+      runGreedyAlgo_1(off, time, wake_up_tree);
     } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)){
-      runGreedyAlgo_Dis(off, time);
+      runGreedyAlgo_Dis(off, time, wake_up_tree);
     }
   }
 
   /**
    * Bessere Lösung - Algorithms
-   * @param off
-   * @param time
-   * @param possibleSolutions
+   * Hier wird immer gecheckt, ob es eine bessere Lösung gibt..
+   * @param off inaktive robots
+   * @param time time-units
+   * @param possibleSolutions alle möglichen Lösungen
    */
-  public void run(List<Robot> off, List<Double> time,
-      TreeMap<Pair<String, String>, Double> possibleSolutions) {
+  public void run(
+      List<Robot> off,
+      List<Double> time,
+      TreeMap<Pair<String, String>, Double> possibleSolutions,
+      List<String> wake_up_tree) {
     this.targetRobot = this.getNearestRobot(off);
     if (this.targetRobot != null) {
       double distance = this.distance(this.targetRobot);
@@ -65,6 +66,7 @@ public class Robot implements Cloneable{
       this.targetRobot.declare();
       targetRobot.aktive();
       time.add(distance);
+      wake_up_tree.add(buildChild(distance));
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
       this.moveTo(this.targetRobot.location);
@@ -72,7 +74,13 @@ public class Robot implements Cloneable{
     }
   }
 
-  private AtomicBoolean existsBetterSolution(TreeMap<Pair<String, String>, Double> possibleSolutions, Double distance){
+  private String buildChild(double distance) {
+    return String.format("%s wakes %s in (%s)", this.id, targetRobot.id, (int) distance);
+  }
+
+  private AtomicBoolean existsBetterSolution(
+      TreeMap<Pair<String, String>, Double> possibleSolutions,
+      Double distance){
     AtomicBoolean b = new AtomicBoolean(false);
     possibleSolutions.forEach((x,y)->{
       if (this.targetRobot.id.equals(x.getSecond()) && y < distance){
@@ -84,7 +92,8 @@ public class Robot implements Cloneable{
     return b;
   }
 
-  public void computeDistance(List<Robot> off,
+  public void computeDistance(
+      List<Robot> off,
       TreeMap<Pair<String, String>, Double> possibleSolutions) {
     var targetRobot = this.getNearestRobot(off);
     if (targetRobot != null) {
@@ -93,21 +102,27 @@ public class Robot implements Cloneable{
   }
 
   private Pair<String, String> getKey(Robot targetRobot) {
-    return new Pair (this.id, targetRobot.id);
+    return new Pair<>(this.id, targetRobot.id);
   }
 
   /**
-   * Hier sucht Robot (this) das näherte Nachbar, und aktiviert ihn.
-   * Die Zeit, die zu aktivierung benötigt wird, wäre den Abstand zwischen den Robotern.
-   * @param off List of Robots with status "OFF".
-   * @param time List of Timeunits.
+   * Hier sucht Robot (this) das näherte Nachbar, und aktiviert ihn. Die Zeit, die zu aktivierung
+   * benötigt wird, wäre den Abstand zwischen den Robotern.
+   *
+   * @param off          List of Robots with status "OFF".
+   * @param time         List of Timeunits.
+   * @param wake_up_tree Wake-up-tree
    */
-  private void runGreedyAlgo_Dis(List<Robot> off, List<Double> time) {
+  private void runGreedyAlgo_Dis(
+      List<Robot> off,
+      List<Double> time, List<String> wake_up_tree) {
     this.targetRobot = this.getNearestRobot(off);
     if (this.targetRobot != null) {
       this.targetRobot.declare();
       this.targetRobot.aktive();
-      time.add(this.distance(this.targetRobot));
+      double distance = this.distance(this.targetRobot);
+      time.add(distance);
+      wake_up_tree.add(buildChild(distance));
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
       this.moveTo(this.targetRobot.location);
@@ -116,15 +131,19 @@ public class Robot implements Cloneable{
   }
 
   /**
-   * Hier passiert folgendes:
-   * 1: Robot (this) ist ON, und hat noch kein Robot gefunden, den er aufweckt.
-   * -> Es wird nach Target-Robot gesucht (der nächste Nachbar)
-   *
+   * Hier passiert folgendes: 1: Robot (this) ist ON, und hat noch kein Robot gefunden, den er
+   * aufweckt. -> Es wird nach Target-Robot gesucht (der nächste Nachbar)
+   * <p>
    * 2: Robot (this) fährt zu seinem Target-Robot, und weckt ihn auf.
-   * @param off List of Robots with status "OFF".
-   * @param time List of Timeunits.
+   *
+   * @param off          List of Robots with status "OFF".
+   * @param time         List of Timeunits.
+   * @param wake_up_tree Wake-up-tree
    */
-  private void runGreedyAlgo_1(List<Robot> off, List<Double> time) {
+  private void runGreedyAlgo_1(
+      List<Robot> off,
+      List<Double> time,
+      List<String> wake_up_tree) {
     // wenn wir hier alles in einem Schritt machen, dann ist das ähnlich wie der Theorem 1 von (Freeze-Tag in L1 has Wake-up Time Five)
     double unit = 1;
     if (!hasTargetRobot()) {
@@ -132,6 +151,7 @@ public class Robot implements Cloneable{
       if (this.targetRobot != null && !this.targetRobot.isDeclared()) {
         this.targetRobot.declare();
         this.targetRobot.aktive();
+        wake_up_tree.add(buildChild(unit));
         this.moveTo(this.targetRobot.location);
         this.removeTargetRobot();
       }
@@ -140,7 +160,8 @@ public class Robot implements Cloneable{
   }
 
   /**
-   * Gedacht für Simulator Hier unterscheiden wir 3 Fälle: 1: Robot (this) ist ON, und hat noch kein
+   * Gedacht für Simulator.
+   * Hier unterscheiden wir 3 Fälle: 1: Robot (this) ist ON, und hat noch kein
    * Robot gefunden, den er aufweckt. -> Es wird nach Target-Robot gesucht (der nächste Nachbar),
    * und ihn markiert, -> damit er nicht von einem anderen Roboter markiert wird.
    * <p>
@@ -148,9 +169,6 @@ public class Robot implements Cloneable{
    * zu seinem Target-Robot bewegen.
    *
    * @param off               List of Robots with status "OFF".
-   * @param timeUnits
-   * @param possibleSolutions
-   * @param wake_up_tree
    */
   public void run(List<Robot> off) {
     if (this.targetRobot == null) {
@@ -169,8 +187,8 @@ public class Robot implements Cloneable{
         System.out.println("Robot " + this.id + " moves from " + Arrays.toString(this.location.toArray()) + " to " +
             Arrays.toString(new Location((int) Math.round(this.location.x + this.velocity[0]), (int) Math.round(this.location.y + this.velocity[1])).toArray()) +
             " toward robot " + this.targetRobot.id + " at " + Arrays.toString(this.targetRobot.location.toArray()));
-        this.location.x += Math.round(this.velocity[0]);
-        this.location.y += Math.round(this.velocity[1]);
+        this.location.x += (int) Math.round(this.velocity[0]);
+        this.location.y += (int) Math.round(this.velocity[1]);
       }
     }
   }
@@ -192,7 +210,7 @@ public class Robot implements Cloneable{
   /**
    * Hier wird einfach über alle OFF-Roboter iteriert, und den nährten Roboter für (this) gefunden.
    * @param off List of Roboter with Status "OFF"
-   * @return
+   * @return nearste-robot
    */
   public Robot getNearestRobot(List<Robot> off) {
     Robot nearest = null;
@@ -307,7 +325,12 @@ public class Robot implements Cloneable{
   public int getLocation_y(){
     return this.location.y;
   }
-
+  public Location getLocation() {
+    return location;
+  }
+  public void setLocation(Location location) {
+    this.location = location;
+  }
   public void moveTo(Location location){
     this.location = location;
   }
@@ -343,13 +366,5 @@ public class Robot implements Cloneable{
   @Override
   public Object clone() throws CloneNotSupportedException {
     return super.clone();
-  }
-
-  public Location getLocation() {
-    return location;
-  }
-
-  public void setLocation(Location location) {
-    this.location = location;
   }
 }

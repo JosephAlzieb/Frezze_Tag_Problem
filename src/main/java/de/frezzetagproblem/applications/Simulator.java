@@ -92,7 +92,7 @@ public class Simulator {
 
       Timer timer = new Timer(100, e -> {
         for (Robot ro : on) {
-          ro.run(off, timeUnits, possibleSolutions, wake_up_tree);
+          ro.run(off);
         }
         for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
           Robot robot = iterator.next();

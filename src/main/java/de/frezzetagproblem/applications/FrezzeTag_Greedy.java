@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileReader;
@@ -17,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +25,14 @@ import java.util.Map;
 public class FrezzeTag_Greedy {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
   }
 
-  private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
+  private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     while (robotsCount <= totalRobotsCount) {
-      Map<String, Double> results = new HashMap<>();
+      List<Result> results = new ArrayList<>();
       String pathName = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
           Properties.WORST_CASE_FILE_NAME :
           Properties.NORMAL_CASE_FILE_NAME;
@@ -45,12 +45,15 @@ public class FrezzeTag_Greedy {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
-      /**
-       * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
+      /*
+        Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
        */
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
+
+        String f = entry.getFileName().toString();
+        Result result = new Result(f);
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -67,19 +70,21 @@ public class FrezzeTag_Greedy {
           }
         }
 
-        /**
-         * Hier wird das Algorithms ausgeführt
-         * Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
+        /*
+          Hier wird das Algorithms ausgeführt
+          Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
          */
         double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<Double>();
+        List<Double> timeUnits = new ArrayList<>();
+        List<String> wake_up_tree = new ArrayList<>();
+
         while (!off.isEmpty()) {
           for (Robot r : on) {
-            r.run(off, timeUnits);
+            r.run(off, timeUnits, wake_up_tree);
           }
 
-          /**
-           * ON- und OFF-Listen werden aktualisiert.
+          /*
+            ON- und OFF-Listen werden aktualisiert.
            */
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
             Robot robot = iterator.next();
@@ -89,16 +94,17 @@ public class FrezzeTag_Greedy {
             }
           }
 
-          /**
-           * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-           * die Liste der TimeUnits für den nächsten Durchlauf geleert.
+          /*
+            Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
+            die Liste der TimeUnits für den nächsten Durchlauf geleert.
            */
           timeunit += updateTimeUnit(timeUnits);
           timeUnits.clear();
         }
 
-        results.put(entry.getFileName().toString(), timeunit);
-      }
+        result.add(timeunit, List.copyOf(wake_up_tree), null);
+        results.add(result);
+        wake_up_tree.clear();      }
 
       saveResults(robotsCount, gson, results);
 
@@ -123,7 +129,7 @@ public class FrezzeTag_Greedy {
     return Collections.max(timeUnits);
   }
 
-  private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
     String resultDirectory= "results/greedy/";
     File resDir = new File(resultDirectory);

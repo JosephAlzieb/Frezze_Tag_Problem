@@ -29,10 +29,10 @@ import java.util.concurrent.TimeUnit;
 public class FrezzeTag_Threads {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT, Properties.OFFSET);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
   }
 
-  private static void runExperiments(int robotsCount, int totalRobotsCount, int offset) throws IOException {
+  private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
@@ -49,9 +49,6 @@ public class FrezzeTag_Threads {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
-      /**
-       * Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
-       */
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();

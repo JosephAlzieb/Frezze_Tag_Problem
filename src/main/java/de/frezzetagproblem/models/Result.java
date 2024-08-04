@@ -1,6 +1,7 @@
 package de.frezzetagproblem.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Result {
@@ -26,7 +27,7 @@ public class Result {
 
     for (Result result : results) {
       ResultDetails optimalDetail = result.details.stream()
-          .min((d1, d2) -> Double.compare(d1.getTotalTimeUnit(), d2.getTotalTimeUnit()))
+          .min(Comparator.comparingDouble(ResultDetails::getTotalTimeUnit))
           .orElse(null);
 
       if (optimalDetail != null) {
@@ -38,6 +39,25 @@ public class Result {
     }
 
     return optimalResults;
+  }
+
+  public static List<Result> getWorstCaseResults(List<Result> results) {
+    List<Result> worstResults = new ArrayList<>();
+
+    for (Result result : results) {
+      ResultDetails worstDetail = result.details.stream()
+          .max(Comparator.comparingDouble(ResultDetails::getTotalTimeUnit))
+          .orElse(null);
+
+      if (worstDetail != null) {
+        List<ResultDetails> worstDetailList = new ArrayList<>();
+        worstDetailList.add(worstDetail);
+        Result worstResult = new Result(result.fileName, worstDetailList);
+        worstResults.add(worstResult);
+      }
+    }
+
+    return worstResults;
   }
 
 }
