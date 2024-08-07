@@ -130,6 +130,29 @@ public class Robot implements Cloneable{
     }
   }
 
+  public void run(
+      List<Robot> off,
+      List<Robot> on,
+      List<Double> time,
+      List<String> wake_up_tree) {
+    /*
+    Hier werden die aktiven Roboter bei der Auswahl den nächsten inaktiven Robot berücksichtigt.
+     */
+    this.targetRobot = this.getNearestRobot(on, off);
+
+    if (this.targetRobot != null) {
+      this.targetRobot.declare();
+      this.targetRobot.aktive();
+      double distance = this.distance(this.targetRobot);
+      time.add(distance);
+      wake_up_tree.add(buildChild(distance));
+
+      //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
+      this.moveTo(this.targetRobot.location);
+      this.removeTargetRobot();
+    }
+  }
+
   /**
    * Hier passiert folgendes: 1: Robot (this) ist ON, und hat noch kein Robot gefunden, den er
    * aufweckt. -> Es wird nach Target-Robot gesucht (der nächste Nachbar)
@@ -261,7 +284,7 @@ public class Robot implements Cloneable{
     // Besonders gut für kleine n. bis n = 10
     if (nearest != null){
       for (Robot r:on) {
-        if (this.distance(nearest) > r.distance(nearest)){
+        if (this != r && this.distance(nearest) > r.distance(nearest)){
           return null;
         }
       }
