@@ -48,12 +48,15 @@ public class FrezzeTag_Greedy {
       /*
         Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
        */
+
+      int experimentNumber = 1;
+
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
 
         String f = entry.getFileName().toString();
-        Result result = new Result(f);
+        Result result = new Result(f, robotsCount, experimentNumber++);
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -108,7 +111,7 @@ public class FrezzeTag_Greedy {
 
       saveResults(robotsCount, gson, results);
 
-      if (robotsCount < 10){
+      if (robotsCount < 15){
         robotsCount++;
       } else if (robotsCount < 100){
         robotsCount += 5;

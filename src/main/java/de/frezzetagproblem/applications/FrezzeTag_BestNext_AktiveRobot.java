@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import de.frezzetagproblem.models.Pair;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
@@ -20,15 +19,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
-public class FrezzeTag_BetterSolution {
+public class FrezzeTag_BestNext_AktiveRobot {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,8);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
@@ -48,12 +45,18 @@ public class FrezzeTag_BetterSolution {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
+      /*
+        Wir lesen alle Ordner in /dummy-dta/ eins nach dem anderen.
+       */
+
+      int experimentNumber = 1;
+
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
 
         String f = entry.getFileName().toString();
-        Result result = new Result(f);
+        Result result = new Result(f, robotsCount, experimentNumber++);
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -73,25 +76,10 @@ public class FrezzeTag_BetterSolution {
         double timeunit = 0;
         List<Double> timeUnits = new ArrayList<>();
         List<String> wake_up_tree = new ArrayList<>();
+
         while (!off.isEmpty()) {
-
-          TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
-
-
-          if (on.size() > 3) {
-            //Hier werden alle möglichen Permutationen einer Liste erzeugt
-           List<List<Robot>> permutations = generatePermutations(on);
-
-           for (List<Robot> permutation : permutations) {
-             for (Robot r : permutation) {
-               //Hier werden alle möglichen Lösungen gespeichert. z.b. Robot_1 zu Robot_2 benötigt X
-               r.computeDistance(off,possibleSolutions);
-             }
-           }
-          }
-
           for (Robot r : on) {
-            r.run(off, timeUnits, possibleSolutions, wake_up_tree);
+            r.run(off, on, timeUnits, wake_up_tree);
           }
 
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
@@ -102,22 +90,17 @@ public class FrezzeTag_BetterSolution {
             }
           }
 
-          /**
-           * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-           * die Liste der TimeUnits für den nächsten Durchlauf geleert.
-           */
-          timeunit += getMaxValue(timeUnits);
+          timeunit += updateTimeUnit(timeUnits);
           timeUnits.clear();
         }
 
         result.add(timeunit, List.copyOf(wake_up_tree), null);
         results.add(result);
-        wake_up_tree.clear();
-      }
+        wake_up_tree.clear();      }
 
       saveResults(robotsCount, gson, results);
 
-      if (robotsCount < 10){
+      if (robotsCount < 15){
         robotsCount++;
       } else if (robotsCount < 100){
         robotsCount += 5;
@@ -126,37 +109,14 @@ public class FrezzeTag_BetterSolution {
       }
     }
   }
-
-  private static double getMaxValue(List<Double> list) {
-    return Collections.max(list);
-  }
-
-  private static double getMinValue(List<Double> list) {
-    return Collections.min(list);
-  }
-
-  public static <T> List<List<T>> generatePermutations(List<T> list) {
-    List<List<T>> lists = new LinkedList<>();
-    permute(list, 0, lists);
-    return lists;
-  }
-
-  private static <T> void permute(List<T> list, int start, List<List<T>> lists) {
-    if (start >= list.size() - 1) {
-      lists.add(new ArrayList<>(list));
-      return;
-    }
-
-    for (int i = start; i < list.size(); i++) {
-      Collections.swap(list, start, i);
-      permute(list, start + 1, lists);
-      Collections.swap(list, start, i); // Rückgängig machen des Tauschs
-    }
+  private static double updateTimeUnit(List<Double> timeUnits) {
+    if (timeUnits.isEmpty()) return 0;
+    return Collections.max(timeUnits);
   }
 
   private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
-    String resultDirectory= "results/better_Solution/";
+    String resultDirectory= "results/best_next_aktive_robot/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();

@@ -84,7 +84,7 @@ public class DummyDataGenerator {
 
         save(pathname + j + ".json", robots);
       }
-      if (robotsCount < 10){
+      if (robotsCount < 15){
         robotsCount++;
       } else if (robotsCount < 100){
         robotsCount += 5;

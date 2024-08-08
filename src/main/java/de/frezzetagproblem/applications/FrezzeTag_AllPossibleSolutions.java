@@ -24,7 +24,7 @@ import java.util.Map;
 public class FrezzeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,8);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
@@ -44,12 +44,14 @@ public class FrezzeTag_AllPossibleSolutions {
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
+      int experimentNumber = 1;
+
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
 
         String f = entry.getFileName().toString();
-        Result  result = new Result(f);
+        Result  result = new Result(f, robotsCount, experimentNumber++);
 
 
 
@@ -109,7 +111,13 @@ public class FrezzeTag_AllPossibleSolutions {
         }
         results.add(result);
       }
-      saveResults(robotsCount, gson, results, null);
+
+      /*
+      Alle möglichen Lösungen werden nur für n = 5 gespeichert, denn für große n kann die Datei sehr groß werden.
+       */
+      if (robotsCount == 5){
+        saveResults(robotsCount, gson, results, null);
+      }
 
       List<Result> optimalResults = Result.getOptimalResults(results);
       saveResults(robotsCount, gson, optimalResults, "-bestCase");
@@ -117,7 +125,7 @@ public class FrezzeTag_AllPossibleSolutions {
       List<Result> worstCaseResults = Result.getWorstCaseResults(results);
       saveResults(robotsCount, gson, worstCaseResults, "-worstCase");
 
-      if (robotsCount < 10){
+      if (robotsCount < 15){
         robotsCount++;
       } else if (robotsCount < 100){
         robotsCount += 5;
