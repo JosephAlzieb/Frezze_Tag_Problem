@@ -1,0 +1,765 @@
+{
+  "size": 95,
+  "robots": {
+    "0": {
+      "id": "0",
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "status": "ON"
+    },
+    "1": {
+      "id": "1",
+      "location": {
+        "x": 250,
+        "y": 250
+      },
+      "status": "ON"
+    },
+    "2": {
+      "id": "2",
+      "location": {
+        "x": 250,
+        "y": -250
+      },
+      "status": "ON"
+    },
+    "3": {
+      "id": "3",
+      "location": {
+        "x": -250,
+        "y": 250
+      },
+      "status": "ON"
+    },
+    "4": {
+      "id": "4",
+      "location": {
+        "x": -250,
+        "y": -250
+      },
+      "status": "ON"
+    },
+    "5": {
+      "id": "5",
+      "location": {
+        "x": 67,
+        "y": -176
+      },
+      "status": "OFF"
+    },
+    "6": {
+      "id": "6",
+      "location": {
+        "x": 229,
+        "y": -17
+      },
+      "status": "OFF"
+    },
+    "7": {
+      "id": "7",
+      "location": {
+        "x": -460,
+        "y": 187
+      },
+      "status": "OFF"
+    },
+    "8": {
+      "id": "8",
+      "location": {
+        "x": -399,
+        "y": -81
+      },
+      "status": "OFF"
+    },
+    "9": {
+      "id": "9",
+      "location": {
+        "x": -376,
+        "y": -61
+      },
+      "status": "OFF"
+    },
+    "10": {
+      "id": "10",
+      "location": {
+        "x": 100,
+        "y": 433
+      },
+      "status": "OFF"
+    },
+    "11": {
+      "id": "11",
+      "location": {
+        "x": -387,
+        "y": 184
+      },
+      "status": "OFF"
+    },
+    "12": {
+      "id": "12",
+      "location": {
+        "x": 256,
+        "y": 149
+      },
+      "status": "OFF"
+    },
+    "13": {
+      "id": "13",
+      "location": {
+        "x": -93,
+        "y": -347
+      },
+      "status": "OFF"
+    },
+    "14": {
+      "id": "14",
+      "location": {
+        "x": 286,
+        "y": -323
+      },
+      "status": "OFF"
+    },
+    "15": {
+      "id": "15",
+      "location": {
+        "x": -399,
+        "y": -198
+      },
+      "status": "OFF"
+    },
+    "16": {
+      "id": "16",
+      "location": {
+        "x": -13,
+        "y": -479
+      },
+      "status": "OFF"
+    },
+    "17": {
+      "id": "17",
+      "location": {
+        "x": -64,
+        "y": -64
+      },
+      "status": "OFF"
+    },
+    "18": {
+      "id": "18",
+      "location": {
+        "x": 229,
+        "y": -184
+      },
+      "status": "OFF"
+    },
+    "19": {
+      "id": "19",
+      "location": {
+        "x": -202,
+        "y": -339
+      },
+      "status": "OFF"
+    },
+    "20": {
+      "id": "20",
+      "location": {
+        "x": 10,
+        "y": -398
+      },
+      "status": "OFF"
+    },
+    "21": {
+      "id": "21",
+      "location": {
+        "x": 383,
+        "y": 156
+      },
+      "status": "OFF"
+    },
+    "22": {
+      "id": "22",
+      "location": {
+        "x": 97,
+        "y": 399
+      },
+      "status": "OFF"
+    },
+    "23": {
+      "id": "23",
+      "location": {
+        "x": 43,
+        "y": 47
+      },
+      "status": "OFF"
+    },
+    "24": {
+      "id": "24",
+      "location": {
+        "x": 2,
+        "y": -277
+      },
+      "status": "OFF"
+    },
+    "25": {
+      "id": "25",
+      "location": {
+        "x": 25,
+        "y": -219
+      },
+      "status": "OFF"
+    },
+    "26": {
+      "id": "26",
+      "location": {
+        "x": 111,
+        "y": -470
+      },
+      "status": "OFF"
+    },
+    "27": {
+      "id": "27",
+      "location": {
+        "x": 391,
+        "y": 187
+      },
+      "status": "OFF"
+    },
+    "28": {
+      "id": "28",
+      "location": {
+        "x": 345,
+        "y": 29
+      },
+      "status": "OFF"
+    },
+    "29": {
+      "id": "29",
+      "location": {
+        "x": 399,
+        "y": -215
+      },
+      "status": "OFF"
+    },
+    "30": {
+      "id": "30",
+      "location": {
+        "x": 220,
+        "y": 220
+      },
+      "status": "OFF"
+    },
+    "31": {
+      "id": "31",
+      "location": {
+        "x": -163,
+        "y": -40
+      },
+      "status": "OFF"
+    },
+    "32": {
+      "id": "32",
+      "location": {
+        "x": 62,
+        "y": -134
+      },
+      "status": "OFF"
+    },
+    "33": {
+      "id": "33",
+      "location": {
+        "x": 443,
+        "y": 185
+      },
+      "status": "OFF"
+    },
+    "34": {
+      "id": "34",
+      "location": {
+        "x": 115,
+        "y": 284
+      },
+      "status": "OFF"
+    },
+    "35": {
+      "id": "35",
+      "location": {
+        "x": 168,
+        "y": -154
+      },
+      "status": "OFF"
+    },
+    "36": {
+      "id": "36",
+      "location": {
+        "x": 37,
+        "y": 399
+      },
+      "status": "OFF"
+    },
+    "37": {
+      "id": "37",
+      "location": {
+        "x": -267,
+        "y": 107
+      },
+      "status": "OFF"
+    },
+    "38": {
+      "id": "38",
+      "location": {
+        "x": -299,
+        "y": -90
+      },
+      "status": "OFF"
+    },
+    "39": {
+      "id": "39",
+      "location": {
+        "x": -452,
+        "y": 19
+      },
+      "status": "OFF"
+    },
+    "40": {
+      "id": "40",
+      "location": {
+        "x": 88,
+        "y": -261
+      },
+      "status": "OFF"
+    },
+    "41": {
+      "id": "41",
+      "location": {
+        "x": 132,
+        "y": 162
+      },
+      "status": "OFF"
+    },
+    "42": {
+      "id": "42",
+      "location": {
+        "x": -397,
+        "y": 1
+      },
+      "status": "OFF"
+    },
+    "43": {
+      "id": "43",
+      "location": {
+        "x": 30,
+        "y": -61
+      },
+      "status": "OFF"
+    },
+    "44": {
+      "id": "44",
+      "location": {
+        "x": -118,
+        "y": -320
+      },
+      "status": "OFF"
+    },
+    "45": {
+      "id": "45",
+      "location": {
+        "x": -247,
+        "y": -169
+      },
+      "status": "OFF"
+    },
+    "46": {
+      "id": "46",
+      "location": {
+        "x": -370,
+        "y": -231
+      },
+      "status": "OFF"
+    },
+    "47": {
+      "id": "47",
+      "location": {
+        "x": -233,
+        "y": -435
+      },
+      "status": "OFF"
+    },
+    "48": {
+      "id": "48",
+      "location": {
+        "x": 194,
+        "y": -342
+      },
+      "status": "OFF"
+    },
+    "49": {
+      "id": "49",
+      "location": {
+        "x": -4,
+        "y": -13
+      },
+      "status": "OFF"
+    },
+    "50": {
+      "id": "50",
+      "location": {
+        "x": 36,
+        "y": 192
+      },
+      "status": "OFF"
+    },
+    "51": {
+      "id": "51",
+      "location": {
+        "x": 49,
+        "y": 362
+      },
+      "status": "OFF"
+    },
+    "52": {
+      "id": "52",
+      "location": {
+        "x": -159,
+        "y": 279
+      },
+      "status": "OFF"
+    },
+    "53": {
+      "id": "53",
+      "location": {
+        "x": -56,
+        "y": -66
+      },
+      "status": "OFF"
+    },
+    "54": {
+      "id": "54",
+      "location": {
+        "x": 330,
+        "y": 62
+      },
+      "status": "OFF"
+    },
+    "55": {
+      "id": "55",
+      "location": {
+        "x": 290,
+        "y": -358
+      },
+      "status": "OFF"
+    },
+    "56": {
+      "id": "56",
+      "location": {
+        "x": -128,
+        "y": 351
+      },
+      "status": "OFF"
+    },
+    "57": {
+      "id": "57",
+      "location": {
+        "x": 393,
+        "y": 61
+      },
+      "status": "OFF"
+    },
+    "58": {
+      "id": "58",
+      "location": {
+        "x": 311,
+        "y": 136
+      },
+      "status": "OFF"
+    },
+    "59": {
+      "id": "59",
+      "location": {
+        "x": -419,
+        "y": -6
+      },
+      "status": "OFF"
+    },
+    "60": {
+      "id": "60",
+      "location": {
+        "x": 138,
+        "y": 131
+      },
+      "status": "OFF"
+    },
+    "61": {
+      "id": "61",
+      "location": {
+        "x": 260,
+        "y": 153
+      },
+      "status": "OFF"
+    },
+    "62": {
+      "id": "62",
+      "location": {
+        "x": 300,
+        "y": 42
+      },
+      "status": "OFF"
+    },
+    "63": {
+      "id": "63",
+      "location": {
+        "x": 187,
+        "y": -139
+      },
+      "status": "OFF"
+    },
+    "64": {
+      "id": "64",
+      "location": {
+        "x": -12,
+        "y": -81
+      },
+      "status": "OFF"
+    },
+    "65": {
+      "id": "65",
+      "location": {
+        "x": 445,
+        "y": -65
+      },
+      "status": "OFF"
+    },
+    "66": {
+      "id": "66",
+      "location": {
+        "x": -179,
+        "y": 327
+      },
+      "status": "OFF"
+    },
+    "67": {
+      "id": "67",
+      "location": {
+        "x": 52,
+        "y": -214
+      },
+      "status": "OFF"
+    },
+    "68": {
+      "id": "68",
+      "location": {
+        "x": -354,
+        "y": 186
+      },
+      "status": "OFF"
+    },
+    "69": {
+      "id": "69",
+      "location": {
+        "x": 317,
+        "y": 13
+      },
+      "status": "OFF"
+    },
+    "70": {
+      "id": "70",
+      "location": {
+        "x": -206,
+        "y": 182
+      },
+      "status": "OFF"
+    },
+    "71": {
+      "id": "71",
+      "location": {
+        "x": -137,
+        "y": 222
+      },
+      "status": "OFF"
+    },
+    "72": {
+      "id": "72",
+      "location": {
+        "x": 498,
+        "y": 25
+      },
+      "status": "OFF"
+    },
+    "73": {
+      "id": "73",
+      "location": {
+        "x": 344,
+        "y": 272
+      },
+      "status": "OFF"
+    },
+    "74": {
+      "id": "74",
+      "location": {
+        "x": 322,
+        "y": -46
+      },
+      "status": "OFF"
+    },
+    "75": {
+      "id": "75",
+      "location": {
+        "x": 214,
+        "y": -284
+      },
+      "status": "OFF"
+    },
+    "76": {
+      "id": "76",
+      "location": {
+        "x": -345,
+        "y": 247
+      },
+      "status": "OFF"
+    },
+    "77": {
+      "id": "77",
+      "location": {
+        "x": -359,
+        "y": -218
+      },
+      "status": "OFF"
+    },
+    "78": {
+      "id": "78",
+      "location": {
+        "x": 72,
+        "y": 186
+      },
+      "status": "OFF"
+    },
+    "79": {
+      "id": "79",
+      "location": {
+        "x": 263,
+        "y": 170
+      },
+      "status": "OFF"
+    },
+    "80": {
+      "id": "80",
+      "location": {
+        "x": 152,
+        "y": 398
+      },
+      "status": "OFF"
+    },
+    "81": {
+      "id": "81",
+      "location": {
+        "x": -53,
+        "y": 113
+      },
+      "status": "OFF"
+    },
+    "82": {
+      "id": "82",
+      "location": {
+        "x": 331,
+        "y": -116
+      },
+      "status": "OFF"
+    },
+    "83": {
+      "id": "83",
+      "location": {
+        "x": -418,
+        "y": -79
+      },
+      "status": "OFF"
+    },
+    "84": {
+      "id": "84",
+      "location": {
+        "x": -141,
+        "y": 165
+      },
+      "status": "OFF"
+    },
+    "85": {
+      "id": "85",
+      "location": {
+        "x": -292,
+        "y": -301
+      },
+      "status": "OFF"
+    },
+    "86": {
+      "id": "86",
+      "location": {
+        "x": 354,
+        "y": -342
+      },
+      "status": "OFF"
+    },
+    "87": {
+      "id": "87",
+      "location": {
+        "x": -34,
+        "y": -304
+      },
+      "status": "OFF"
+    },
+    "88": {
+      "id": "88",
+      "location": {
+        "x": 86,
+        "y": 135
+      },
+      "status": "OFF"
+    },
+    "89": {
+      "id": "89",
+      "location": {
+        "x": 284,
+        "y": -393
+      },
+      "status": "OFF"
+    },
+    "90": {
+      "id": "90",
+      "location": {
+        "x": 132,
+        "y": 246
+      },
+      "status": "OFF"
+    },
+    "91": {
+      "id": "91",
+      "location": {
+        "x": -295,
+        "y": -300
+      },
+      "status": "OFF"
+    },
+    "92": {
+      "id": "92",
+      "location": {
+        "x": -332,
+        "y": -240
+      },
+      "status": "OFF"
+    },
+    "93": {
+      "id": "93",
+      "location": {
+        "x": -104,
+        "y": -379
+      },
+      "status": "OFF"
+    },
+    "94": {
+      "id": "94",
+      "location": {
+        "x": -77,
+        "y": 269
+      },
+      "status": "OFF"
+    }
+  }
+}
