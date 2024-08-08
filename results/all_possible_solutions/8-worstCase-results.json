@@ -5,49 +5,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1953.126791332314,
+        "totalTimeUnit": 1845.5289677075193,
         "wakeUpTree": [
-          "0 wakes 4 in (453)",
-          "0 wakes 2 in (253)",
-          "4 wakes 5 in (707)",
-          "0 wakes 3 in (356)",
-          "4 wakes 1 in (792)",
-          "2 wakes 6 in (386)",
-          "5 wakes 7 in (429)"
+          "0 wakes 2 in (396)",
+          "0 wakes 1 in (777)",
+          "2 wakes 3 in (186)",
+          "0 wakes 4 in (217)",
+          "2 wakes 5 in (473)",
+          "1 wakes 6 in (671)",
+          "3 wakes 7 in (519)"
         ],
         "permutation": [
           {
-            "id": "4",
-            "location": {
-              "x": -6,
-              "y": -453
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "2",
             "location": {
-              "x": -191,
-              "y": -280
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 396,
-              "y": 129
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 113,
-              "y": -94
+              "x": -27,
+              "y": -396
             },
             "status": "OFF",
             "declared": false
@@ -55,8 +28,35 @@
           {
             "id": "1",
             "location": {
-              "x": -393,
-              "y": 52
+              "x": -17,
+              "y": 381
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": 87,
+              "y": -248
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": 11,
+              "y": 165
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": 136,
+              "y": 223
             },
             "status": "OFF",
             "declared": false
@@ -64,8 +64,8 @@
           {
             "id": "6",
             "location": {
-              "x": -164,
-              "y": 106
+              "x": -214,
+              "y": -261
             },
             "status": "OFF",
             "declared": false
@@ -73,8 +73,8 @@
           {
             "id": "7",
             "location": {
-              "x": -10,
-              "y": -10
+              "x": -333,
+              "y": 58
             },
             "status": "OFF",
             "declared": false
@@ -89,22 +89,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1956.4833062080784,
+        "totalTimeUnit": 1956.6116052704033,
         "wakeUpTree": [
-          "0 wakes 3 in (376)",
-          "0 wakes 2 in (343)",
-          "3 wakes 5 in (846)",
-          "0 wakes 4 in (140)",
-          "3 wakes 1 in (733)",
-          "2 wakes 6 in (419)",
-          "5 wakes 7 in (503)"
+          "0 wakes 7 in (434)",
+          "0 wakes 2 in (293)",
+          "7 wakes 3 in (808)",
+          "0 wakes 5 in (518)",
+          "7 wakes 4 in (713)",
+          "2 wakes 6 in (635)",
+          "3 wakes 1 in (489)"
         ],
         "permutation": [
           {
-            "id": "3",
+            "id": "7",
             "location": {
-              "x": 300,
-              "y": 228
+              "x": 423,
+              "y": 101
             },
             "status": "OFF",
             "declared": false
@@ -112,8 +112,17 @@
           {
             "id": "2",
             "location": {
-              "x": -35,
-              "y": 152
+              "x": 191,
+              "y": 280
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -328,
+              "y": -199
             },
             "status": "OFF",
             "declared": false
@@ -121,8 +130,8 @@
           {
             "id": "5",
             "location": {
-              "x": -292,
-              "y": -377
+              "x": -25,
+              "y": -191
             },
             "status": "OFF",
             "declared": false
@@ -130,17 +139,8 @@
           {
             "id": "4",
             "location": {
-              "x": 100,
-              "y": 192
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "1",
-            "location": {
-              "x": 101,
-              "y": 242
+              "x": 385,
+              "y": -194
             },
             "status": "OFF",
             "declared": false
@@ -148,17 +148,17 @@
           {
             "id": "6",
             "location": {
-              "x": -66,
-              "y": -266
+              "x": 82,
+              "y": -346
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "7",
+            "id": "1",
             "location": {
-              "x": 205,
-              "y": -296
+              "x": -83,
+              "y": 225
             },
             "status": "OFF",
             "declared": false
@@ -173,31 +173,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1719.457150759502,
+        "totalTimeUnit": 2093.597189957121,
         "wakeUpTree": [
-          "0 wakes 2 in (351)",
-          "0 wakes 1 in (543)",
-          "2 wakes 3 in (682)",
-          "0 wakes 4 in (248)",
-          "2 wakes 5 in (296)",
-          "1 wakes 6 in (484)",
-          "3 wakes 7 in (685)"
+          "0 wakes 1 in (497)",
+          "0 wakes 3 in (361)",
+          "1 wakes 4 in (806)",
+          "0 wakes 5 in (612)",
+          "1 wakes 2 in (789)",
+          "3 wakes 6 in (422)",
+          "4 wakes 7 in (562)"
         ],
         "permutation": [
           {
-            "id": "2",
-            "location": {
-              "x": -345,
-              "y": 67
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "1",
             "location": {
-              "x": 181,
-              "y": -71
+              "x": -369,
+              "y": -334
             },
             "status": "OFF",
             "declared": false
@@ -205,8 +196,8 @@
           {
             "id": "3",
             "location": {
-              "x": 239,
-              "y": -286
+              "x": -8,
+              "y": -309
             },
             "status": "OFF",
             "declared": false
@@ -214,8 +205,8 @@
           {
             "id": "4",
             "location": {
-              "x": 4,
-              "y": 103
+              "x": 387,
+              "y": -52
             },
             "status": "OFF",
             "declared": false
@@ -223,8 +214,17 @@
           {
             "id": "5",
             "location": {
-              "x": -6,
-              "y": -119
+              "x": -310,
+              "y": 224
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "2",
+            "location": {
+              "x": -371,
+              "y": 167
             },
             "status": "OFF",
             "declared": false
@@ -232,8 +232,8 @@
           {
             "id": "6",
             "location": {
-              "x": -285,
-              "y": 62
+              "x": 27,
+              "y": 112
             },
             "status": "OFF",
             "declared": false
@@ -241,8 +241,8 @@
           {
             "id": "7",
             "location": {
-              "x": -139,
-              "y": 286
+              "x": -8,
+              "y": 349
             },
             "status": "OFF",
             "declared": false
@@ -257,31 +257,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2123.9690058916417,
+        "totalTimeUnit": 2096.4759248623623,
         "wakeUpTree": [
-          "0 wakes 5 in (478)",
-          "0 wakes 2 in (594)",
-          "5 wakes 1 in (868)",
-          "0 wakes 3 in (502)",
-          "5 wakes 4 in (776)",
-          "2 wakes 6 in (380)",
-          "1 wakes 7 in (713)"
+          "0 wakes 2 in (423)",
+          "0 wakes 1 in (442)",
+          "2 wakes 5 in (848)",
+          "0 wakes 3 in (101)",
+          "2 wakes 4 in (824)",
+          "1 wakes 6 in (166)",
+          "5 wakes 7 in (564)"
         ],
         "permutation": [
           {
-            "id": "5",
-            "location": {
-              "x": -426,
-              "y": -218
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "2",
             "location": {
-              "x": -59,
-              "y": 250
+              "x": -419,
+              "y": 64
             },
             "status": "OFF",
             "declared": false
@@ -289,8 +280,17 @@
           {
             "id": "1",
             "location": {
-              "x": 432,
-              "y": -83
+              "x": -86,
+              "y": -227
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": 407,
+              "y": 256
             },
             "status": "OFF",
             "declared": false
@@ -298,8 +298,8 @@
           {
             "id": "3",
             "location": {
-              "x": 248,
-              "y": -148
+              "x": -159,
+              "y": -298
             },
             "status": "OFF",
             "declared": false
@@ -307,8 +307,8 @@
           {
             "id": "4",
             "location": {
-              "x": -226,
-              "y": 330
+              "x": -319,
+              "y": -135
             },
             "status": "OFF",
             "declared": false
@@ -316,8 +316,8 @@
           {
             "id": "6",
             "location": {
-              "x": -70,
-              "y": -130
+              "x": 77,
+              "y": -261
             },
             "status": "OFF",
             "declared": false
@@ -325,8 +325,8 @@
           {
             "id": "7",
             "location": {
-              "x": -268,
-              "y": 53
+              "x": 25,
+              "y": -160
             },
             "status": "OFF",
             "declared": false
@@ -341,49 +341,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2242.628471894006,
+        "totalTimeUnit": 2000.5949266830853,
         "wakeUpTree": [
-          "0 wakes 5 in (485)",
-          "0 wakes 2 in (308)",
-          "5 wakes 3 in (893)",
-          "0 wakes 4 in (285)",
-          "5 wakes 1 in (348)",
-          "2 wakes 6 in (137)",
-          "3 wakes 7 in (863)"
+          "0 wakes 2 in (459)",
+          "0 wakes 1 in (749)",
+          "2 wakes 3 in (752)",
+          "0 wakes 4 in (789)",
+          "2 wakes 5 in (454)",
+          "1 wakes 6 in (33)",
+          "3 wakes 7 in (615)"
         ],
         "permutation": [
           {
-            "id": "5",
-            "location": {
-              "x": -479,
-              "y": 80
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "2",
             "location": {
-              "x": -171,
-              "y": 57
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 406,
-              "y": 201
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": -390,
-              "y": -126
+              "x": 229,
+              "y": 398
             },
             "status": "OFF",
             "declared": false
@@ -391,8 +364,35 @@
           {
             "id": "1",
             "location": {
-              "x": 60,
-              "y": 159
+              "x": 173,
+              "y": -349
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -438,
+              "y": 50
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -310,
+              "y": 275
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -27,
+              "y": 243
             },
             "status": "OFF",
             "declared": false
@@ -400,8 +400,8 @@
           {
             "id": "6",
             "location": {
-              "x": -305,
-              "y": 89
+              "x": 192,
+              "y": -321
             },
             "status": "OFF",
             "declared": false
@@ -409,8 +409,8 @@
           {
             "id": "7",
             "location": {
-              "x": -443,
-              "y": 42
+              "x": 135,
+              "y": 276
             },
             "status": "OFF",
             "declared": false
@@ -425,31 +425,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2164.0541205323707,
+        "totalTimeUnit": 2229.807135223624,
         "wakeUpTree": [
-          "0 wakes 4 in (490)",
-          "0 wakes 2 in (926)",
-          "4 wakes 3 in (787)",
-          "0 wakes 1 in (747)",
-          "4 wakes 5 in (525)",
-          "2 wakes 6 in (157)",
-          "3 wakes 7 in (336)"
+          "0 wakes 4 in (482)",
+          "0 wakes 3 in (924)",
+          "4 wakes 1 in (807)",
+          "0 wakes 2 in (822)",
+          "4 wakes 5 in (452)",
+          "3 wakes 6 in (429)",
+          "1 wakes 7 in (715)"
         ],
         "permutation": [
           {
             "id": "4",
             "location": {
-              "x": -10,
-              "y": 490
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "2",
-            "location": {
-              "x": 29,
-              "y": -436
+              "x": 482,
+              "y": -24
             },
             "status": "OFF",
             "declared": false
@@ -457,8 +448,8 @@
           {
             "id": "3",
             "location": {
-              "x": -319,
-              "y": -234
+              "x": -435,
+              "y": -144
             },
             "status": "OFF",
             "declared": false
@@ -466,8 +457,17 @@
           {
             "id": "1",
             "location": {
-              "x": 15,
-              "y": 311
+              "x": -320,
+              "y": 66
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "2",
+            "location": {
+              "x": 187,
+              "y": 394
             },
             "status": "OFF",
             "declared": false
@@ -475,8 +475,8 @@
           {
             "id": "5",
             "location": {
-              "x": 17,
-              "y": 170
+              "x": 102,
+              "y": -96
             },
             "status": "OFF",
             "declared": false
@@ -484,8 +484,8 @@
           {
             "id": "6",
             "location": {
-              "x": 91,
-              "y": -291
+              "x": -67,
+              "y": -366
             },
             "status": "OFF",
             "declared": false
@@ -493,8 +493,8 @@
           {
             "id": "7",
             "location": {
-              "x": -194,
-              "y": 78
+              "x": 216,
+              "y": -408
             },
             "status": "OFF",
             "declared": false
@@ -509,22 +509,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1764.3916595380808,
+        "totalTimeUnit": 2255.8066996259768,
         "wakeUpTree": [
-          "0 wakes 1 in (376)",
-          "0 wakes 2 in (699)",
-          "1 wakes 3 in (177)",
-          "0 wakes 4 in (465)",
-          "1 wakes 5 in (223)",
-          "2 wakes 7 in (688)",
-          "3 wakes 6 in (448)"
+          "0 wakes 1 in (475)",
+          "0 wakes 2 in (780)",
+          "1 wakes 7 in (884)",
+          "0 wakes 4 in (500)",
+          "1 wakes 5 in (364)",
+          "2 wakes 3 in (776)",
+          "7 wakes 6 in (896)"
         ],
         "permutation": [
           {
             "id": "1",
             "location": {
-              "x": 100,
-              "y": 363
+              "x": -55,
+              "y": 472
             },
             "status": "OFF",
             "declared": false
@@ -532,35 +532,8 @@
           {
             "id": "2",
             "location": {
-              "x": 358,
-              "y": -287
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 151,
-              "y": 193
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": 41,
-              "y": 54
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 28,
-              "y": 6
+              "x": 335,
+              "y": -204
             },
             "status": "OFF",
             "declared": false
@@ -568,8 +541,35 @@
           {
             "id": "7",
             "location": {
-              "x": -201,
-              "y": 115
+              "x": -328,
+              "y": -369
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -140,
+              "y": -45
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -229,
+              "y": -18
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -428,
+              "y": -59
             },
             "status": "OFF",
             "declared": false
@@ -577,8 +577,8 @@
           {
             "id": "6",
             "location": {
-              "x": -106,
-              "y": -174
+              "x": 338,
+              "y": 231
             },
             "status": "OFF",
             "declared": false
@@ -593,22 +593,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2363.492232371048,
+        "totalTimeUnit": 2205.4300092392727,
         "wakeUpTree": [
-          "0 wakes 4 in (480)",
-          "0 wakes 2 in (866)",
-          "4 wakes 6 in (963)",
-          "0 wakes 1 in (222)",
-          "4 wakes 5 in (919)",
-          "2 wakes 3 in (450)",
-          "6 wakes 7 in (748)"
+          "0 wakes 4 in (491)",
+          "0 wakes 2 in (260)",
+          "4 wakes 6 in (852)",
+          "0 wakes 1 in (277)",
+          "4 wakes 5 in (845)",
+          "2 wakes 3 in (703)",
+          "6 wakes 7 in (861)"
         ],
         "permutation": [
           {
             "id": "4",
             "location": {
-              "x": 404,
-              "y": 260
+              "x": 307,
+              "y": -384
             },
             "status": "OFF",
             "declared": false
@@ -616,8 +616,8 @@
           {
             "id": "2",
             "location": {
-              "x": -279,
-              "y": -274
+              "x": 366,
+              "y": -130
             },
             "status": "OFF",
             "declared": false
@@ -625,8 +625,8 @@
           {
             "id": "6",
             "location": {
-              "x": -410,
-              "y": -255
+              "x": -61,
+              "y": 385
             },
             "status": "OFF",
             "declared": false
@@ -634,8 +634,8 @@
           {
             "id": "1",
             "location": {
-              "x": -93,
-              "y": -151
+              "x": 89,
+              "y": -149
             },
             "status": "OFF",
             "declared": false
@@ -643,8 +643,8 @@
           {
             "id": "5",
             "location": {
-              "x": 299,
-              "y": 331
+              "x": 127,
+              "y": -439
             },
             "status": "OFF",
             "declared": false
@@ -652,8 +652,8 @@
           {
             "id": "3",
             "location": {
-              "x": 103,
-              "y": -36
+              "x": -287,
+              "y": -391
             },
             "status": "OFF",
             "declared": false
@@ -661,8 +661,8 @@
           {
             "id": "7",
             "location": {
-              "x": 326,
-              "y": -121
+              "x": 253,
+              "y": -417
             },
             "status": "OFF",
             "declared": false
@@ -677,40 +677,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1443.7099067993724,
+        "totalTimeUnit": 2049.7011760285186,
         "wakeUpTree": [
-          "0 wakes 7 in (479)",
-          "0 wakes 4 in (225)",
-          "7 wakes 5 in (461)",
-          "0 wakes 2 in (212)",
-          "7 wakes 3 in (175)",
-          "4 wakes 6 in (502)",
-          "5 wakes 1 in (447)"
+          "0 wakes 6 in (396)",
+          "0 wakes 2 in (265)",
+          "6 wakes 3 in (866)",
+          "0 wakes 5 in (340)",
+          "6 wakes 4 in (786)",
+          "2 wakes 1 in (57)",
+          "3 wakes 7 in (578)"
         ],
         "permutation": [
           {
-            "id": "7",
+            "id": "6",
             "location": {
-              "x": 101,
-              "y": -469
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": -123,
-              "y": -442
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": -115,
-              "y": -61
+              "x": 287,
+              "y": 273
             },
             "status": "OFF",
             "declared": false
@@ -718,8 +700,8 @@
           {
             "id": "2",
             "location": {
-              "x": 46,
-              "y": -314
+              "x": 56,
+              "y": 142
             },
             "status": "OFF",
             "declared": false
@@ -727,17 +709,26 @@
           {
             "id": "3",
             "location": {
-              "x": 5,
-              "y": -189
+              "x": -307,
+              "y": -358
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "6",
+            "id": "5",
             "location": {
-              "x": 260,
-              "y": -117
+              "x": 356,
+              "y": -19
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": 333,
+              "y": 100
             },
             "status": "OFF",
             "declared": false
@@ -745,8 +736,17 @@
           {
             "id": "1",
             "location": {
-              "x": 136,
-              "y": -432
+              "x": 113,
+              "y": 151
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": -54,
+              "y": 162
             },
             "status": "OFF",
             "declared": false
@@ -761,67 +761,31 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2273.9624799511757,
+        "totalTimeUnit": 2051.8144938667697,
         "wakeUpTree": [
-          "0 wakes 2 in (486)",
-          "0 wakes 3 in (624)",
-          "2 wakes 7 in (935)",
-          "0 wakes 4 in (223)",
-          "2 wakes 5 in (146)",
-          "3 wakes 6 in (142)",
-          "7 wakes 1 in (852)"
+          "0 wakes 3 in (412)",
+          "0 wakes 2 in (74)",
+          "3 wakes 1 in (841)",
+          "0 wakes 4 in (607)",
+          "3 wakes 5 in (708)",
+          "2 wakes 7 in (302)",
+          "1 wakes 6 in (797)"
         ],
         "permutation": [
           {
-            "id": "2",
-            "location": {
-              "x": -117,
-              "y": 472
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "3",
             "location": {
-              "x": -12,
-              "y": -144
+              "x": -292,
+              "y": -292
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "7",
+            "id": "2",
             "location": {
-              "x": 310,
-              "y": -360
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": 200,
-              "y": -72
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 306,
-              "y": -214
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "6",
-            "location": {
-              "x": -58,
-              "y": -279
+              "x": -294,
+              "y": -218
             },
             "status": "OFF",
             "declared": false
@@ -829,8 +793,44 @@
           {
             "id": "1",
             "location": {
-              "x": -212,
-              "y": 314
+              "x": 121,
+              "y": 441
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": 93,
+              "y": 250
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -66,
+              "y": -242
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": -416,
+              "y": 59
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "6",
+            "location": {
+              "x": -101,
+              "y": -325
             },
             "status": "OFF",
             "declared": false
@@ -845,67 +845,31 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1792.9337021453034,
+        "totalTimeUnit": 2212.9098550783747,
         "wakeUpTree": [
-          "0 wakes 3 in (349)",
-          "0 wakes 2 in (702)",
-          "3 wakes 1 in (175)",
-          "0 wakes 4 in (504)",
-          "3 wakes 5 in (190)",
-          "2 wakes 7 in (740)",
-          "1 wakes 6 in (60)"
+          "0 wakes 2 in (498)",
+          "0 wakes 3 in (828)",
+          "2 wakes 6 in (816)",
+          "0 wakes 4 in (465)",
+          "2 wakes 5 in (639)",
+          "3 wakes 1 in (648)",
+          "6 wakes 7 in (886)"
         ],
         "permutation": [
           {
-            "id": "3",
-            "location": {
-              "x": 126,
-              "y": 326
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "2",
             "location": {
-              "x": -423,
-              "y": -113
+              "x": 278,
+              "y": 414
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "1",
+            "id": "3",
             "location": {
-              "x": 149,
-              "y": 152
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": -10,
-              "y": 177
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": -22,
-              "y": 237
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "7",
-            "location": {
-              "x": 316,
-              "y": -66
+              "x": -244,
+              "y": -229
             },
             "status": "OFF",
             "declared": false
@@ -913,8 +877,44 @@
           {
             "id": "6",
             "location": {
-              "x": 179,
-              "y": 99
+              "x": 253,
+              "y": -402
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -77,
+              "y": 206
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -316,
+              "y": -111
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "1",
+            "location": {
+              "x": 367,
+              "y": -11
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": 96,
+              "y": 470
             },
             "status": "OFF",
             "declared": false
@@ -929,22 +929,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2296.7390851999903,
+        "totalTimeUnit": 2199.0592041287437,
         "wakeUpTree": [
-          "0 wakes 7 in (498)",
-          "0 wakes 2 in (883)",
-          "7 wakes 3 in (387)",
-          "0 wakes 4 in (914)",
-          "7 wakes 5 in (302)",
-          "2 wakes 6 in (606)",
-          "3 wakes 1 in (583)"
+          "0 wakes 5 in (464)",
+          "0 wakes 2 in (130)",
+          "5 wakes 7 in (866)",
+          "0 wakes 1 in (281)",
+          "5 wakes 4 in (868)",
+          "2 wakes 6 in (321)",
+          "7 wakes 3 in (593)"
         ],
         "permutation": [
           {
-            "id": "7",
+            "id": "5",
             "location": {
-              "x": 227,
-              "y": 444
+              "x": 437,
+              "y": -157
             },
             "status": "OFF",
             "declared": false
@@ -952,44 +952,17 @@
           {
             "id": "2",
             "location": {
-              "x": -444,
-              "y": -131
+              "x": 317,
+              "y": -209
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "3",
+            "id": "7",
             "location": {
-              "x": -100,
-              "y": 237
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": 435,
-              "y": 121
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 179,
-              "y": 355
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "6",
-            "location": {
-              "x": 121,
-              "y": -352
+              "x": -215,
+              "y": 413
             },
             "status": "OFF",
             "declared": false
@@ -997,8 +970,35 @@
           {
             "id": "1",
             "location": {
-              "x": 356,
-              "y": -127
+              "x": 46,
+              "y": -284
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": 63,
+              "y": -410
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "6",
+            "location": {
+              "x": 37,
+              "y": -366
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -407,
+              "y": -149
             },
             "status": "OFF",
             "declared": false
@@ -1013,40 +1013,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2066.3894556974615,
+        "totalTimeUnit": 2176.110770105176,
         "wakeUpTree": [
-          "0 wakes 3 in (470)",
-          "0 wakes 1 in (764)",
-          "3 wakes 4 in (325)",
-          "0 wakes 2 in (831)",
-          "3 wakes 5 in (454)",
-          "1 wakes 6 in (361)",
-          "4 wakes 7 in (295)"
+          "0 wakes 7 in (489)",
+          "0 wakes 2 in (874)",
+          "7 wakes 4 in (589)",
+          "0 wakes 3 in (579)",
+          "7 wakes 5 in (631)",
+          "2 wakes 6 in (611)",
+          "4 wakes 1 in (812)"
         ],
         "permutation": [
           {
-            "id": "3",
+            "id": "7",
             "location": {
-              "x": -304,
-              "y": 359
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "1",
-            "location": {
-              "x": -182,
-              "y": -396
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": -129,
-              "y": 85
+              "x": 489,
+              "y": 20
             },
             "status": "OFF",
             "declared": false
@@ -1054,8 +1036,26 @@
           {
             "id": "2",
             "location": {
-              "x": 235,
-              "y": 323
+              "x": -371,
+              "y": 178
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": 66,
+              "y": 430
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": 204,
+              "y": 108
             },
             "status": "OFF",
             "declared": false
@@ -1063,8 +1063,8 @@
           {
             "id": "5",
             "location": {
-              "x": 325,
-              "y": 61
+              "x": 41,
+              "y": -201
             },
             "status": "OFF",
             "declared": false
@@ -1072,17 +1072,17 @@
           {
             "id": "6",
             "location": {
-              "x": 36,
-              "y": -108
+              "x": 221,
+              "y": 24
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "7",
+            "id": "1",
             "location": {
-              "x": 138,
-              "y": -42
+              "x": 195,
+              "y": -372
             },
             "status": "OFF",
             "declared": false
@@ -1097,22 +1097,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1697.9870369034757,
+        "totalTimeUnit": 2080.376951919682,
         "wakeUpTree": [
-          "0 wakes 3 in (485)",
-          "0 wakes 2 in (646)",
-          "3 wakes 1 in (185)",
-          "0 wakes 4 in (496)",
-          "3 wakes 5 in (312)",
-          "2 wakes 7 in (565)",
-          "1 wakes 6 in (169)"
+          "0 wakes 5 in (469)",
+          "0 wakes 2 in (909)",
+          "5 wakes 3 in (510)",
+          "0 wakes 4 in (566)",
+          "5 wakes 6 in (368)",
+          "2 wakes 1 in (700)",
+          "3 wakes 7 in (169)"
         ],
         "permutation": [
           {
-            "id": "3",
+            "id": "5",
             "location": {
-              "x": -464,
-              "y": 143
+              "x": 458,
+              "y": -104
             },
             "status": "OFF",
             "declared": false
@@ -1120,17 +1120,17 @@
           {
             "id": "2",
             "location": {
-              "x": 175,
-              "y": 44
+              "x": -409,
+              "y": 172
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "1",
+            "id": "3",
             "location": {
-              "x": -366,
-              "y": -14
+              "x": 37,
+              "y": 184
             },
             "status": "OFF",
             "declared": false
@@ -1138,26 +1138,8 @@
           {
             "id": "4",
             "location": {
-              "x": -248,
-              "y": -216
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": -104,
-              "y": -185
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "7",
-            "location": {
-              "x": -385,
-              "y": -37
+              "x": 81,
+              "y": -113
             },
             "status": "OFF",
             "declared": false
@@ -1165,8 +1147,26 @@
           {
             "id": "6",
             "location": {
-              "x": -333,
-              "y": 152
+              "x": -243,
+              "y": -55
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "1",
+            "location": {
+              "x": 222,
+              "y": -133
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": -126,
+              "y": 231
             },
             "status": "OFF",
             "declared": false
@@ -1181,22 +1181,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2223.2322914503293,
+        "totalTimeUnit": 1961.7511102084359,
         "wakeUpTree": [
-          "0 wakes 2 in (498)",
-          "0 wakes 1 in (919)",
-          "2 wakes 3 in (285)",
-          "0 wakes 4 in (779)",
-          "2 wakes 6 in (294)",
-          "1 wakes 5 in (805)",
-          "3 wakes 7 in (281)"
+          "0 wakes 2 in (478)",
+          "0 wakes 1 in (648)",
+          "2 wakes 4 in (684)",
+          "0 wakes 3 in (126)",
+          "2 wakes 5 in (799)",
+          "1 wakes 6 in (485)",
+          "4 wakes 7 in (282)"
         ],
         "permutation": [
           {
             "id": "2",
             "location": {
-              "x": 467,
-              "y": -174
+              "x": 343,
+              "y": -333
             },
             "status": "OFF",
             "declared": false
@@ -1204,17 +1204,8 @@
           {
             "id": "1",
             "location": {
-              "x": -434,
-              "y": 10
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 192,
-              "y": -96
+              "x": 30,
+              "y": 235
             },
             "status": "OFF",
             "declared": false
@@ -1222,17 +1213,17 @@
           {
             "id": "4",
             "location": {
-              "x": 222,
-              "y": 431
+              "x": 218,
+              "y": 340
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "6",
+            "id": "3",
             "location": {
-              "x": 163,
-              "y": 197
+              "x": 46,
+              "y": 110
             },
             "status": "OFF",
             "declared": false
@@ -1240,8 +1231,17 @@
           {
             "id": "5",
             "location": {
-              "x": 371,
-              "y": -11
+              "x": 4,
+              "y": -430
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "6",
+            "location": {
+              "x": 128,
+              "y": -240
             },
             "status": "OFF",
             "declared": false
@@ -1249,8 +1249,8 @@
           {
             "id": "7",
             "location": {
-              "x": 21,
-              "y": 127
+              "x": 302,
+              "y": 70
             },
             "status": "OFF",
             "declared": false
@@ -1265,67 +1265,31 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 2105.5948747092716,
+        "totalTimeUnit": 2130.5668006430983,
         "wakeUpTree": [
-          "0 wakes 2 in (459)",
-          "0 wakes 1 in (318)",
-          "2 wakes 6 in (854)",
-          "0 wakes 4 in (615)",
-          "2 wakes 5 in (785)",
-          "1 wakes 7 in (418)",
-          "6 wakes 3 in (791)"
+          "0 wakes 6 in (469)",
+          "0 wakes 2 in (390)",
+          "6 wakes 3 in (849)",
+          "0 wakes 5 in (426)",
+          "6 wakes 4 in (811)",
+          "2 wakes 1 in (477)",
+          "3 wakes 7 in (511)"
         ],
         "permutation": [
           {
-            "id": "2",
-            "location": {
-              "x": 348,
-              "y": -300
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "1",
-            "location": {
-              "x": 219,
-              "y": -9
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "6",
             "location": {
-              "x": -182,
-              "y": 370
+              "x": -207,
+              "y": -421
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "4",
+            "id": "2",
             "location": {
-              "x": -256,
-              "y": -401
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 441,
-              "y": -109
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "7",
-            "location": {
-              "x": -94,
-              "y": -287
+              "x": 182,
+              "y": -386
             },
             "status": "OFF",
             "declared": false
@@ -1333,8 +1297,44 @@
           {
             "id": "3",
             "location": {
-              "x": -104,
-              "y": -418
+              "x": 466,
+              "y": 98
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -182,
+              "y": -163
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -331,
+              "y": -55
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "1",
+            "location": {
+              "x": 68,
+              "y": 78
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": 125,
+              "y": -283
             },
             "status": "OFF",
             "declared": false
@@ -1349,22 +1349,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1414.01369712092,
+        "totalTimeUnit": 1966.4386377280464,
         "wakeUpTree": [
-          "0 wakes 6 in (357)",
-          "0 wakes 2 in (410)",
-          "6 wakes 1 in (465)",
-          "0 wakes 4 in (276)",
-          "6 wakes 5 in (591)",
-          "2 wakes 3 in (393)",
-          "1 wakes 7 in (237)"
+          "0 wakes 6 in (420)",
+          "0 wakes 2 in (812)",
+          "6 wakes 3 in (334)",
+          "0 wakes 4 in (607)",
+          "6 wakes 5 in (318)",
+          "2 wakes 7 in (733)",
+          "3 wakes 1 in (194)"
         ],
         "permutation": [
           {
             "id": "6",
             "location": {
-              "x": -163,
-              "y": -318
+              "x": -389,
+              "y": -159
             },
             "status": "OFF",
             "declared": false
@@ -1372,35 +1372,8 @@
           {
             "id": "2",
             "location": {
-              "x": -156,
-              "y": 92
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "1",
-            "location": {
-              "x": -399,
-              "y": 83
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": 56,
-              "y": -86
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 160,
-              "y": -110
+              "x": 158,
+              "y": 442
             },
             "status": "OFF",
             "declared": false
@@ -1408,8 +1381,26 @@
           {
             "id": "3",
             "location": {
-              "x": -152,
-              "y": -301
+              "x": -163,
+              "y": 88
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -314,
+              "y": 60
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -80,
+              "y": 395
             },
             "status": "OFF",
             "declared": false
@@ -1417,8 +1408,17 @@
           {
             "id": "7",
             "location": {
-              "x": -206,
-              "y": -55
+              "x": -264,
+              "y": -158
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "1",
+            "location": {
+              "x": -174,
+              "y": 282
             },
             "status": "OFF",
             "declared": false
@@ -1433,22 +1433,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1968.7443974893708,
+        "totalTimeUnit": 1283.9449108230249,
         "wakeUpTree": [
-          "0 wakes 3 in (442)",
-          "0 wakes 2 in (480)",
-          "3 wakes 6 in (741)",
-          "0 wakes 4 in (387)",
-          "3 wakes 5 in (258)",
-          "2 wakes 7 in (87)",
-          "6 wakes 1 in (784)"
+          "0 wakes 4 in (314)",
+          "0 wakes 2 in (321)",
+          "4 wakes 3 in (527)",
+          "0 wakes 1 in (97)",
+          "4 wakes 5 in (247)",
+          "2 wakes 7 in (60)",
+          "3 wakes 6 in (442)"
         ],
         "permutation": [
           {
-            "id": "3",
+            "id": "4",
             "location": {
-              "x": -417,
-              "y": 149
+              "x": -277,
+              "y": -148
             },
             "status": "OFF",
             "declared": false
@@ -1456,44 +1456,17 @@
           {
             "id": "2",
             "location": {
-              "x": -130,
-              "y": -236
+              "x": 44,
+              "y": -153
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "6",
+            "id": "3",
             "location": {
-              "x": 324,
-              "y": 161
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": 223,
-              "y": -77
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": 176,
-              "y": -51
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "7",
-            "location": {
-              "x": -117,
-              "y": -323
+              "x": 205,
+              "y": 67
             },
             "status": "OFF",
             "declared": false
@@ -1501,8 +1474,35 @@
           {
             "id": "1",
             "location": {
-              "x": -389,
-              "y": -167
+              "x": -50,
+              "y": -128
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "5",
+            "location": {
+              "x": -19,
+              "y": 173
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "7",
+            "location": {
+              "x": -6,
+              "y": -119
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "6",
+            "location": {
+              "x": -227,
+              "y": 161
             },
             "status": "OFF",
             "declared": false
@@ -1517,22 +1517,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1900.975229627842,
+        "totalTimeUnit": 1765.4979990979004,
         "wakeUpTree": [
-          "0 wakes 1 in (447)",
-          "0 wakes 2 in (788)",
-          "1 wakes 3 in (439)",
-          "0 wakes 4 in (589)",
-          "1 wakes 5 in (377)",
-          "2 wakes 6 in (664)",
-          "3 wakes 7 in (168)"
+          "0 wakes 5 in (449)",
+          "0 wakes 2 in (439)",
+          "5 wakes 7 in (685)",
+          "0 wakes 4 in (230)",
+          "5 wakes 1 in (455)",
+          "2 wakes 6 in (386)",
+          "7 wakes 3 in (630)"
         ],
         "permutation": [
           {
-            "id": "1",
+            "id": "5",
             "location": {
-              "x": -423,
-              "y": -146
+              "x": -371,
+              "y": -253
             },
             "status": "OFF",
             "declared": false
@@ -1540,44 +1540,8 @@
           {
             "id": "2",
             "location": {
-              "x": 342,
-              "y": 46
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 10,
-              "y": -219
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "4",
-            "location": {
-              "x": -246,
-              "y": 92
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "5",
-            "location": {
-              "x": -175,
-              "y": 110
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "6",
-            "location": {
-              "x": -286,
-              "y": 264
+              "x": 47,
+              "y": -118
             },
             "status": "OFF",
             "declared": false
@@ -1585,8 +1549,44 @@
           {
             "id": "7",
             "location": {
-              "x": 168,
-              "y": -161
+              "x": 213,
+              "y": 106
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "4",
+            "location": {
+              "x": -177,
+              "y": -172
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "1",
+            "location": {
+              "x": -63,
+              "y": -256
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "6",
+            "location": {
+              "x": -273,
+              "y": 99
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -383,
+              "y": -101
             },
             "status": "OFF",
             "declared": false
@@ -1601,22 +1601,22 @@
     "robotsCount": 8,
     "details": [
       {
-        "totalTimeUnit": 1784.1362790217709,
+        "totalTimeUnit": 1518.9159245990531,
         "wakeUpTree": [
-          "0 wakes 4 in (476)",
+          "0 wakes 6 in (484)",
           "0 wakes 2 in (495)",
-          "4 wakes 1 in (636)",
-          "0 wakes 3 in (228)",
-          "4 wakes 5 in (671)",
-          "2 wakes 6 in (237)",
-          "1 wakes 7 in (623)"
+          "6 wakes 1 in (575)",
+          "0 wakes 5 in (106)",
+          "6 wakes 4 in (459)",
+          "2 wakes 3 in (337)",
+          "1 wakes 7 in (358)"
         ],
         "permutation": [
           {
-            "id": "4",
+            "id": "6",
             "location": {
-              "x": -465,
-              "y": -102
+              "x": 4,
+              "y": -484
             },
             "status": "OFF",
             "declared": false
@@ -1624,8 +1624,8 @@
           {
             "id": "2",
             "location": {
-              "x": 27,
-              "y": -47
+              "x": 103,
+              "y": 1
             },
             "status": "OFF",
             "declared": false
@@ -1633,17 +1633,8 @@
           {
             "id": "1",
             "location": {
-              "x": 133,
-              "y": -320
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 3,
-              "y": -274
+              "x": -298,
+              "y": 6
             },
             "status": "OFF",
             "declared": false
@@ -1651,17 +1642,26 @@
           {
             "id": "5",
             "location": {
-              "x": -387,
-              "y": 105
+              "x": 43,
+              "y": 89
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "6",
+            "id": "4",
             "location": {
-              "x": -58,
-              "y": 175
+              "x": 159,
+              "y": -40
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -129,
+              "y": -244
             },
             "status": "OFF",
             "declared": false
@@ -1669,8 +1669,8 @@
           {
             "id": "7",
             "location": {
-              "x": -116,
-              "y": 252
+              "x": -7,
+              "y": -203
             },
             "status": "OFF",
             "declared": false
