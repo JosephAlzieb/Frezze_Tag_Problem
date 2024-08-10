@@ -4,10 +4,10 @@ import java.util.List;
 
 public class ResultDetails {
   double totalTimeUnit;
-  List<String> wakeUpTree;
+  WakeUpTree wakeUpTree;
   List<Robot> permutation;
 
-  public ResultDetails(double totalTimeUnit, List<String> wakeUpTree,
+  public ResultDetails(double totalTimeUnit, WakeUpTree wakeUpTree,
       List<Robot> permutation) {
     this.totalTimeUnit = totalTimeUnit;
     this.wakeUpTree = wakeUpTree;

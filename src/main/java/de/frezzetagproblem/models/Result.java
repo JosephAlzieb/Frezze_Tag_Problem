@@ -25,7 +25,7 @@ public class Result {
     this.experimentNumber = experimentNumber;
   }
 
-  public void add (double totalTimeUnit, List<String> wakeUpTree, List<Robot> permutation){
+  public void add (double totalTimeUnit, WakeUpTree wakeUpTree, List<Robot> permutation){
     details.add(new ResultDetails(totalTimeUnit, wakeUpTree, permutation));
   }
   public static List<Result> getOptimalResults(List<Result> results) {

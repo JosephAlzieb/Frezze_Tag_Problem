@@ -29,7 +29,7 @@ public class Properties {
    * Properties für Random-Locations
    */
   public static Location START_Location = new Location(0,0);
-  public static int R = 500;
+  public static int R = 100;
 
   public static int MIN = -500;
 

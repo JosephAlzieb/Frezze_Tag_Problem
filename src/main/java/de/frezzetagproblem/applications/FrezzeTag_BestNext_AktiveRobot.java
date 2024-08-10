@@ -8,6 +8,7 @@ import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
+import de.frezzetagproblem.models.WakeUpTree;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -73,13 +74,10 @@ public class FrezzeTag_BestNext_AktiveRobot {
           }
         }
 
-        double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<>();
-        List<String> wake_up_tree = new ArrayList<>();
-
+        WakeUpTree wake_up_tree = new WakeUpTree();
         while (!off.isEmpty()) {
           for (Robot r : on) {
-            r.run(off, on, timeUnits, wake_up_tree);
+            r.run(off, on, wake_up_tree);
           }
 
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
@@ -89,14 +87,12 @@ public class FrezzeTag_BestNext_AktiveRobot {
               iterator.remove();
             }
           }
-
-          timeunit += updateTimeUnit(timeUnits);
-          timeUnits.clear();
         }
 
-        result.add(timeunit, List.copyOf(wake_up_tree), null);
+        double makespan = wake_up_tree.getMakespan();
+        result.add(makespan, wake_up_tree, null);
         results.add(result);
-        wake_up_tree.clear();      }
+     }
 
       saveResults(robotsCount, gson, results);
 

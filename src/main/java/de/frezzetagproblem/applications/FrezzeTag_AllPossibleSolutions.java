@@ -8,6 +8,7 @@ import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
+import de.frezzetagproblem.models.WakeUpTree;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class FrezzeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
+    runExperiments(Properties.ROBOTS_COUNT,9);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
@@ -73,14 +74,11 @@ public class FrezzeTag_AllPossibleSolutions {
         List<List<Robot>> permutations = generatePermutations(off);
 
         List<Double> timeUnits = new ArrayList<>();
-        List<String> wake_up = new ArrayList<>();
-
         List<Robot> puffer_aktive_robots = new ArrayList<>();
         for (List<Robot> permutation : permutations) {
           List<Robot> p_off = copyRobots(permutation);
           List<Robot> p_on = copyRobots(on);
-          double timeunit = 0;
-
+          WakeUpTree wake_up_tree = new WakeUpTree();
 
           while (!p_off.isEmpty()) {
 
@@ -90,7 +88,7 @@ public class FrezzeTag_AllPossibleSolutions {
                 if (targetRobot != null){
                   targetRobot.aktive();
                   double distance = r.distance(targetRobot);
-                  wake_up.add(String.format("%s wakes %s in (%s)", r.getId(), targetRobot.getId(), (int) distance));
+                  wake_up_tree.addChild(r.getId(), targetRobot.getId(), distance);
                   timeUnits.add(distance);
                   r.moveTo(targetRobot.getLocation());
                   p_off.remove(targetRobot);
@@ -102,12 +100,10 @@ public class FrezzeTag_AllPossibleSolutions {
             p_on.addAll(puffer_aktive_robots);
             puffer_aktive_robots.clear();
 
-            timeunit += getMaxValue(timeUnits);
-            timeUnits.clear();
           }
-          result.add(timeunit, List.copyOf(wake_up), permutation);
 
-          wake_up.clear();
+          double makespan = wake_up_tree.getMakespan();
+          result.add(makespan, wake_up_tree, permutation);
         }
         results.add(result);
       }

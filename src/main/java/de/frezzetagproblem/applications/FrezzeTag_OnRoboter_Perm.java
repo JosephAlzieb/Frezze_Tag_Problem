@@ -9,6 +9,7 @@ import de.frezzetagproblem.models.Pair;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
+import de.frezzetagproblem.models.WakeUpTree;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -72,13 +73,10 @@ public class FrezzeTag_OnRoboter_Perm {
           }
         }
 
-        double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<>();
-        List<String> wake_up_tree = new ArrayList<>();
+        WakeUpTree wake_up_tree = new WakeUpTree();
         while (!off.isEmpty()) {
 
           TreeMap<Pair<String, String>, Double> possibleSolutions  = new TreeMap<>();
-
 
           if (on.size() > 3) {
             //Hier werden alle möglichen Permutationen einer Liste erzeugt
@@ -93,7 +91,7 @@ public class FrezzeTag_OnRoboter_Perm {
           }
 
           for (Robot r : on) {
-            r.run(off, timeUnits, possibleSolutions, wake_up_tree);
+            r.run(off, possibleSolutions, wake_up_tree);
           }
 
           for (Iterator<Robot> iterator = off.iterator(); iterator.hasNext(); ) {
@@ -103,18 +101,11 @@ public class FrezzeTag_OnRoboter_Perm {
               iterator.remove();
             }
           }
-
-          /**
-           * Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-           * die Liste der TimeUnits für den nächsten Durchlauf geleert.
-           */
-          timeunit += getMaxValue(timeUnits);
-          timeUnits.clear();
         }
 
-        result.add(timeunit, List.copyOf(wake_up_tree), null);
+        double makespan = wake_up_tree.getMakespan();
+        result.add(makespan, wake_up_tree, null);
         results.add(result);
-        wake_up_tree.clear();
       }
 
       saveResults(robotsCount, gson, results);

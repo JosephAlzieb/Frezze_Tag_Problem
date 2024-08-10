@@ -29,16 +29,14 @@ public class Robot implements Cloneable{
   /**
    * Hier wird das Algorithms ausgeführt, das in der Klasse {@link Properties} definiert ist.
    * @param off inakive Robots
-   * @param time time-units
    */
   public void run(
       List<Robot> off,
-      List<Double> time,
-      List<String> wake_up_tree) {
+      WakeUpTree wake_up_tree) {
     if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_TIMEUNITS_1)){
-      runGreedyAlgo_1(off, time, wake_up_tree);
+      runGreedyAlgo_1(off, wake_up_tree);
     } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)){
-      runGreedyAlgo_Dis(off, time, wake_up_tree);
+      runGreedyAlgo_Dis(off, wake_up_tree);
     }
   }
 
@@ -46,14 +44,12 @@ public class Robot implements Cloneable{
    * Bessere Lösung - Algorithms
    * Hier wird immer gecheckt, ob es eine bessere Lösung gibt..
    * @param off inaktive robots
-   * @param time time-units
    * @param possibleSolutions alle möglichen Lösungen
    */
   public void run(
       List<Robot> off,
-      List<Double> time,
       TreeMap<Pair<String, String>, Double> possibleSolutions,
-      List<String> wake_up_tree) {
+      WakeUpTree wake_up_tree) {
     this.targetRobot = this.getNearestRobot(off);
     if (this.targetRobot != null) {
       double distance = this.distance(this.targetRobot);
@@ -65,8 +61,7 @@ public class Robot implements Cloneable{
       }
       this.targetRobot.declare();
       targetRobot.aktive();
-      time.add(distance);
-      wake_up_tree.add(buildChild(distance));
+      wake_up_tree.addChild(id, targetRobot.id, distance);
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
       this.moveTo(this.targetRobot.location);
@@ -110,19 +105,17 @@ public class Robot implements Cloneable{
    * benötigt wird, wäre den Abstand zwischen den Robotern.
    *
    * @param off          List of Robots with status "OFF".
-   * @param time         List of Timeunits.
    * @param wake_up_tree Wake-up-tree
    */
   private void runGreedyAlgo_Dis(
       List<Robot> off,
-      List<Double> time, List<String> wake_up_tree) {
+      WakeUpTree wake_up_tree) {
     this.targetRobot = this.getNearestRobot(off);
     if (this.targetRobot != null) {
       this.targetRobot.declare();
       this.targetRobot.aktive();
       double distance = this.distance(this.targetRobot);
-      time.add(distance);
-      wake_up_tree.add(buildChild(distance));
+      wake_up_tree.addChild(id, targetRobot.id, distance);
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
       this.moveTo(this.targetRobot.location);
@@ -133,8 +126,7 @@ public class Robot implements Cloneable{
   public void run(
       List<Robot> off,
       List<Robot> on,
-      List<Double> time,
-      List<String> wake_up_tree) {
+      WakeUpTree wake_up_tree) {
     /*
     Hier werden die aktiven Roboter bei der Auswahl den nächsten inaktiven Robot berücksichtigt.
      */
@@ -144,8 +136,7 @@ public class Robot implements Cloneable{
       this.targetRobot.declare();
       this.targetRobot.aktive();
       double distance = this.distance(this.targetRobot);
-      time.add(distance);
-      wake_up_tree.add(buildChild(distance));
+      wake_up_tree.addChild(id, targetRobot.id, distance);
 
       //Der Roboter bewegt sich zu dem zu aktivierenden Robot.
       this.moveTo(this.targetRobot.location);
@@ -160,13 +151,11 @@ public class Robot implements Cloneable{
    * 2: Robot (this) fährt zu seinem Target-Robot, und weckt ihn auf.
    *
    * @param off          List of Robots with status "OFF".
-   * @param time         List of Timeunits.
    * @param wake_up_tree Wake-up-tree
    */
   private void runGreedyAlgo_1(
       List<Robot> off,
-      List<Double> time,
-      List<String> wake_up_tree) {
+      WakeUpTree wake_up_tree) {
     // wenn wir hier alles in einem Schritt machen, dann ist das ähnlich wie der Theorem 1 von (Freeze-Tag in L1 has Wake-up Time Five)
     double unit = 1;
     if (!hasTargetRobot()) {
@@ -174,12 +163,11 @@ public class Robot implements Cloneable{
       if (this.targetRobot != null && !this.targetRobot.isDeclared()) {
         this.targetRobot.declare();
         this.targetRobot.aktive();
-        wake_up_tree.add(buildChild(unit));
+        wake_up_tree.addChild(id, targetRobot.id, unit);
         this.moveTo(this.targetRobot.location);
         this.removeTargetRobot();
       }
     }
-    time.add(unit);
   }
 
   /**

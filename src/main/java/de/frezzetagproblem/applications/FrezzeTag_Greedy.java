@@ -8,6 +8,7 @@ import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
+import de.frezzetagproblem.models.WakeUpTree;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -74,16 +75,12 @@ public class FrezzeTag_Greedy {
         }
 
         /*
-          Hier wird das Algorithms ausgeführt
-          Timeunit (Zeiteinheit) wird nach jedem Schritt hochgezählt.
+          Hier wird das Algorithms ausgeführt. wir erstellen zunächst den Aktivierungsbaum.
          */
-        double timeunit = 0;
-        List<Double> timeUnits = new ArrayList<>();
-        List<String> wake_up_tree = new ArrayList<>();
-
+        WakeUpTree wake_up_tree = new WakeUpTree();
         while (!off.isEmpty()) {
           for (Robot r : on) {
-            r.run(off, timeUnits, wake_up_tree);
+            r.run(off, wake_up_tree);
           }
 
           /*
@@ -96,18 +93,12 @@ public class FrezzeTag_Greedy {
               iterator.remove();
             }
           }
-
-          /*
-            Nach jedem Schritt wird die Zeit (Endergebnis) aktualisiert, und
-            die Liste der TimeUnits für den nächsten Durchlauf geleert.
-           */
-          timeunit += updateTimeUnit(timeUnits);
-          timeUnits.clear();
         }
 
-        result.add(timeunit, List.copyOf(wake_up_tree), null);
+        double makespan = wake_up_tree.getMakespan();
+        result.add(makespan, wake_up_tree, null);
         results.add(result);
-        wake_up_tree.clear();      }
+      }
 
       saveResults(robotsCount, gson, results);
 
@@ -119,17 +110,6 @@ public class FrezzeTag_Greedy {
         robotsCount += 50;
       }
     }
-  }
-
-  /**
-   * Aktualisiert die Zeit, nachdem sich alle aktiven Roboter (ON-Roboter) um einen Schritt bewegt haben.
-   * Da die Roboter parallel arbeiten, wird die Zeit um die maximale Dauer eines Schrittes erhöht.
-   *
-   * @param timeUnits Eine Liste von Zeiteinheiten, die die Dauer jedes Schrittes der Roboter darstellen.
-   * @return Der maximale Wert in der Liste der Zeiteinheiten.
-   */
-  private static double updateTimeUnit(List<Double> timeUnits) {
-    return Collections.max(timeUnits);
   }
 
   private static void saveResults(int robotCount, Gson gson, List<Result> results)
