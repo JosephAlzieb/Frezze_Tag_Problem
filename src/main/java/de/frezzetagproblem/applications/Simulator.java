@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Robot;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -36,7 +37,10 @@ public class Simulator {
   private void runExperiments(int robotCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    Path dir = Paths.get("dummy-data/normal/" + robotCount);
+    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+        Properties.WORST_CASE_FILE_NAME:
+        Properties.NORMAL_CASE_FILE_NAME;
+    Path dir = Paths.get(path + robotCount);
     if (!Files.exists(dir)) {
       Files.createDirectories(dir);
     }

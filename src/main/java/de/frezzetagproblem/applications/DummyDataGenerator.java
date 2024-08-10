@@ -121,19 +121,19 @@ public class DummyDataGenerator {
       switch (edge) {
         case 0: // top edge
           x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
-          y = Properties.MAX - 10;
+          y = random.nextInt(21) + 80;
           break;
         case 1: // right edge
-          x = Properties.MAX - 10;
+          x = random.nextInt(21) + 80;
           y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
           break;
         case 2: // bottom edge
           x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
-          y = Properties.MIN + 10;
+          y = random.nextInt(21) - 100;
           break;
         case 3: // left edge
         default:
-          x = Properties.MIN + 10;
+          x = random.nextInt(21) - 100;
           y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
           break;
       }

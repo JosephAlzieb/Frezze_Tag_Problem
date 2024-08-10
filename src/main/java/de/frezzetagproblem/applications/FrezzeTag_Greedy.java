@@ -114,7 +114,10 @@ public class FrezzeTag_Greedy {
 
   private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
-    String resultDirectory= "results/greedy/";
+    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+        Properties.WORST_CASE_RESULT_FILE_NAME:
+        Properties.NORMAL_CASE_RESULT_FILE_NAME;
+    String resultDirectory= path + "greedy/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();

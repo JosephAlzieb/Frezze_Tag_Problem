@@ -149,7 +149,10 @@ public class FrezzeTag_OnRoboter_Perm {
 
   private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
-    String resultDirectory= "results/on_roboter_permutation/";
+    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+        Properties.WORST_CASE_RESULT_FILE_NAME:
+        Properties.NORMAL_CASE_RESULT_FILE_NAME;
+    String resultDirectory= path + "on_roboter_permutation/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();

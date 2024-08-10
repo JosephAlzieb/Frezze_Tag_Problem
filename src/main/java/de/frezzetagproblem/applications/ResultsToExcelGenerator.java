@@ -2,6 +2,7 @@ package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Result;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -26,8 +27,16 @@ public class ResultsToExcelGenerator {
 
     public static void main(String[] args) throws IOException {
         // Grundverzeichnis, in dem die Ordner liegen
-        String rootDir = "results";
-        Map<String, List<Result>> resultMap = new HashMap<>();
+        String rootDir;
+        String resultsExcelFileName;
+      if (Properties.ALLOW_GENERATE_WORSTCASE_DATA) {
+        rootDir = Properties.WORST_CASE_RESULT_FILE_NAME;
+        resultsExcelFileName = "Ergebnisse-on-edge.xlsx";
+      } else {
+        rootDir = Properties.NORMAL_CASE_RESULT_FILE_NAME;
+          resultsExcelFileName = "Ergebnisse-normal.xlsx";
+      }
+      Map<String, List<Result>> resultMap = new HashMap<>();
 
         // Verzeichnisse durchlaufen
         Files.walk(Paths.get(rootDir))
@@ -69,7 +78,7 @@ public class ResultsToExcelGenerator {
         });*/
 
 
-        generateExcel(resultMap, "Ergebnisse.xlsx");
+        generateExcel(resultMap, resultsExcelFileName);
     }
 
     // Sortiere die Liste nach robotsCount und experimentNumber

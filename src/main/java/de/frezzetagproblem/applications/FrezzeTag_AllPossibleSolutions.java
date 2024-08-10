@@ -25,7 +25,7 @@ import java.util.Map;
 public class FrezzeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
-    runExperiments(Properties.ROBOTS_COUNT,9);
+    runExperiments(Properties.ROBOTS_COUNT,Properties.TOTAL_ROBOTS_COUNT);
   }
 
   private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
@@ -169,7 +169,10 @@ public class FrezzeTag_AllPossibleSolutions {
 
   private static void saveResults(int robotCount, Gson gson, List<Result> results, String str)
       throws IOException {
-    String resultDirectory= "results/all_possible_solutions/";
+    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+        Properties.WORST_CASE_RESULT_FILE_NAME:
+        Properties.NORMAL_CASE_RESULT_FILE_NAME;
+    String resultDirectory= path + "all_possible_solutions/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();

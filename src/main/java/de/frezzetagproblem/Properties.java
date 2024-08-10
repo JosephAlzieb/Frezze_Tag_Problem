@@ -22,7 +22,7 @@ public class Properties {
    */
   public static int ROBOTS_COUNT = 5;
   public static int FILE_COUNT = 20;
-  public static int TOTAL_ROBOTS_COUNT = 11;
+  public static int TOTAL_ROBOTS_COUNT = 9;
   public static int OFFSET = 2;
 
   /**
@@ -31,15 +31,19 @@ public class Properties {
   public static Location START_Location = new Location(0,0);
   public static int R = 100;
 
-  public static int MIN = -500;
+  public static int MIN = -R;
 
-  public static int MAX = 500;
+  public static int MAX = R;
 
-  public static String WORST_CASE_FILE_NAME = "dummy-data/worstcase/";
+  public static String WORST_CASE_FILE_NAME = "dummy-data/on_edge/";
 
   public static String NORMAL_CASE_FILE_NAME = "dummy-data/normal/";
 
-  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
+  public static String WORST_CASE_RESULT_FILE_NAME = "results/on_edge/";
+
+  public static String NORMAL_CASE_RESULT_FILE_NAME = "results/normal/";
+
+  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = true;
 
   public static boolean ALLOW_MULTIPLE_ROBOTS = false;
 
