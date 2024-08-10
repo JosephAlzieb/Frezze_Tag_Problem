@@ -3,8 +3,6 @@ package de.frezzetagproblem;
 import static org.junit.Assert.assertEquals;
 
 import de.frezzetagproblem.models.WakeUpTree;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 
 public class WakeUpTreeTest {
@@ -39,7 +37,7 @@ public class WakeUpTreeTest {
     wakeUpTree.addChild("1", "3", 3);
     wakeUpTree.addChild("2", "4", 3);
 
-    assertEquals(6, wakeUpTree.getms(), 0.1);
+    assertEquals(6, wakeUpTree.getMakespan(), 0.1);
   }
 
   @Test
@@ -50,8 +48,8 @@ public class WakeUpTreeTest {
     wakeUpTree.addChild("1", "3", 3);
     wakeUpTree.addChild("2", "4", 3);
     wakeUpTree.addChild("0", "5", 4);
-    wakeUpTree.getms();
-    assertEquals(7, wakeUpTree.getms(), 0.1);
+
+    assertEquals(7, wakeUpTree.getMakespan(), 0.1);
   }
 
   @Test
@@ -65,7 +63,7 @@ public class WakeUpTreeTest {
     wakeUpTree.addChild("1", "6", 6);
     wakeUpTree.addChild("3", "7", 8);
 
-    assertEquals(12, wakeUpTree.getms(), 0.1);
+    assertEquals(12, wakeUpTree.getMakespan(), 0.1);
   }
 
   @Test
@@ -81,7 +79,7 @@ public class WakeUpTreeTest {
     wakeUpTree.addChild("7", "8", 9);
     wakeUpTree.addChild("3", "9", 10);
 
-    assertEquals(22, wakeUpTree.getms(), 0.1);
+    assertEquals(22, wakeUpTree.getMakespan(), 0.1);
   }
 
   @Test
