@@ -43,7 +43,7 @@ public class Properties {
 
   public static String NORMAL_CASE_RESULT_FILE_NAME = "results/normal/";
 
-  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = true;
+  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
   public static boolean ALLOW_MULTIPLE_ROBOTS = false;
 
