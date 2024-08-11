@@ -6,7 +6,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
+import de.frezzetagproblem.models.WakeUpTree;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -34,24 +36,30 @@ public class FrezzeTag_Threads {
 
   private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    ExecutorService executor = Executors.newCachedThreadPool();
 
 
     while (robotsCount <= totalRobotsCount) {
-      Map<String, Double> results = new HashMap<>();
-      Path dir = Paths.get(
-          Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-              Properties.WORST_CASE_FILE_NAME:
-              Properties.NORMAL_CASE_FILE_NAME
-                  + robotsCount);
+      List<Result> results = new ArrayList<>();
+      String pathName = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+          Properties.WORST_CASE_FILE_NAME :
+          Properties.NORMAL_CASE_FILE_NAME;
+
+      String fileName = pathName + robotsCount;
+      Path dir = Paths.get(fileName);
       if (!Files.exists(dir)) {
         Files.createDirectories(dir);
       }
 
       DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
+      int experimentNumber = 1;
 
       for (Path entry : stream) {
         List<Robot> off = new ArrayList<>();
         List<Robot> on = new ArrayList<>();
+
+        String f = entry.getFileName().toString();
+        Result result = new Result(f, robotsCount, experimentNumber++);
 
         JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -69,13 +77,12 @@ public class FrezzeTag_Threads {
         }
 
         long startTime = System.nanoTime();
-        ExecutorService executor = Executors.newCachedThreadPool();
 
-
+        WakeUpTree wake_up_tree = new WakeUpTree();
         while (!off.isEmpty()) {
           List<Future<?>> futures = new ArrayList<>();
           for (Robot r : on) {
-            Future<?> future = executor.submit(() -> r.run(off));
+            Future<?> future = executor.submit(() -> r.run(off, wake_up_tree));
             futures.add(future);
           }
 
@@ -102,19 +109,11 @@ public class FrezzeTag_Threads {
         long durationInNanoseconds = endTime - startTime;
         double durationInMilliseconds = durationInNanoseconds / 1_000_000.0;
 
-        System.out.println(durationInMilliseconds);
-        results.put(entry.getFileName().toString(), durationInMilliseconds);
-
-        executor.shutdown();
-        try {
-          if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-            executor.shutdownNow();
-          }
-        } catch (InterruptedException e) {
-          executor.shutdownNow();
-        }
+        //System.out.println(durationInMilliseconds);
+        double makespan = wake_up_tree.getMakespan();
+        result.add(makespan, wake_up_tree, null);
+        results.add(result);
       }
-
       saveResults(robotsCount, gson, results);
 
       if (robotsCount < 10){
@@ -125,11 +124,26 @@ public class FrezzeTag_Threads {
         robotsCount += 50;
       }
     }
+
+    /*
+      Am Ende schließen wir den ThreadPool
+     */
+    executor.shutdown();
+    try {
+      if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+        executor.shutdownNow();
+      }
+    } catch (InterruptedException e) {
+      executor.shutdownNow();
+    }
   }
 
-  private static void saveResults(int robotCount, Gson gson, Map<String, Double> results)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
-    String resultDirectory= "results/threads/";
+    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
+        Properties.WORST_CASE_RESULT_FILE_NAME:
+        Properties.NORMAL_CASE_RESULT_FILE_NAME;
+    String resultDirectory= path + "threads/";
     File resDir = new File(resultDirectory);
     if (!resDir.exists()) {
       resDir.mkdirs();
@@ -139,5 +153,4 @@ public class FrezzeTag_Threads {
       gson.toJson(results, writer);
     }
   }
-
 }

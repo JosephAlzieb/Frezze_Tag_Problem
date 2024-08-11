@@ -23,7 +23,7 @@ public class WakeUpTree {
    * @param targetRobotId Target Robot
    * @param distance      Distanz
    */
-  public void addChild(String startRobotId, String targetRobotId, double distance) {
+  public synchronized void addChild(String startRobotId, String targetRobotId, double distance) {
     Child parent;
     if (root != null && startRobotId.equals(root.startRobotId)){
       List<Child> list = children.
