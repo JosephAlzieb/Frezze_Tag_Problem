@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Distance;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
 import de.frezzetagproblem.models.WakeUpTree;
@@ -19,6 +20,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -72,33 +74,33 @@ public class FrezzeTag_AllPossibleSolutions {
         }
 
         List<List<Robot>> permutations = generatePermutations(off);
-
-        List<Double> timeUnits = new ArrayList<>();
-        List<Robot> puffer_aktive_robots = new ArrayList<>();
+        List<Distance> distances = new ArrayList<>();
         for (List<Robot> permutation : permutations) {
           List<Robot> p_off = copyRobots(permutation);
           List<Robot> p_on = copyRobots(on);
           WakeUpTree wake_up_tree = new WakeUpTree();
-
           while (!p_off.isEmpty()) {
-
+            distances.clear();
+            distances = Distance.calculateDistances(p_on, p_off);
             for (Robot r : p_on) {
-              if (!p_off.isEmpty()){
-                Robot targetRobot = r.getNextRobot(p_off);
-                if (targetRobot != null){
-                  targetRobot.aktive();
-                  double distance = r.distance(targetRobot);
-                  wake_up_tree.addChild(r.getId(), targetRobot.getId(), distance);
-                  timeUnits.add(distance);
-                  r.moveTo(targetRobot.getLocation());
-                  p_off.remove(targetRobot);
-                  puffer_aktive_robots.add(targetRobot);
+                Robot target = r.getNextRobot(p_off);
+                Robot start = Distance.findClosestAktiveRobot(target, distances);
+                if (target != null && r.equals(start) ){
+                  Distance.clear(start, distances);
+                  target.aktive();
+                  double distance = r.distance(target);
+                  wake_up_tree.addChild(r.getId(), target.getId(), distance);
+                  r.moveTo(target.getLocation());
                 }
-              }
             }
 
-            p_on.addAll(puffer_aktive_robots);
-            puffer_aktive_robots.clear();
+            for (Iterator<Robot> iterator = p_off.iterator(); iterator.hasNext(); ) {
+              Robot robot = iterator.next();
+              if (robot.isAktive()) {
+                p_on.add(robot);
+                iterator.remove();
+              }
+            }
 
           }
 
