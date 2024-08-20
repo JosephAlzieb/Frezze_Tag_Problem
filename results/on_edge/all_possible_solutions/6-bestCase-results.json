@@ -112,16 +112,16 @@
               "totalDistanceFromRoot": 193.24075188799543
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 21.37755832643195,
-              "totalDistanceFromRoot": 214.61831021442737
-            },
-            {
               "startRobotId": "4",
               "targetRobotId": "1",
               "distance": 148.52945835759317,
               "totalDistanceFromRoot": 245.095497936733
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 21.37755832643195,
+              "totalDistanceFromRoot": 214.61831021442737
             },
             {
               "startRobotId": "2",
@@ -151,19 +151,19 @@
             "declared": false
           },
           {
-            "id": "3",
+            "id": "1",
             "location": {
-              "x": 92,
-              "y": -6
+              "x": -80,
+              "y": -4
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "1",
+            "id": "3",
             "location": {
-              "x": -80,
-              "y": -4
+              "x": 92,
+              "y": -6
             },
             "status": "OFF",
             "declared": false
@@ -203,16 +203,16 @@
               "totalDistanceFromRoot": 227.67987687155355
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 24.041630560342615,
-              "totalDistanceFromRoot": 251.72150743189616
-            },
-            {
               "startRobotId": "4",
               "targetRobotId": "1",
               "distance": 20.223748416156685,
               "totalDistanceFromRoot": 118.28495379320678
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 24.041630560342615,
+              "totalDistanceFromRoot": 251.72150743189616
             },
             {
               "startRobotId": "4",
@@ -242,19 +242,19 @@
             "declared": false
           },
           {
-            "id": "3",
+            "id": "1",
             "location": {
-              "x": -32,
-              "y": -89
+              "x": 99,
+              "y": 0
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "1",
+            "id": "3",
             "location": {
-              "x": 99,
-              "y": 0
+              "x": -32,
+              "y": -89
             },
             "status": "OFF",
             "declared": false
@@ -385,12 +385,6 @@
               "totalDistanceFromRoot": 119.86716615782163
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 12.36931687685298,
-              "totalDistanceFromRoot": 132.23648303467462
-            },
-            {
               "startRobotId": "4",
               "targetRobotId": "1",
               "distance": 130.5450113945378,
@@ -398,9 +392,15 @@
             },
             {
               "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 12.36931687685298,
+              "totalDistanceFromRoot": 132.23648303467462
+            },
+            {
+              "startRobotId": "2",
               "targetRobotId": "5",
-              "distance": 48.507731342539614,
-              "totalDistanceFromRoot": 180.74421437721423
+              "distance": 51.24451190127583,
+              "totalDistanceFromRoot": 171.11167805909747
             }
           ]
         },
@@ -424,19 +424,19 @@
             "declared": false
           },
           {
-            "id": "3",
+            "id": "1",
             "location": {
-              "x": 1,
-              "y": 95
+              "x": 85,
+              "y": -41
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "1",
+            "id": "3",
             "location": {
-              "x": 85,
-              "y": -41
+              "x": 1,
+              "y": 95
             },
             "status": "OFF",
             "declared": false
@@ -460,7 +460,7 @@
     "robotsCount": 6,
     "details": [
       {
-        "totalTimeUnit": 243.9624286977975,
+        "totalTimeUnit": 253.57290416966637,
         "wakeUpTree": {
           "children": [
             {
@@ -471,27 +471,27 @@
             },
             {
               "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 53.33854141237835,
+              "totalDistanceFromRoot": 141.57685508620148
+            },
+            {
+              "startRobotId": "4",
               "targetRobotId": "5",
               "distance": 9.433981132056603,
               "totalDistanceFromRoot": 97.67229480587972
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "2",
-              "distance": 129.71121771072848,
-              "totalDistanceFromRoot": 227.3835125166082
-            },
-            {
               "startRobotId": "4",
               "targetRobotId": "1",
-              "distance": 155.72411502397438,
-              "totalDistanceFromRoot": 243.9624286977975
+              "distance": 155.90060936378666,
+              "totalDistanceFromRoot": 253.57290416966637
             },
             {
               "startRobotId": "5",
-              "targetRobotId": "3",
-              "distance": 61.85466837676846,
-              "totalDistanceFromRoot": 159.52696318264816
+              "targetRobotId": "2",
+              "distance": 129.71121771072848,
+              "totalDistanceFromRoot": 227.3835125166082
             }
           ]
         },
@@ -506,19 +506,19 @@
             "declared": false
           },
           {
-            "id": "5",
+            "id": "3",
             "location": {
-              "x": 89,
-              "y": -30
+              "x": 54,
+              "y": -81
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "2",
+            "id": "5",
             "location": {
-              "x": 33,
-              "y": 87
+              "x": 89,
+              "y": -30
             },
             "status": "OFF",
             "declared": false
@@ -533,10 +533,10 @@
             "declared": false
           },
           {
-            "id": "3",
+            "id": "2",
             "location": {
-              "x": 54,
-              "y": -81
+              "x": 33,
+              "y": 87
             },
             "status": "OFF",
             "declared": false
@@ -567,12 +567,6 @@
               "totalDistanceFromRoot": 124.6012679763926
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 106.89246933250256,
-              "totalDistanceFromRoot": 231.49373730889516
-            },
-            {
               "startRobotId": "5",
               "targetRobotId": "1",
               "distance": 78.64477096412705,
@@ -583,6 +577,12 @@
               "targetRobotId": "2",
               "distance": 64.00781202322104,
               "totalDistanceFromRoot": 240.68319045256783
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 106.89246933250256,
+              "totalDistanceFromRoot": 231.49373730889516
             }
           ]
         },
@@ -606,15 +606,6 @@
             "declared": false
           },
           {
-            "id": "3",
-            "location": {
-              "x": 35,
-              "y": 89
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "1",
             "location": {
               "x": 34,
@@ -628,6 +619,15 @@
             "location": {
               "x": -30,
               "y": -82
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": 35,
+              "y": 89
             },
             "status": "OFF",
             "declared": false
@@ -658,12 +658,6 @@
               "totalDistanceFromRoot": 200.64890800566195
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 25.019992006393608,
-              "totalDistanceFromRoot": 225.66890001205556
-            },
-            {
               "startRobotId": "5",
               "targetRobotId": "1",
               "distance": 31.622776601683793,
@@ -674,6 +668,12 @@
               "targetRobotId": "4",
               "distance": 112.53888216967503,
               "totalDistanceFromRoot": 225.05665243598557
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 25.019992006393608,
+              "totalDistanceFromRoot": 225.66890001205556
             }
           ]
         },
@@ -697,15 +697,6 @@
             "declared": false
           },
           {
-            "id": "3",
-            "location": {
-              "x": -92,
-              "y": -35
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
             "id": "1",
             "location": {
               "x": 14,
@@ -719,6 +710,15 @@
             "location": {
               "x": 90,
               "y": 15
+            },
+            "status": "OFF",
+            "declared": false
+          },
+          {
+            "id": "3",
+            "location": {
+              "x": -92,
+              "y": -35
             },
             "status": "OFF",
             "declared": false
@@ -761,10 +761,10 @@
               "totalDistanceFromRoot": 221.7183763581096
             },
             {
-              "startRobotId": "0",
+              "startRobotId": "2",
               "targetRobotId": "5",
-              "distance": 5.830951894845301,
-              "totalDistanceFromRoot": 227.5493282529549
+              "distance": 131.03434664239754,
+              "totalDistanceFromRoot": 224.73709895406506
             }
           ]
         },
@@ -943,10 +943,10 @@
               "totalDistanceFromRoot": 126.46099581152768
             },
             {
-              "startRobotId": "0",
+              "startRobotId": "2",
               "targetRobotId": "5",
-              "distance": 99.80981915623332,
-              "totalDistanceFromRoot": 226.270814967761
+              "distance": 124.39051410778879,
+              "totalDistanceFromRoot": 226.25476216681878
             }
           ]
         },
@@ -1006,56 +1006,56 @@
     "robotsCount": 6,
     "details": [
       {
-        "totalTimeUnit": 277.9483581154702,
+        "totalTimeUnit": 343.1350162323229,
         "wakeUpTree": {
           "children": [
             {
               "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 93.55746896961247,
+              "targetRobotId": "4",
+              "distance": 96.13012014972206,
               "totalDistanceFromRoot": 0.0
             },
             {
               "startRobotId": "0",
-              "targetRobotId": "4",
-              "distance": 22.360679774997898,
-              "totalDistanceFromRoot": 115.91814874461036
-            },
-            {
-              "startRobotId": "0",
-              "targetRobotId": "5",
-              "distance": 145.86637720873168,
-              "totalDistanceFromRoot": 261.78452595334204
-            },
-            {
-              "startRobotId": "3",
-              "targetRobotId": "1",
-              "distance": 184.39088914585776,
-              "totalDistanceFromRoot": 277.9483581154702
+              "targetRobotId": "2",
+              "distance": 114.80853626799707,
+              "totalDistanceFromRoot": 210.93865641771913
             },
             {
               "startRobotId": "4",
-              "targetRobotId": "2",
-              "distance": 114.80853626799707,
-              "totalDistanceFromRoot": 230.72668501260745
+              "targetRobotId": "5",
+              "distance": 145.86637720873168,
+              "totalDistanceFromRoot": 241.99649735845372
+            },
+            {
+              "startRobotId": "4",
+              "targetRobotId": "1",
+              "distance": 101.13851887386922,
+              "totalDistanceFromRoot": 343.1350162323229
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 95.4829827770373,
+              "totalDistanceFromRoot": 306.42163919475644
             }
           ]
         },
         "permutation": [
           {
-            "id": "3",
+            "id": "4",
             "location": {
-              "x": -17,
-              "y": 92
+              "x": 5,
+              "y": 96
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "4",
+            "id": "2",
             "location": {
-              "x": 5,
-              "y": 96
+              "x": -86,
+              "y": 26
             },
             "status": "OFF",
             "declared": false
@@ -1079,10 +1079,10 @@
             "declared": false
           },
           {
-            "id": "2",
+            "id": "3",
             "location": {
-              "x": -86,
-              "y": 26
+              "x": -17,
+              "y": 92
             },
             "status": "OFF",
             "declared": false
@@ -1097,42 +1097,51 @@
     "robotsCount": 6,
     "details": [
       {
-        "totalTimeUnit": 285.93658075496364,
+        "totalTimeUnit": 283.24228119310175,
         "wakeUpTree": {
           "children": [
             {
               "startRobotId": "0",
-              "targetRobotId": "2",
-              "distance": 91.23595782365635,
+              "targetRobotId": "3",
+              "distance": 88.23831367382311,
               "totalDistanceFromRoot": 0.0
             },
             {
               "startRobotId": "0",
-              "targetRobotId": "1",
-              "distance": 71.02816342831905,
-              "totalDistanceFromRoot": 162.26412125197538
+              "targetRobotId": "2",
+              "distance": 123.97580409095961,
+              "totalDistanceFromRoot": 212.2141177647827
             },
             {
-              "startRobotId": "2",
-              "targetRobotId": "3",
-              "distance": 123.97580409095961,
-              "totalDistanceFromRoot": 215.21176191461598
+              "startRobotId": "3",
+              "targetRobotId": "5",
+              "distance": 70.7248188403477,
+              "totalDistanceFromRoot": 158.9631325141708
             },
             {
               "startRobotId": "0",
               "targetRobotId": "4",
-              "distance": 25.45584412271571,
-              "totalDistanceFromRoot": 187.7199653746911
+              "distance": 55.362442142665635,
+              "totalDistanceFromRoot": 267.57655990744837
             },
             {
               "startRobotId": "2",
-              "targetRobotId": "5",
-              "distance": 70.7248188403477,
-              "totalDistanceFromRoot": 285.93658075496364
+              "targetRobotId": "1",
+              "distance": 71.02816342831905,
+              "totalDistanceFromRoot": 283.24228119310175
             }
           ]
         },
         "permutation": [
+          {
+            "id": "3",
+            "location": {
+              "x": 81,
+              "y": -35
+            },
+            "status": "OFF",
+            "declared": false
+          },
           {
             "id": "2",
             "location": {
@@ -1143,19 +1152,10 @@
             "declared": false
           },
           {
-            "id": "1",
+            "id": "5",
             "location": {
-              "x": -31,
-              "y": 80
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 81,
-              "y": -35
+              "x": 32,
+              "y": -86
             },
             "status": "OFF",
             "declared": false
@@ -1170,10 +1170,10 @@
             "declared": false
           },
           {
-            "id": "5",
+            "id": "1",
             "location": {
-              "x": 32,
-              "y": -86
+              "x": -31,
+              "y": 80
             },
             "status": "OFF",
             "declared": false
@@ -1188,42 +1188,51 @@
     "robotsCount": 6,
     "details": [
       {
-        "totalTimeUnit": 244.3764875647227,
+        "totalTimeUnit": 236.2746705876036,
         "wakeUpTree": {
           "children": [
             {
               "startRobotId": "0",
-              "targetRobotId": "2",
-              "distance": 90.4267659490264,
+              "targetRobotId": "3",
+              "distance": 93.34345183246653,
               "totalDistanceFromRoot": 0.0
             },
             {
               "startRobotId": "0",
-              "targetRobotId": "1",
-              "distance": 118.6001686339442,
-              "totalDistanceFromRoot": 209.0269345829706
+              "targetRobotId": "2",
+              "distance": 24.331050121192877,
+              "totalDistanceFromRoot": 117.6745019536594
             },
             {
-              "startRobotId": "2",
-              "targetRobotId": "3",
-              "distance": 24.331050121192877,
-              "totalDistanceFromRoot": 114.75781607021928
+              "startRobotId": "3",
+              "targetRobotId": "5",
+              "distance": 129.61867149450345,
+              "totalDistanceFromRoot": 222.96212332696996
             },
             {
               "startRobotId": "0",
               "targetRobotId": "4",
-              "distance": 20.12461179749811,
-              "totalDistanceFromRoot": 229.15154638046872
+              "distance": 111.03603018840326,
+              "totalDistanceFromRoot": 228.71053214206268
             },
             {
               "startRobotId": "2",
-              "targetRobotId": "5",
-              "distance": 129.61867149450345,
-              "totalDistanceFromRoot": 244.3764875647227
+              "targetRobotId": "1",
+              "distance": 118.6001686339442,
+              "totalDistanceFromRoot": 236.2746705876036
             }
           ]
         },
         "permutation": [
+          {
+            "id": "3",
+            "location": {
+              "x": 8,
+              "y": 93
+            },
+            "status": "OFF",
+            "declared": false
+          },
           {
             "id": "2",
             "location": {
@@ -1234,19 +1243,10 @@
             "declared": false
           },
           {
-            "id": "1",
+            "id": "5",
             "location": {
-              "x": -87,
-              "y": -6
-            },
-            "status": "OFF",
-            "declared": false
-          },
-          {
-            "id": "3",
-            "location": {
-              "x": 8,
-              "y": 93
+              "x": 84,
+              "y": -12
             },
             "status": "OFF",
             "declared": false
@@ -1261,10 +1261,10 @@
             "declared": false
           },
           {
-            "id": "5",
+            "id": "1",
             "location": {
-              "x": 84,
-              "y": -12
+              "x": -87,
+              "y": -6
             },
             "status": "OFF",
             "declared": false
@@ -1295,16 +1295,16 @@
               "totalDistanceFromRoot": 238.24618371254172
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "4",
-              "distance": 12.649110640673518,
-              "totalDistanceFromRoot": 250.89529435321523
-            },
-            {
               "startRobotId": "2",
               "targetRobotId": "5",
               "distance": 8.94427190999916,
               "totalDistanceFromRoot": 100.97144181106697
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "4",
+              "distance": 12.649110640673518,
+              "totalDistanceFromRoot": 250.89529435321523
             },
             {
               "startRobotId": "2",
@@ -1334,19 +1334,19 @@
             "declared": false
           },
           {
-            "id": "4",
+            "id": "5",
             "location": {
-              "x": 94,
-              "y": 3
+              "x": -38,
+              "y": -83
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "5",
+            "id": "4",
             "location": {
-              "x": -38,
-              "y": -83
+              "x": 94,
+              "y": 3
             },
             "status": "OFF",
             "declared": false
@@ -1477,16 +1477,16 @@
               "totalDistanceFromRoot": 105.4761124574143
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "2",
-              "distance": 97.082439194738,
-              "totalDistanceFromRoot": 202.5585516521523
-            },
-            {
               "startRobotId": "3",
               "targetRobotId": "5",
               "distance": 165.5294535724685,
               "totalDistanceFromRoot": 247.91877326865242
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "2",
+              "distance": 97.082439194738,
+              "totalDistanceFromRoot": 202.5585516521523
             },
             {
               "startRobotId": "4",
@@ -1516,19 +1516,19 @@
             "declared": false
           },
           {
-            "id": "2",
+            "id": "5",
             "location": {
-              "x": 94,
-              "y": 34
+              "x": 26,
+              "y": -80
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "5",
+            "id": "2",
             "location": {
-              "x": 26,
-              "y": -80
+              "x": 94,
+              "y": 34
             },
             "status": "OFF",
             "declared": false
@@ -1659,16 +1659,16 @@
               "totalDistanceFromRoot": 193.20172743289817
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "4",
-              "distance": 109.65856099730654,
-              "totalDistanceFromRoot": 302.8602884302047
-            },
-            {
               "startRobotId": "3",
               "targetRobotId": "5",
               "distance": 68.73136110975832,
               "totalDistanceFromRoot": 157.73136110975832
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "4",
+              "distance": 109.65856099730654,
+              "totalDistanceFromRoot": 302.8602884302047
             },
             {
               "startRobotId": "3",
@@ -1698,19 +1698,19 @@
             "declared": false
           },
           {
-            "id": "4",
+            "id": "5",
             "location": {
-              "x": 11,
-              "y": 93
+              "x": -29,
+              "y": -90
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "5",
+            "id": "4",
             "location": {
-              "x": -29,
-              "y": -90
+              "x": 11,
+              "y": 93
             },
             "status": "OFF",
             "declared": false
@@ -1750,16 +1750,16 @@
               "totalDistanceFromRoot": 95.57000933906114
             },
             {
-              "startRobotId": "0",
-              "targetRobotId": "3",
-              "distance": 6.4031242374328485,
-              "totalDistanceFromRoot": 101.97313357649399
-            },
-            {
               "startRobotId": "1",
               "targetRobotId": "4",
               "distance": 165.20593209688326,
               "totalDistanceFromRoot": 255.67692192235162
+            },
+            {
+              "startRobotId": "0",
+              "targetRobotId": "3",
+              "distance": 6.4031242374328485,
+              "totalDistanceFromRoot": 101.97313357649399
             },
             {
               "startRobotId": "2",
@@ -1789,19 +1789,19 @@
             "declared": false
           },
           {
-            "id": "3",
+            "id": "4",
             "location": {
-              "x": -89,
-              "y": 45
+              "x": 15,
+              "y": -97
             },
             "status": "OFF",
             "declared": false
           },
           {
-            "id": "4",
+            "id": "3",
             "location": {
-              "x": 15,
-              "y": -97
+              "x": -89,
+              "y": 45
             },
             "status": "OFF",
             "declared": false

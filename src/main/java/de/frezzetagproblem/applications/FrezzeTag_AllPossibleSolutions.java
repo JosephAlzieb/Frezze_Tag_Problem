@@ -73,40 +73,8 @@ public class FrezzeTag_AllPossibleSolutions {
           }
         }
 
-        List<List<Robot>> permutations = generatePermutations(off);
-        List<Distance> distances = new ArrayList<>();
-        for (List<Robot> permutation : permutations) {
-          List<Robot> p_off = copyRobots(permutation);
-          List<Robot> p_on = copyRobots(on);
-          WakeUpTree wake_up_tree = new WakeUpTree();
-          while (!p_off.isEmpty()) {
-            distances.clear();
-            distances = Distance.calculateDistances(p_on, p_off);
-            for (Robot r : p_on) {
-                Robot target = r.getNextRobot(p_off);
-                Robot start = Distance.findClosestAktiveRobot(target, distances);
-                if (target != null && r.equals(start) ){
-                  Distance.clear(start, distances);
-                  target.aktive();
-                  double distance = r.distance(target);
-                  wake_up_tree.addChild(r.getId(), target.getId(), distance);
-                  r.moveTo(target.getLocation());
-                }
-            }
+        execute(on, off, result);
 
-            for (Iterator<Robot> iterator = p_off.iterator(); iterator.hasNext(); ) {
-              Robot robot = iterator.next();
-              if (robot.isAktive()) {
-                p_on.add(robot);
-                iterator.remove();
-              }
-            }
-
-          }
-
-          double makespan = wake_up_tree.getMakespan();
-          result.add(makespan, wake_up_tree, permutation);
-        }
         results.add(result);
       }
 
@@ -130,6 +98,47 @@ public class FrezzeTag_AllPossibleSolutions {
       } else {
         robotsCount += 50;
       }
+    }
+  }
+
+  public static void execute(
+      List<Robot> on,
+      List<Robot> off,
+      Result result) {
+    List<List<Robot>> permutations = generatePermutations(off);
+    List<Distance> distances = new ArrayList<>();
+    for (List<Robot> permutation : permutations) {
+      List<Robot> p_off = copyRobots(permutation);
+      List<Robot> p_on = copyRobots(on);
+      WakeUpTree wake_up_tree = new WakeUpTree();
+
+      while (!p_off.isEmpty()) {
+        distances.clear();
+        distances = Distance.calculateDistances(p_on, p_off);
+        for (Robot r : p_on) {
+          Robot target = r.getNextRobot(p_off);
+          Robot start = Distance.findClosestAktiveRobot(target, distances);
+          if (target != null && r.equals(start) ){
+            Distance.clear(start, distances);
+            target.aktive();
+            double distance = r.distance(target);
+            wake_up_tree.addChild(r.getId(), target.getId(), distance);
+            r.moveTo(target.getLocation());
+          }
+        }
+
+        for (Iterator<Robot> iterator = p_off.iterator(); iterator.hasNext(); ) {
+          Robot robot = iterator.next();
+          if (robot.isAktive()) {
+            p_on.add(robot);
+            iterator.remove();
+          }
+        }
+
+      }
+
+      double makespan = wake_up_tree.getMakespan();
+      result.add(makespan, wake_up_tree, permutation);
     }
   }
 
