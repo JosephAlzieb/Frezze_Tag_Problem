@@ -88,6 +88,32 @@ public class FrezzeTag_AllPossibleSolutionsTest {
   }
 
   @Test
+  public void test_4_inaktive_robots_on_edge(){
+    Result result = new Result("Test", 4,0);
+    Robot r0 = new Robot("0", new Location(0,0), true);
+    ArrayList<Robot> on = new ArrayList<>();
+    on.add(r0);
+
+    Robot r1 = new Robot("1", new Location(86,-39), false);
+    Robot r2 = new Robot("2", new Location(-83,-24), false);
+    Robot r3 = new Robot("3", new Location(-86,33), false);
+    Robot r4 = new Robot("4", new Location(81,14), false);
+    ArrayList<Robot> off = new ArrayList<>();
+    off.add(r1);
+    off.add(r2);
+    off.add(r3);
+    off.add(r4);
+
+    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+
+    assertEquals(result.getDetails().size(), 24, 0);
+
+    // Optimale Lösung finden
+    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
+    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 307, 0);
+  }
+
+  @Test
   public void test_5_inaktive_robots(){
     Result result = new Result("Test", 5,0);
     Robot r0 = new Robot("0", new Location(0,0), true);
