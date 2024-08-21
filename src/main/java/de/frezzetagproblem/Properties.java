@@ -20,9 +20,9 @@ public class Properties {
   /**
    * Variablen
    */
-  public static int ROBOTS_COUNT = 5;
+  public static int ROBOTS_COUNT = 3;
   public static int FILE_COUNT = 20;
-  public static int TOTAL_ROBOTS_COUNT = 9;
+  public static int TOTAL_ROBOTS_COUNT = 10;
   public static int OFFSET = 2;
 
   /**
