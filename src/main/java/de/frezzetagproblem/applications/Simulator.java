@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Helper;
 import de.frezzetagproblem.models.Robot;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -31,15 +32,13 @@ public class Simulator {
 
   public static void main(String[] args) throws IOException {
     Simulator simulator = new Simulator();
-    simulator.runExperiments(1000);
+    simulator.runExperiments(5);
   }
 
   private void runExperiments(int robotCount) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-        Properties.WORST_CASE_FILE_NAME:
-        Properties.NORMAL_CASE_FILE_NAME;
+    String path = Helper.getPathName();
     Path dir = Paths.get(path + robotCount);
     if (!Files.exists(dir)) {
       Files.createDirectories(dir);
@@ -48,23 +47,10 @@ public class Simulator {
     off = new ArrayList<>();
     on = new ArrayList<>();
 
-    JsonReader reader = new JsonReader(new FileReader(dir + "/0.json"));
-    JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-    JsonObject robotsJson = jsonObject.getAsJsonObject("robots");
+    Helper.readJsonFile(Path.of(dir + "/0.json"), on, off);
 
-    for (Map.Entry<String, JsonElement> robotEntry : robotsJson.entrySet()) {
-      JsonObject robotObj = robotEntry.getValue().getAsJsonObject();
-      Robot r = gson.fromJson(robotObj, Robot.class);
-
-      if (r.isAktive()) {
-        on.add(r);
-      } else {
-        off.add(r);
-      }
-
-      this.robots = new ArrayList<>();
-      updateRobots();
-    }
+    this.robots = new ArrayList<>();
+    updateRobots();
 
     SwingUtilities.invokeLater(() -> {
       FTPGraph graph = new FTPGraph(robots);
@@ -81,8 +67,8 @@ public class Simulator {
 
   public class FTPGraph extends JFrame {
 
-    private List<Robot> robots;
-    private int padding = 50; // Puffer, damit die Punkte nicht direkt am Rand sind
+    private final List<Robot> robots;
+    private final int padding = 50; // Puffer, damit die Punkte nicht direkt am Rand sind
 
 
     public FTPGraph(List<Robot> robots) {
@@ -105,8 +91,8 @@ public class Simulator {
             iterator.remove();
           }
         }
-          updateRobots();
-          graphPanel.repaint();
+        updateRobots();
+        graphPanel.repaint();
       });
       timer.start();
     }
@@ -130,10 +116,18 @@ public class Simulator {
         int maxY = Integer.MIN_VALUE;
 
         for (Robot robot : robots) {
-          if (robot.getLocation_x() < minX) minX = robot.getLocation_x();
-          if (robot.getLocation_x() > maxX) maxX = robot.getLocation_x();
-          if (robot.getLocation_y() < minY) minY = robot.getLocation_y();
-          if (robot.getLocation_y() > maxY) maxY = robot.getLocation_y();
+          if (robot.getLocation_x() < minX) {
+            minX = robot.getLocation_x();
+          }
+          if (robot.getLocation_x() > maxX) {
+            maxX = robot.getLocation_x();
+          }
+          if (robot.getLocation_y() < minY) {
+            minY = robot.getLocation_y();
+          }
+          if (robot.getLocation_y() > maxY) {
+            maxY = robot.getLocation_y();
+          }
         }
 
         // Skalierungsfaktoren berechnen
@@ -144,11 +138,11 @@ public class Simulator {
         g.drawLine(padding, height / 2, width - padding, height / 2); // x-Achse
         g.drawLine(width / 2, padding, width / 2, height - padding); // y-Achse
 
-
         // Zeichne die Punkte
         for (Robot robot : robots) {
           int x = (int) ((robot.getLocation_x() - minX) * xScale) + padding;
-          int y = height - padding - (int) ((robot.getLocation_y() - minY) * yScale); // invertiere y
+          int y =
+              height - padding - (int) ((robot.getLocation_y() - minY) * yScale); // invertiere y
 
           if (robot.isAktive()) {
             g.setColor(Color.GREEN);

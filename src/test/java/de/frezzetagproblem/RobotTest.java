@@ -34,7 +34,8 @@ public class RobotTest {
     );
 
     Robot result = robot.getNearestRobot(robots);
-    assertEquals(robots.get(0), result); //Expected the nearest robot to be the first one when none are declared
+    assertEquals(robots.get(0),
+        result); //Expected the nearest robot to be the first one when none are declared
   }
 
   @Test
@@ -45,7 +46,7 @@ public class RobotTest {
         new Robot("2", new Location(2, 2), false),
         new Robot("3", new Location(3, 3), true),
         new Robot("4", new Location(1, 1), false)
-        );
+    );
 
     Robot result = robot.getNearestRobot(robots);
     assertEquals(robots.get(3), result); //Expected the nearest undeclared robot with id = 4

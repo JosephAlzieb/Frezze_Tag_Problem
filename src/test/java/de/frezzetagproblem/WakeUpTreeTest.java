@@ -25,7 +25,6 @@ public class WakeUpTreeTest {
     wakeUpTree.addChild("1", "3", 3);
     wakeUpTree.addChild("0", "4", 3);
 
-
     assertEquals(6, wakeUpTree.getMakespan(), 0.1);
   }
 

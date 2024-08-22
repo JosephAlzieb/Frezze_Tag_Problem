@@ -1,10 +1,9 @@
 package de.frezzetagproblem.models;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Result {
+
   private String fileName;
   private int experimentNumber;
   private int robotsCount;
@@ -24,11 +23,12 @@ public class Result {
     this.experimentNumber = experimentNumber;
   }
 
-  public void add (double totalTimeUnit, WakeUpTree wakeUpTree, List<Robot> permutation){
+  public void add(double totalTimeUnit, WakeUpTree wakeUpTree, List<Robot> permutation) {
     ResultDetails d = new ResultDetails(totalTimeUnit, wakeUpTree, permutation);
 
-    if (details == null) details = d;
-    else if (details.getTotalTimeUnit() > totalTimeUnit){
+    if (details == null) {
+      details = d;
+    } else if (details.getTotalTimeUnit() > totalTimeUnit) {
       details = d;
     }
   }
@@ -70,7 +70,7 @@ public class Result {
         '}';
   }
 
-  public double getTotalTimeUnit() {
-    return details.getTotalTimeUnit();
+  public int getTotalTimeUnit() {
+    return (int) details.getTotalTimeUnit();
   }
 }

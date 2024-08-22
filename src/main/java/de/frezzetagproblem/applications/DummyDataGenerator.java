@@ -5,8 +5,8 @@ import static de.frezzetagproblem.Properties.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Robot;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,44 +17,49 @@ import java.util.Random;
 
 /**
  * Generator, um dummy-data für Experimente zu generieren.
+ *
  * @Author Joseph Alzieb
  */
 public class DummyDataGenerator {
 
   public static void main(String[] args) throws IOException {
-    generateDummyRoboters(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT, Properties.FILE_COUNT, Properties.OFFSET);
+    generateDummyRoboters(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT,
+        Properties.FILE_COUNT, Properties.OFFSET);
   }
 
   /**
    * Generiert Dummy-Roboter in JSON-Dateien.
    *
-   * @param robotsCount         Anzahl der Roboter in den ersten (filesCount) JSON-Dateien (im ersten Experiment).
-   * @param totalRobotsCount    Anzahl der Roboter in den letzten (filesCount) JSON-Dateien (im letzten Experiment).
-   * @param filesCount          Anzahl der JSON-Dateien.
-   * @param offset              Differenz zur Anzahl der Roboter im nächsten Experiment.
-   * @throws IOException        Wenn ein E/A-Fehler auftritt.
+   * @param robotsCount      Anzahl der Roboter in den ersten (filesCount) JSON-Dateien (im ersten
+   *                         Experiment).
+   * @param totalRobotsCount Anzahl der Roboter in den letzten (filesCount) JSON-Dateien (im letzten
+   *                         Experiment).
+   * @param filesCount       Anzahl der JSON-Dateien.
+   * @param offset           Differenz zur Anzahl der Roboter im nächsten Experiment.
+   * @throws IOException Wenn ein E/A-Fehler auftritt.
    */
-  private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount, int offset) throws IOException {
+  private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount,
+      int offset) throws IOException {
     while (robotsCount <= totalRobotsCount) {
       for (int j = 0; j < filesCount; j++) {
         List<Robot> robots = new ArrayList<>();
 
         // der erste aktive Roboter
-        robots.add(new Robot("0", new Location(0,0), false));
+        robots.add(new Robot("0", new Location(0, 0), false));
         robots.get(0).aktive();
         int index = 1;
 
-        if (Properties.ALLOW_MULTIPLE_ROBOTS && robotsCount >= 50){
-          robots.add(new Robot("1", new Location(R/2,R/2), false));
+        if (Properties.ALLOW_MULTIPLE_ROBOTS && robotsCount >= 50) {
+          robots.add(new Robot("1", new Location(R / 2, R / 2), false));
           robots.get(1).aktive();
 
-          robots.add(new Robot("2", new Location(R/2,-R/2), false));
+          robots.add(new Robot("2", new Location(R / 2, -R / 2), false));
           robots.get(2).aktive();
 
-          robots.add(new Robot("3", new Location(-R/2,R/2), false));
+          robots.add(new Robot("3", new Location(-R / 2, R / 2), false));
           robots.get(3).aktive();
 
-          robots.add(new Robot("4", new Location(-R/2,-R/2), false));
+          robots.add(new Robot("4", new Location(-R / 2, -R / 2), false));
           robots.get(4).aktive();
 
           index = 5;
@@ -63,9 +68,9 @@ public class DummyDataGenerator {
         // Hier werden die anderen schlafenden Roboter generiert.
         for (int i = index; i < robotsCount; i++) {
           Location randomLocation = null;
-          if (Properties.ALLOW_GENERATE_WORSTCASE_DATA){
-             randomLocation = getRandomLocationOnEdge();
-          } else{
+          if (Properties.ALLOW_GENERATE_WORSTCASE_DATA) {
+            randomLocation = getRandomLocationOnEdge();
+          } else {
             randomLocation = getRandomLocation();
 
           }
@@ -74,7 +79,7 @@ public class DummyDataGenerator {
 
         String directory =
             Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-                Properties.WORST_CASE_FILE_NAME:
+                Properties.WORST_CASE_FILE_NAME :
                 Properties.NORMAL_CASE_FILE_NAME;
         String pathname = directory + robotsCount + "/";
         File dir = new File(pathname);
@@ -84,9 +89,9 @@ public class DummyDataGenerator {
 
         save(pathname + j + ".json", robots);
       }
-      if (robotsCount < 15){
+      if (robotsCount < 15) {
         robotsCount++;
-      } else if (robotsCount < 100){
+      } else if (robotsCount < 100) {
         robotsCount += 5;
       } else {
         robotsCount += 50;
@@ -95,8 +100,9 @@ public class DummyDataGenerator {
   }
 
   /**
-   * Alle Punkte müssen im Kreis liegen für L2. oder im Quadrat für L1.
-   * Für L2 muss die Distanz zwischen der Random-Location und der Start-Location < Radius sein.
+   * Alle Punkte müssen im Kreis liegen für L2. oder im Quadrat für L1. Für L2 muss die Distanz
+   * zwischen der Random-Location und der Start-Location < Radius sein.
+   *
    * @return random Location
    */
   private static Location getRandomLocation() {
@@ -105,7 +111,7 @@ public class DummyDataGenerator {
       int x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
       int y = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
       Location location = new Location(x, y);
-      if (location.distance(Properties.START_Location) < R){
+      if (location.distance(Properties.START_Location) < R) {
         return location;
       }
     }
@@ -117,7 +123,7 @@ public class DummyDataGenerator {
     int edge = random.nextInt(4); // 0: top, 1: right, 2: bottom, 3: left
     int x, y;
 
-    while (true){
+    while (true) {
       switch (edge) {
         case 0: // top edge
           x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
@@ -139,7 +145,7 @@ public class DummyDataGenerator {
       }
       Location location = new Location(x, y);
 
-      if (location.distance(Properties.START_Location) < R){
+      if (location.distance(Properties.START_Location) < R) {
         return location;
       }
     }

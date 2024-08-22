@@ -9,9 +9,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Robot
+ *
  * @Author Joseph Alzieb
  */
-public class Robot implements Cloneable{
+public class Robot implements Cloneable {
+
   private final String id;
   private Location location;
   private Status status;
@@ -28,22 +30,23 @@ public class Robot implements Cloneable{
 
   /**
    * Hier wird das Algorithms ausgeführt, das in der Klasse {@link Properties} definiert ist.
+   *
    * @param off inakive Robots
    */
   public void run(
       List<Robot> off,
       WakeUpTree wake_up_tree) {
-    if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_TIMEUNITS_1)){
+    if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_TIMEUNITS_1)) {
       runGreedyAlgo_1(off, wake_up_tree);
-    } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)){
+    } else if (Properties.ALGORITHM.equals(Properties.Greedy_WITH_DISTANCE)) {
       runGreedyAlgo_Dis(off, wake_up_tree);
     }
   }
 
   /**
-   * Bessere Lösung - Algorithms
-   * Hier wird immer gecheckt, ob es eine bessere Lösung gibt..
-   * @param off inaktive robots
+   * Bessere Lösung - Algorithms Hier wird immer gecheckt, ob es eine bessere Lösung gibt..
+   *
+   * @param off               inaktive robots
    * @param possibleSolutions alle möglichen Lösungen
    */
   public void run(
@@ -55,7 +58,7 @@ public class Robot implements Cloneable{
       double distance = this.distance(this.targetRobot);
 
       //Wenn eine besser Lösung gibt, um das Target zu aktivieren, wird nach ihr gesucht.
-      if (existsBetterSolution(possibleSolutions, distance).get()){
+      if (existsBetterSolution(possibleSolutions, distance).get()) {
         this.removeTargetRobot();
         return;
       }
@@ -75,12 +78,11 @@ public class Robot implements Cloneable{
 
   private AtomicBoolean existsBetterSolution(
       TreeMap<Pair<String, String>, Double> possibleSolutions,
-      Double distance){
+      Double distance) {
     AtomicBoolean b = new AtomicBoolean(false);
-    possibleSolutions.forEach((x,y)->{
-      if (this.targetRobot.id.equals(x.getSecond()) && y < distance){
+    possibleSolutions.forEach((x, y) -> {
+      if (this.targetRobot.id.equals(x.getSecond()) && y < distance) {
         b.set(true);
-        return;
       }
     });
 
@@ -171,15 +173,14 @@ public class Robot implements Cloneable{
   }
 
   /**
-   * Gedacht für Simulator.
-   * Hier unterscheiden wir 3 Fälle: 1: Robot (this) ist ON, und hat noch kein
-   * Robot gefunden, den er aufweckt. -> Es wird nach Target-Robot gesucht (der nächste Nachbar),
-   * und ihn markiert, -> damit er nicht von einem anderen Roboter markiert wird.
+   * Gedacht für Simulator. Hier unterscheiden wir 3 Fälle: 1: Robot (this) ist ON, und hat noch
+   * kein Robot gefunden, den er aufweckt. -> Es wird nach Target-Robot gesucht (der nächste
+   * Nachbar), und ihn markiert, -> damit er nicht von einem anderen Roboter markiert wird.
    * <p>
    * 2: Robot (this) hat seinen Target-Robot erreicht, und weckt ihn auf. 3: Robot (this) muss sich
    * zu seinem Target-Robot bewegen.
    *
-   * @param off               List of Robots with status "OFF".
+   * @param off List of Robots with status "OFF".
    */
   public void run(List<Robot> off) {
     if (this.targetRobot == null) {
@@ -195,9 +196,13 @@ public class Robot implements Cloneable{
         removeTargetRobot();
       } else {
         this.setVelocity();
-        System.out.println("Robot " + this.id + " moves from " + Arrays.toString(this.location.toArray()) + " to " +
-            Arrays.toString(new Location((int) Math.round(this.location.x + this.velocity[0]), (int) Math.round(this.location.y + this.velocity[1])).toArray()) +
-            " toward robot " + this.targetRobot.id + " at " + Arrays.toString(this.targetRobot.location.toArray()));
+        System.out.println(
+            "Robot " + this.id + " moves from " + Arrays.toString(this.location.toArray()) + " to "
+                +
+                Arrays.toString(new Location((int) Math.round(this.location.x + this.velocity[0]),
+                    (int) Math.round(this.location.y + this.velocity[1])).toArray()) +
+                " toward robot " + this.targetRobot.id + " at " + Arrays.toString(
+                this.targetRobot.location.toArray()));
         this.location.x += (int) Math.round(this.velocity[0]);
         this.location.y += (int) Math.round(this.velocity[1]);
       }
@@ -209,7 +214,8 @@ public class Robot implements Cloneable{
     this.velocity = new double[]{Math.cos(rad), Math.sin(rad)};
     this.velocity[0] *= 1;
     this.velocity[1] *= 1;
-    System.out.println("Setting robot " + this.id + " velocity to " + Arrays.toString(this.velocity));
+    System.out.println(
+        "Setting robot " + this.id + " velocity to " + Arrays.toString(this.velocity));
   }
 
   public double getAngleToTarget() {
@@ -220,6 +226,7 @@ public class Robot implements Cloneable{
 
   /**
    * Hier wird einfach über alle OFF-Roboter iteriert, und den nährten Roboter für (this) gefunden.
+   *
    * @param off List of Roboter with Status "OFF"
    * @return nearste-robot
    */
@@ -252,8 +259,7 @@ public class Robot implements Cloneable{
   }
 
   /**
-   *
-   * @param on Liste der aktiven Roboter
+   * @param on  Liste der aktiven Roboter
    * @param off Liste der inaktiven Roboter
    * @return den näherten Robot mit Berücksichtigung der aktiven Roboter.
    */
@@ -270,9 +276,9 @@ public class Robot implements Cloneable{
     }
 
     // Besonders gut für kleine n. bis n = 10
-    if (nearest != null){
-      for (Robot r:on) {
-        if (this != r && this.distance(nearest) > r.distance(nearest)){
+    if (nearest != null) {
+      for (Robot r : on) {
+        if (this != r && this.distance(nearest) > r.distance(nearest)) {
           return null;
         }
       }
@@ -281,19 +287,26 @@ public class Robot implements Cloneable{
   }
 
   /**
-   * Die Methode berechnet den Abstand zwischen zwei Punkten.
-   * Je nachdem welche Metrik in {@link Properties} (L1, oder L2) gesetzt ist, wird diese Metrik zur Berechnung
-   * der Distanz verwendet.
+   * Die Methode berechnet den Abstand zwischen zwei Punkten. Je nachdem welche Metrik in
+   * {@link Properties} (L1, L2, oder LP) gesetzt ist, wird diese Metrik zur Berechnung der Distanz
+   * verwendet.
+   *
    * @param that other Robot
    * @return Distance from Robot (this) to Robot (that)
    */
   public double distance(Robot that) {
     if (Properties.METRIK.equals(Properties.L_1)) {
-      return Math.abs(this.location.x - that.location.x) + Math.abs(this.location.y - that.location.y);
+      return Math.abs(this.location.x - that.location.x) +
+          Math.abs(this.location.y - that.location.y);
+    } else if (Properties.METRIK.equals(Properties.L_2)){
+      return Math.sqrt(
+          Math.pow(this.location.x - that.location.x, 2) +
+          Math.pow(this.location.y - that.location.y, 2));
     } else {
-      return Math.sqrt(Math.pow(this.location.x - that.location.x, 2) + Math.pow(this.location.y - that.location.y, 2));
+      return Math.max(
+          Math.abs(this.location.x - that.location.x),
+          Math.abs(this.location.y - that.location.y));
     }
-
   }
 
   public String getId() {
@@ -321,30 +334,34 @@ public class Robot implements Cloneable{
     this.declared = true;
   }
 
-  public boolean hasTargetRobot(){
+  public boolean hasTargetRobot() {
     return this.targetRobot != null;
   }
 
-  public void removeTargetRobot(){
+  public void removeTargetRobot() {
     this.targetRobot = null;
   }
 
-  public int getLocation_x(){
+  public int getLocation_x() {
     return this.location.x;
   }
 
-  public int getLocation_y(){
+  public int getLocation_y() {
     return this.location.y;
   }
+
   public Location getLocation() {
     return location;
   }
+
   public void setLocation(Location location) {
     this.location = location;
   }
-  public void moveTo(Location location){
+
+  public void moveTo(Location location) {
     this.location = location;
   }
+
   @Override
   public String toString() {
     return "Robot{" +

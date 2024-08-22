@@ -3,6 +3,7 @@ package de.frezzetagproblem.models;
 import java.util.List;
 
 public class ResultDetails {
+
   double totalTimeUnit;
   WakeUpTree wakeUpTree;
   List<Robot> permutation;

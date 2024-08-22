@@ -1,6 +1,7 @@
 package de.frezzetagproblem.models;
 
-public class Pair<T1 extends Comparable<T1>, T2 extends Comparable<T2>> implements Comparable<Pair<T1, T2>> {
+public class Pair<T1 extends Comparable<T1>, T2 extends Comparable<T2>> implements
+    Comparable<Pair<T1, T2>> {
 
   private final T1 first;
   private final T2 second;
@@ -29,15 +30,18 @@ public class Pair<T1 extends Comparable<T1>, T2 extends Comparable<T2>> implemen
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
 
     Pair<?, ?> pair = (Pair<?, ?>) o;
 
-    if (!first.equals(pair.first))
+    if (!first.equals(pair.first)) {
       return false;
+    }
     return second.equals(pair.second);
   }
 
