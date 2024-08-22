@@ -112,7 +112,7 @@ public class Helper {
     str.append(Properties.METRIK);
     str.append("-Ergebnisse");
     if (Properties.ALLOW_GENERATE_WORSTCASE_DATA) {
-      str.append("-On_Edge");
+      str.append("-Edge");
     } else {
       str.append("-Normal");
     }
