@@ -79,17 +79,9 @@ public class FrezzeTag_AllPossibleSolutions {
       }
 
       /*
-      Alle möglichen Lösungen werden nur für n = 5 gespeichert, denn für große n kann die Datei sehr groß werden.
+      Von allen möglichen Lösungen werden nur die optimalen gespeichert, denn für große n kann die Datei sehr groß werden.
        */
-      if (robotsCount == 5){
-        saveResults(robotsCount, gson, results, null);
-      }
-
-      List<Result> optimalResults = Result.getOptimalResults(results);
-      saveResults(robotsCount, gson, optimalResults, "-bestCase");
-
-      List<Result> worstCaseResults = Result.getWorstCaseResults(results);
-      saveResults(robotsCount, gson, worstCaseResults, "-worstCase");
+      saveResults(robotsCount, gson, results);
 
       if (robotsCount < 15){
         robotsCount++;
@@ -155,10 +147,6 @@ public class FrezzeTag_AllPossibleSolutions {
     return l;
   }
 
-  private static double getMaxValue(List<Double> list) {
-    return Collections.max(list);
-  }
-
   public static <T> List<List<T>> generatePermutations(List<T> list) {
     List<List<T>> lists = new LinkedList<>();
     permute(list, 0, lists);
@@ -178,7 +166,7 @@ public class FrezzeTag_AllPossibleSolutions {
     }
   }
 
-  private static void saveResults(int robotCount, Gson gson, List<Result> results, String str)
+  private static void saveResults(int robotCount, Gson gson, List<Result> results)
       throws IOException {
     String path = Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
         Properties.WORST_CASE_RESULT_FILE_NAME:
@@ -189,11 +177,8 @@ public class FrezzeTag_AllPossibleSolutions {
       resDir.mkdirs();
     }
     String resultFileName;
-    if (str != null){
-      resultFileName = resultDirectory + robotCount + str + "-results.json";
-    } else {
-      resultFileName = resultDirectory + robotCount + "-results.json";
-    }
+    resultFileName = resultDirectory + robotCount + "-results.json";
+
     try (FileWriter writer = new FileWriter(resultFileName)) {
       gson.toJson(results, writer);
     }

@@ -7,7 +7,6 @@ import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
 import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 
 public class FrezzeTag_AllPossibleSolutionsTest {
@@ -27,14 +26,8 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    // Für off.size = 2 soll es zwei Deteils geben.
-    // (1) 0 -> 1 -> 2 = 9
-    // (2) 0 -> 2 -> 1 = 11
-    assertEquals(result.getDetails().size(), 2, 0);
-
     // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 9, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 9, 0);
   }
 
   @Test
@@ -54,11 +47,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    assertEquals(result.getDetails().size(), 6, 0);
-
-    // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 10, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 10, 0);
   }
 
   @Test
@@ -80,11 +69,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    assertEquals(result.getDetails().size(), 24, 0);
-
-    // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 13, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 13, 0);
   }
 
   @Test
@@ -106,11 +91,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    assertEquals(result.getDetails().size(), 24, 0);
-
-    // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 307, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 307, 0);
   }
 
   @Test
@@ -134,11 +115,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    assertEquals(result.getDetails().size(), 120, 0);
-
-    // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 13, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 13, 0);
   }
 
   @Test
@@ -164,11 +141,8 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     FrezzeTag_AllPossibleSolutions.execute(on, off, result);
 
-    assertEquals(result.getDetails().size(), 720, 0);
-
     // Optimale Lösung finden
-    List<Result> optimalResults = Result.getOptimalResults(List.of(result));
-    assertEquals(optimalResults.get(0).getTotalTimeUnit(), 13, 0);
+    assertEquals((int) result.getDetails().getTotalTimeUnit(), 13, 0);
   }
 
 }
