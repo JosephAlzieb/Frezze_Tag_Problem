@@ -47,16 +47,10 @@ public class ResultsToExcelGenerator {
                 try {
                     // Liste aller JSON-Dateien in diesem Verzeichnis
                     List<Result> results = new ArrayList<>();
-                    if ("all_possible_solutions".equals(key)){
-                        Files.list(directory)
-                            .filter(path -> path.toString().endsWith("bestCase-results.json"))
-                            .forEach(jsonFile -> results.addAll(readJsonFile(jsonFile)));
+                    Files.list(directory)
+                        .filter(path -> path.toString().endsWith(".json"))
+                        .forEach(jsonFile -> results.addAll(readJsonFile(jsonFile)));
 
-                    } else {
-                        Files.list(directory)
-                            .filter(path -> path.toString().endsWith(".json"))
-                            .forEach(jsonFile -> results.addAll(readJsonFile(jsonFile)));
-                    }
                     // Ordnername als Key verwenden
                     if (!results.isEmpty()) {
                         resultMap.put(key, results);
