@@ -45,7 +45,7 @@ public class Properties {
 
   public static String NORMAL_CASE_RESULT_FILE_NAME = "results/normal/";
 
-  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = true;
+  public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
   public static boolean ALLOW_MULTIPLE_ROBOTS = false;
 
@@ -57,5 +57,5 @@ public class Properties {
   /**
    * Mit welcher Metrik soll die Distanz zwischen den Robotern berechnet werden.
    */
-  public static String METRIK = L_P;
+  public static String METRIK = L_2;
 }
