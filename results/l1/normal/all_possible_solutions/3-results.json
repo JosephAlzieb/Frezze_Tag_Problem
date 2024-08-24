@@ -1,0 +1,2202 @@
+[
+  {
+    "fileName": "0.json",
+    "experimentNumber": 1,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 197.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 96.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 101.0,
+            "totalDistanceFromRoot": 197.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 91,
+            "y": -5
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 57,
+            "y": -72
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "1.json",
+    "experimentNumber": 2,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 243.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 99.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 144.0,
+            "totalDistanceFromRoot": 243.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -70,
+            "y": 29
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 52,
+            "y": 51
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "10.json",
+    "experimentNumber": 3,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 114.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 31.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 83.0,
+            "totalDistanceFromRoot": 114.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 9,
+            "y": 22
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -19,
+            "y": -33
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "11.json",
+    "experimentNumber": 4,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 67.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 50.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 17.0,
+            "totalDistanceFromRoot": 67.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -32,
+            "y": -18
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -41,
+            "y": -10
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "12.json",
+    "experimentNumber": 5,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 235.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 64.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 171.0,
+            "totalDistanceFromRoot": 235.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 42,
+            "y": 22
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -33,
+            "y": -74
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "13.json",
+    "experimentNumber": 6,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 132.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 86.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 46.0,
+            "totalDistanceFromRoot": 132.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -51,
+            "y": -35
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -42,
+            "y": -72
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "14.json",
+    "experimentNumber": 7,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 285.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 117.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 168.0,
+            "totalDistanceFromRoot": 285.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 77,
+            "y": -40
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -86,
+            "y": -35
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "15.json",
+    "experimentNumber": 8,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 100.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 85.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 15.0,
+            "totalDistanceFromRoot": 100.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -81,
+            "y": 4
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -96,
+            "y": 4
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "16.json",
+    "experimentNumber": 9,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 181.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 83.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 98.0,
+            "totalDistanceFromRoot": 181.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -66,
+            "y": 17
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -24,
+            "y": 73
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "17.json",
+    "experimentNumber": 10,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 201.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 57.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 144.0,
+            "totalDistanceFromRoot": 201.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 34,
+            "y": -23
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -63,
+            "y": -70
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "18.json",
+    "experimentNumber": 11,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 280.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 107.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 173.0,
+            "totalDistanceFromRoot": 280.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 22,
+            "y": 85
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 70,
+            "y": -40
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "19.json",
+    "experimentNumber": 12,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 130.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 40.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 90.0,
+            "totalDistanceFromRoot": 130.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -39,
+            "y": -1
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 24,
+            "y": -28
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "2.json",
+    "experimentNumber": 13,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 125.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 36.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 89.0,
+            "totalDistanceFromRoot": 125.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -34,
+            "y": -2
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -75,
+            "y": 46
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "20.json",
+    "experimentNumber": 14,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 163.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 53.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 110.0,
+            "totalDistanceFromRoot": 163.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 45,
+            "y": 8
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 10,
+            "y": -67
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "21.json",
+    "experimentNumber": 15,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 199.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 34.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 165.0,
+            "totalDistanceFromRoot": 199.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -30,
+            "y": -4
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 77,
+            "y": 54
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "22.json",
+    "experimentNumber": 16,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 75.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 39.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 36.0,
+            "totalDistanceFromRoot": 75.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 14,
+            "y": -25
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 45,
+            "y": -20
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "23.json",
+    "experimentNumber": 17,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 228.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 86.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 142.0,
+            "totalDistanceFromRoot": 228.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 50,
+            "y": -36
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -88,
+            "y": -32
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "24.json",
+    "experimentNumber": 18,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 203.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 74.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 129.0,
+            "totalDistanceFromRoot": 203.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 44,
+            "y": -30
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -80,
+            "y": -25
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "25.json",
+    "experimentNumber": 19,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 113.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 20.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 93.0,
+            "totalDistanceFromRoot": 113.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -8,
+            "y": 12
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -95,
+            "y": 18
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "26.json",
+    "experimentNumber": 20,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 272.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 94.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 178.0,
+            "totalDistanceFromRoot": 272.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -88,
+            "y": 6
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -1,
+            "y": 97
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "27.json",
+    "experimentNumber": 21,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 130.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 88.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 42.0,
+            "totalDistanceFromRoot": 130.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 21,
+            "y": -67
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 62,
+            "y": -66
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "28.json",
+    "experimentNumber": 22,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 109.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 32.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 77.0,
+            "totalDistanceFromRoot": 109.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 27,
+            "y": 5
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 86,
+            "y": -13
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "29.json",
+    "experimentNumber": 23,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 278.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 87.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 191.0,
+            "totalDistanceFromRoot": 278.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -36,
+            "y": 51
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 55,
+            "y": -49
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "3.json",
+    "experimentNumber": 24,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 263.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 115.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 148.0,
+            "totalDistanceFromRoot": 263.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 72,
+            "y": -43
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -63,
+            "y": -56
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "30.json",
+    "experimentNumber": 25,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 259.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 68.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 191.0,
+            "totalDistanceFromRoot": 259.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -18,
+            "y": -50
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 57,
+            "y": 66
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "31.json",
+    "experimentNumber": 26,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 292.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 104.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 188.0,
+            "totalDistanceFromRoot": 292.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 55,
+            "y": -49
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 14,
+            "y": 98
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "32.json",
+    "experimentNumber": 27,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 181.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 98.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 83.0,
+            "totalDistanceFromRoot": 181.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -93,
+            "y": -5
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -56,
+            "y": -51
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "33.json",
+    "experimentNumber": 28,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 139.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 116.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 23.0,
+            "totalDistanceFromRoot": 139.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 64,
+            "y": 52
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 60,
+            "y": 71
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "34.json",
+    "experimentNumber": 29,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 164.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 55.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 109.0,
+            "totalDistanceFromRoot": 164.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -9,
+            "y": 46
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -66,
+            "y": -6
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "35.json",
+    "experimentNumber": 30,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 179.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 70.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 109.0,
+            "totalDistanceFromRoot": 179.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -23,
+            "y": -47
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -22,
+            "y": 61
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "36.json",
+    "experimentNumber": 31,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 116.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 31.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 85.0,
+            "totalDistanceFromRoot": 116.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 23,
+            "y": 8
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 13,
+            "y": 83
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "37.json",
+    "experimentNumber": 32,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 189.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 33.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 156.0,
+            "totalDistanceFromRoot": 189.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 20,
+            "y": -13
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -90,
+            "y": 33
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "38.json",
+    "experimentNumber": 33,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 174.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 27.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 147.0,
+            "totalDistanceFromRoot": 174.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 24,
+            "y": -3
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -95,
+            "y": 25
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "39.json",
+    "experimentNumber": 34,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 166.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 43.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 123.0,
+            "totalDistanceFromRoot": 166.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 28,
+            "y": -15
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 86,
+            "y": 50
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "4.json",
+    "experimentNumber": 35,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 143.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 82.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 61.0,
+            "totalDistanceFromRoot": 143.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -11,
+            "y": -71
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 31,
+            "y": -52
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "40.json",
+    "experimentNumber": 36,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 256.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 69.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 187.0,
+            "totalDistanceFromRoot": 256.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 6,
+            "y": 63
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 74,
+            "y": -56
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "41.json",
+    "experimentNumber": 37,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 144.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 48.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 96.0,
+            "totalDistanceFromRoot": 144.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 36,
+            "y": -12
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 16,
+            "y": -88
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "42.json",
+    "experimentNumber": 38,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 147.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 87.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 60.0,
+            "totalDistanceFromRoot": 147.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -54,
+            "y": 33
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -28,
+            "y": 67
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "43.json",
+    "experimentNumber": 39,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 241.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 79.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 162.0,
+            "totalDistanceFromRoot": 241.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 21,
+            "y": 58
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": 85,
+            "y": -40
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "44.json",
+    "experimentNumber": 40,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 131.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 59.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 72.0,
+            "totalDistanceFromRoot": 131.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": -56,
+            "y": -3
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -68,
+            "y": 57
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "45.json",
+    "experimentNumber": 41,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 84.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 14.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 70.0,
+            "totalDistanceFromRoot": 84.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 7,
+            "y": 7
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -45,
+            "y": -11
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "46.json",
+    "experimentNumber": 42,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 189.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 81.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 108.0,
+            "totalDistanceFromRoot": 189.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -12,
+            "y": -69
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 55,
+            "y": -28
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "47.json",
+    "experimentNumber": 43,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 234.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 77.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 157.0,
+            "totalDistanceFromRoot": 234.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -52,
+            "y": 25
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 98,
+            "y": 18
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "48.json",
+    "experimentNumber": 44,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 221.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 67.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 154.0,
+            "totalDistanceFromRoot": 221.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 45,
+            "y": 22
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -50,
+            "y": 81
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "49.json",
+    "experimentNumber": 45,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 298.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 94.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 204.0,
+            "totalDistanceFromRoot": 298.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 49,
+            "y": 45
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -33,
+            "y": -77
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "5.json",
+    "experimentNumber": 46,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 209.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 89.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 120.0,
+            "totalDistanceFromRoot": 209.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": -37,
+            "y": 52
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": 61,
+            "y": 30
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "6.json",
+    "experimentNumber": 47,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 374.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 121.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 253.0,
+            "totalDistanceFromRoot": 374.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 25,
+            "y": 96
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -81,
+            "y": -51
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "7.json",
+    "experimentNumber": 48,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 138.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 35.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 103.0,
+            "totalDistanceFromRoot": 138.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 13,
+            "y": 22
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -28,
+            "y": -40
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "8.json",
+    "experimentNumber": 49,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 257.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 79.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 178.0,
+            "totalDistanceFromRoot": 257.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "2",
+          "location": {
+            "x": 70,
+            "y": 9
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "1",
+          "location": {
+            "x": -88,
+            "y": -11
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  },
+  {
+    "fileName": "9.json",
+    "experimentNumber": 50,
+    "robotsCount": 3,
+    "details": {
+      "totalTimeUnit": 177.0,
+      "wakeUpTree": {
+        "children": [
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 41.0,
+            "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "2",
+            "distance": 136.0,
+            "totalDistanceFromRoot": 177.0
+          }
+        ]
+      },
+      "permutation": [
+        {
+          "id": "1",
+          "location": {
+            "x": 23,
+            "y": -18
+          },
+          "status": "OFF",
+          "declared": false
+        },
+        {
+          "id": "2",
+          "location": {
+            "x": -90,
+            "y": 5
+          },
+          "status": "OFF",
+          "declared": false
+        }
+      ]
+    }
+  }
+]
