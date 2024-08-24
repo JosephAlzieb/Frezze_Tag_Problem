@@ -17,11 +17,14 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.apache.poi.ss.formula.functions.T;
 
 public class Helper {
 
   public static void readJsonFile(Path entry, List<Robot> on, List<Robot> off)
       throws FileNotFoundException {
+    System.out.println("reading file (" + entry.toString() + ")");
+
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     JsonReader reader = new JsonReader(new FileReader(entry.toFile()));
     JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -41,6 +44,7 @@ public class Helper {
 
   public static void saveResults(int robotCount, String algoName, List<Result> results)
       throws IOException {
+    System.out.println("saving results for robots-count - " + robotCount + " : " + algoName);
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     String path = getResultsPathName();
 
@@ -79,15 +83,23 @@ public class Helper {
     } else {
       robotsCount += 50;
     }
+
+    System.out.println("increasing robots-count to " + robotsCount);
     return robotsCount;
   }
 
   public static String getPathName() {
-    return Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-        Properties.WORST_CASE_FILE_NAME :
-        Properties.NORMAL_CASE_FILE_NAME;
-  }
+    StringBuilder str = new StringBuilder();
+    str.append("dummy-data/");
+    //str.append(Properties.METRIK.toLowerCase() + "/");
+    if (Properties.ALLOW_GENERATE_WORSTCASE_DATA){
+      str.append("edge/");
+    } else {
+      str.append("normal/");
+    }
 
+    return str.toString();
+  }
   public static <T> List<List<T>> generatePermutations(List<T> list) {
     List<List<T>> lists = new LinkedList<>();
     permute(list, 0, lists);
@@ -117,6 +129,8 @@ public class Helper {
       str.append("-Normal");
     }
     str.append(".xlsx");
+
+    System.out.println("generating excel-file " + str);
     return str.toString();
   }
 }

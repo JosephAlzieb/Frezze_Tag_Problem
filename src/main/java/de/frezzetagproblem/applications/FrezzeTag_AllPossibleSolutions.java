@@ -14,6 +14,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class FrezzeTag_AllPossibleSolutions {
 
@@ -21,43 +25,67 @@ public class FrezzeTag_AllPossibleSolutions {
     runExperiments(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT);
   }
 
-  private static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
+  public static void runExperiments(int robotsCount, int totalRobotsCount) throws IOException {
+    ExecutorService executor = Executors.newCachedThreadPool();
 
     while (robotsCount <= totalRobotsCount) {
-      List<Result> results = new ArrayList<>();
-      String pathName = Helper.getPathName();
+      List<Future<?>> futures = new ArrayList<>();
+      int finalRobotsCount = robotsCount;
+      Future<?> future = executor.submit(() -> {
+        try {
+          runExperimentsForRobotsCount(finalRobotsCount);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
 
-      String fileName = pathName + robotsCount;
-      Path dir = Paths.get(fileName);
-      if (!Files.exists(dir)) {
-        Files.createDirectories(dir);
+      });
+      futures.add(future);
+
+      robotsCount = Helper.increaseRobotsCount(robotsCount);
+    }
+
+    executor.shutdown();
+    try {
+      if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+        executor.shutdownNow();
       }
+    } catch (InterruptedException e) {
+      executor.shutdownNow();
+    }
+  }
 
-      DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
+  private static void runExperimentsForRobotsCount(int robotsCount) throws IOException {
+    List<Result> results = new ArrayList<>();
+    String pathName = Helper.getPathName();
 
-      int experimentNumber = 1;
+    String fileName = pathName + robotsCount;
+    Path dir = Paths.get(fileName);
+    if (!Files.exists(dir)) {
+      Files.createDirectories(dir);
+    }
 
-      for (Path entry : stream) {
-        List<Robot> off = new ArrayList<>();
-        List<Robot> on = new ArrayList<>();
+    DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json");
 
-        String f = entry.getFileName().toString();
-        Result result = new Result(f, robotsCount, experimentNumber++);
+    int experimentNumber = 1;
 
-        Helper.readJsonFile(entry, on, off);
+    for (Path entry : stream) {
+      List<Robot> off = new ArrayList<>();
+      List<Robot> on = new ArrayList<>();
 
-        execute(on, off, result);
+      String f = entry.getFileName().toString();
+      Result result = new Result(f, robotsCount, experimentNumber++);
 
-        results.add(result);
-      }
+      Helper.readJsonFile(entry, on, off);
+
+      execute(on, off, result);
+
+      results.add(result);
+    }
 
       /*
       Von allen möglichen Lösungen werden nur die optimalen gespeichert, denn für große n kann die Datei sehr groß werden.
        */
-      Helper.saveResults(robotsCount, "all_possible_solutions", results);
-
-      robotsCount = Helper.increaseRobotsCount(robotsCount);
-    }
+    Helper.saveResults(robotsCount, "all_possible_solutions", results);
   }
 
   public static void execute(

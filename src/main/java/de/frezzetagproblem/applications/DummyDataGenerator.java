@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import de.frezzetagproblem.Properties;
+import de.frezzetagproblem.models.Helper;
 import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Robot;
 import java.io.File;
@@ -23,8 +24,10 @@ import java.util.Random;
 public class DummyDataGenerator {
 
   public static void main(String[] args) throws IOException {
-    generateDummyRoboters(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT,
-        Properties.FILE_COUNT, Properties.OFFSET);
+    generateDummyRoboters(
+        Properties.ROBOTS_COUNT,
+        Properties.TOTAL_ROBOTS_COUNT,
+        Properties.FILE_COUNT);
   }
 
   /**
@@ -35,11 +38,9 @@ public class DummyDataGenerator {
    * @param totalRobotsCount Anzahl der Roboter in den letzten (filesCount) JSON-Dateien (im letzten
    *                         Experiment).
    * @param filesCount       Anzahl der JSON-Dateien.
-   * @param offset           Differenz zur Anzahl der Roboter im nächsten Experiment.
    * @throws IOException Wenn ein E/A-Fehler auftritt.
    */
-  private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount,
-      int offset) throws IOException {
+  private static void generateDummyRoboters(int robotsCount, int totalRobotsCount, int filesCount) throws IOException {
     while (robotsCount <= totalRobotsCount) {
       for (int j = 0; j < filesCount; j++) {
         List<Robot> robots = new ArrayList<>();
@@ -77,10 +78,7 @@ public class DummyDataGenerator {
           robots.add(new Robot(String.valueOf(i), randomLocation, false));
         }
 
-        String directory =
-            Properties.ALLOW_GENERATE_WORSTCASE_DATA ?
-                Properties.WORST_CASE_FILE_NAME :
-                Properties.NORMAL_CASE_FILE_NAME;
+        String directory = Helper.getPathName();
         String pathname = directory + robotsCount + "/";
         File dir = new File(pathname);
         if (!dir.exists()) {
@@ -89,13 +87,7 @@ public class DummyDataGenerator {
 
         save(pathname + j + ".json", robots);
       }
-      if (robotsCount < 15) {
-        robotsCount++;
-      } else if (robotsCount < 100) {
-        robotsCount += 5;
-      } else {
-        robotsCount += 50;
-      }
+      robotsCount = Helper.increaseRobotsCount(robotsCount);
     }
   }
 
