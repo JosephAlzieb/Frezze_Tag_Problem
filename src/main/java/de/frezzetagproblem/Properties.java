@@ -23,7 +23,7 @@ public class Properties {
    * Variablen
    */
   public static int ROBOTS_COUNT = 3;
-  public static int FILE_COUNT = 20;
+  public static int FILE_COUNT = 50;
   public static int TOTAL_ROBOTS_COUNT = 11;
   public static int OFFSET = 2;
 
@@ -36,14 +36,6 @@ public class Properties {
   public static int MIN = -R;
 
   public static int MAX = R;
-
-  public static String WORST_CASE_FILE_NAME = "dummy-data/on_edge/";
-
-  public static String NORMAL_CASE_FILE_NAME = "dummy-data/normal/";
-
-  public static String WORST_CASE_RESULT_FILE_NAME = "results/on_edge/";
-
-  public static String NORMAL_CASE_RESULT_FILE_NAME = "results/normal/";
 
   public static boolean ALLOW_GENERATE_WORSTCASE_DATA = false;
 
