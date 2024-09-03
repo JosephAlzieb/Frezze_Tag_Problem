@@ -2,11 +2,14 @@ package de.frezzetagproblem;
 
 import static org.junit.Assert.assertEquals;
 
+import de.frezzetagproblem.applications.DummyDataGenerator;
 import de.frezzetagproblem.applications.FrezzeTag_AllPossibleSolutions;
+import de.frezzetagproblem.models.Helper;
 import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Result;
 import de.frezzetagproblem.models.Robot;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 
 /**
@@ -171,6 +174,36 @@ public class FrezzeTag_AllPossibleSolutionsTest {
 
     // Optimale Lösung finden
     assertEquals(result.getTotalTimeUnit(), 13, 0);
+  }
+
+  /**
+   * Versuche, den Beweis von L2 zu widersprechen.
+   */
+  @Test
+  public void test_11_inaktive_robots() {
+    Robot r0 = new Robot("0", new Location(0, 0), true);
+    ArrayList<Robot> on = new ArrayList<>();
+    on.add(r0);
+
+    double expected = 383.8;
+    double makespan = 0;
+    List<Robot> robots = null;
+    Result result = null;
+    while (makespan < expected){
+      result = new Result("Test", 11, 0);
+      List<Robot> off = new ArrayList<>();
+      for (int i = 1; i < 11; i++) {
+        Location randomLocation = null;
+        randomLocation = DummyDataGenerator.getRandomLocationOnEdge();
+        off.add(new Robot(String.valueOf(i), randomLocation, false));
+      }
+      robots = Helper.copyRobots(off);
+      FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+      makespan = result.getTotalTimeUnit();
+
+      System.out.println("-------------------------------------");
+      System.out.println(robots +" -- "+ makespan);
+    }
   }
 
 }

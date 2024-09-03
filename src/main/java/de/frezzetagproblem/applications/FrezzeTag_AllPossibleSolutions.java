@@ -95,8 +95,8 @@ public class FrezzeTag_AllPossibleSolutions {
     List<List<Robot>> permutations = Helper.generatePermutations(off);
     List<Distance> distances = new ArrayList<>();
     for (List<Robot> permutation : permutations) {
-      List<Robot> p_off = copyRobots(permutation);
-      List<Robot> p_on = copyRobots(on);
+      List<Robot> p_off = Helper.copyRobots(permutation);
+      List<Robot> p_on = Helper.copyRobots(on);
       WakeUpTree wake_up_tree = new WakeUpTree();
 
       while (!p_off.isEmpty()) {
@@ -127,18 +127,5 @@ public class FrezzeTag_AllPossibleSolutions {
       double makespan = wake_up_tree.getMakespan();
       result.add(makespan, wake_up_tree, permutation);
     }
-  }
-
-  private static List<Robot> copyRobots(List<Robot> robots) {
-    List<Robot> l = new ArrayList<>();
-    for (Robot robot : robots) {
-      try {
-        Robot copy = (Robot) robot.clone();
-        l.add(copy);
-      } catch (CloneNotSupportedException e) {
-        throw new RuntimeException(e);
-      }
-    }
-    return l;
   }
 }

@@ -133,4 +133,17 @@ public class Helper {
     System.out.println("generating excel-file " + str);
     return str.toString();
   }
+
+  public static List<Robot> copyRobots(List<Robot> robots) {
+    List<Robot> l = new ArrayList<>();
+    for (Robot robot : robots) {
+      try {
+        Robot copy = (Robot) robot.clone();
+        l.add(copy);
+      } catch (CloneNotSupportedException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    return l;
+  }
 }

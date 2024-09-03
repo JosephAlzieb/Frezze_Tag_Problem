@@ -97,7 +97,7 @@ public class DummyDataGenerator {
    *
    * @return random Location
    */
-  private static Location getRandomLocation() {
+  public static Location getRandomLocation() {
     Random random = new Random();
     while (true) {
       int x = random.nextInt((Properties.MAX - Properties.MIN) + 1) + Properties.MIN;
@@ -109,8 +109,7 @@ public class DummyDataGenerator {
     }
   }
 
-
-  private static Location getRandomLocationOnEdge() {
+  public static Location getRandomLocationOnEdge() {
     Random random = new Random();
     int edge = random.nextInt(4); // 0: top, 1: right, 2: bottom, 3: left
     int x, y;
