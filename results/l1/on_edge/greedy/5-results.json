@@ -1516,32 +1516,32 @@
     "experimentNumber": 43,
     "robotsCount": 5,
     "details": {
-      "totalTimeUnit": 323.0,
+      "totalTimeUnit": 354.0,
       "wakeUpTree": {
         "children": [
           {
             "startRobotId": "0",
-            "targetRobotId": "1",
-            "distance": 89.0,
+            "targetRobotId": "3",
+            "distance": 130.0,
             "totalDistanceFromRoot": 0.0
+          },
+          {
+            "startRobotId": "0",
+            "targetRobotId": "1",
+            "distance": 219.0,
+            "totalDistanceFromRoot": 349.0
+          },
+          {
+            "startRobotId": "3",
+            "targetRobotId": "4",
+            "distance": 75.0,
+            "totalDistanceFromRoot": 205.0
           },
           {
             "startRobotId": "0",
             "targetRobotId": "2",
             "distance": 5.0,
-            "totalDistanceFromRoot": 94.0
-          },
-          {
-            "startRobotId": "1",
-            "targetRobotId": "3",
-            "distance": 219.0,
-            "totalDistanceFromRoot": 308.0
-          },
-          {
-            "startRobotId": "0",
-            "targetRobotId": "4",
-            "distance": 229.0,
-            "totalDistanceFromRoot": 323.0
+            "totalDistanceFromRoot": 354.0
           }
         ]
       }

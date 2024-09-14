@@ -1054,38 +1054,38 @@
     "experimentNumber": 26,
     "robotsCount": 6,
     "details": {
-      "totalTimeUnit": 303.0,
+      "totalTimeUnit": 312.0,
       "wakeUpTree": {
         "children": [
           {
             "startRobotId": "0",
-            "targetRobotId": "1",
-            "distance": 91.0,
+            "targetRobotId": "5",
+            "distance": 104.0,
             "totalDistanceFromRoot": 0.0
           },
           {
             "startRobotId": "0",
-            "targetRobotId": "4",
-            "distance": 13.0,
-            "totalDistanceFromRoot": 104.0
+            "targetRobotId": "2",
+            "distance": 9.0,
+            "totalDistanceFromRoot": 113.0
           },
           {
-            "startRobotId": "1",
-            "targetRobotId": "5",
+            "startRobotId": "5",
+            "targetRobotId": "1",
             "distance": 195.0,
-            "totalDistanceFromRoot": 286.0
+            "totalDistanceFromRoot": 299.0
+          },
+          {
+            "startRobotId": "5",
+            "targetRobotId": "4",
+            "distance": 13.0,
+            "totalDistanceFromRoot": 312.0
           },
           {
             "startRobotId": "0",
             "targetRobotId": "3",
-            "distance": 199.0,
-            "totalDistanceFromRoot": 303.0
-          },
-          {
-            "startRobotId": "1",
-            "targetRobotId": "2",
-            "distance": 9.0,
-            "totalDistanceFromRoot": 295.0
+            "distance": 172.0,
+            "totalDistanceFromRoot": 285.0
           }
         ]
       }

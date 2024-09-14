@@ -64,7 +64,7 @@
     "experimentNumber": 2,
     "robotsCount": 9,
     "details": {
-      "totalTimeUnit": 156.0,
+      "totalTimeUnit": 159.0,
       "wakeUpTree": {
         "children": [
           {
@@ -75,45 +75,45 @@
           },
           {
             "startRobotId": "0",
-            "targetRobotId": "5",
-            "distance": 52.0,
-            "totalDistanceFromRoot": 63.0
-          },
-          {
-            "startRobotId": "3",
             "targetRobotId": "1",
             "distance": 57.0,
             "totalDistanceFromRoot": 68.0
           },
           {
-            "startRobotId": "0",
-            "targetRobotId": "8",
-            "distance": 11.0,
-            "totalDistanceFromRoot": 74.0
+            "startRobotId": "3",
+            "targetRobotId": "4",
+            "distance": 77.0,
+            "totalDistanceFromRoot": 88.0
           },
           {
             "startRobotId": "3",
-            "targetRobotId": "7",
-            "distance": 29.0,
-            "totalDistanceFromRoot": 97.0
+            "targetRobotId": "2",
+            "distance": 55.0,
+            "totalDistanceFromRoot": 143.0
           },
           {
-            "startRobotId": "1",
+            "startRobotId": "4",
+            "targetRobotId": "5",
+            "distance": 60.0,
+            "totalDistanceFromRoot": 148.0
+          },
+          {
+            "startRobotId": "0",
             "targetRobotId": "6",
             "distance": 53.0,
             "totalDistanceFromRoot": 121.0
           },
           {
-            "startRobotId": "5",
-            "targetRobotId": "4",
-            "distance": 60.0,
-            "totalDistanceFromRoot": 123.0
+            "startRobotId": "1",
+            "targetRobotId": "7",
+            "distance": 29.0,
+            "totalDistanceFromRoot": 97.0
           },
           {
-            "startRobotId": "0",
-            "targetRobotId": "2",
-            "distance": 82.0,
-            "totalDistanceFromRoot": 156.0
+            "startRobotId": "4",
+            "targetRobotId": "8",
+            "distance": 11.0,
+            "totalDistanceFromRoot": 159.0
           }
         ]
       }
