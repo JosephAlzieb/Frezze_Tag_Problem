@@ -3,7 +3,7 @@ package de.frezzetagproblem;
 import static org.junit.Assert.assertEquals;
 
 import de.frezzetagproblem.applications.DummyDataGenerator;
-import de.frezzetagproblem.applications.FrezzeTag_AllPossibleSolutions;
+import de.frezzetagproblem.applications.FreezeTag_AllPossibleSolutions;
 import de.frezzetagproblem.models.Helper;
 import de.frezzetagproblem.models.Location;
 import de.frezzetagproblem.models.Result;
@@ -30,7 +30,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r1);
     off.add(r2);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     // Optimale Lösung finden
     assertEquals(result.getTotalTimeUnit(), 9, 0);
@@ -51,7 +51,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r2);
     off.add(r3);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     assertEquals(result.getTotalTimeUnit(), 10, 0);
   }
@@ -73,7 +73,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r3);
     off.add(r4);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     assertEquals(result.getTotalTimeUnit(), 13, 0);
   }
@@ -95,7 +95,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r3);
     off.add(r4);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     assertEquals(result.getTotalTimeUnit(), 307, 0);
   }
@@ -119,7 +119,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r4);
     off.add(r5);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     assertEquals(result.getTotalTimeUnit(), 13, 0);
   }
@@ -145,7 +145,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r5);
     off.add(r6);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     // Optimale Lösung finden
     assertEquals(result.getTotalTimeUnit(), 13, 0);
@@ -170,7 +170,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
     off.add(r4);
     off.add(r5);
 
-    FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+    FreezeTag_AllPossibleSolutions.execute(on, off, result);
 
     // Optimale Lösung finden
     assertEquals(result.getTotalTimeUnit(), 13, 0);
@@ -198,7 +198,7 @@ public class FrezzeTag_AllPossibleSolutionsTest {
         off.add(new Robot(String.valueOf(i), randomLocation, false));
       }
       robots = Helper.copyRobots(off);
-      FrezzeTag_AllPossibleSolutions.execute(on, off, result);
+      FreezeTag_AllPossibleSolutions.execute(on, off, result);
       makespan = result.getTotalTimeUnit();
 
       System.out.println("-------------------------------------");

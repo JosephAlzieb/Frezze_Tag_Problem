@@ -2,15 +2,10 @@ package de.frezzetagproblem.applications;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
-import de.frezzetagproblem.Properties;
 import de.frezzetagproblem.models.Helper;
 import de.frezzetagproblem.models.Robot;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,20 +13,19 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-public class Simulator {
+public class FreezeTag_Simulator {
 
   List<Robot> robots;
   List<Robot> on;
   List<Robot> off;
 
   public static void main(String[] args) throws IOException {
-    Simulator simulator = new Simulator();
+    FreezeTag_Simulator simulator = new FreezeTag_Simulator();
     simulator.runExperiments(5);
   }
 

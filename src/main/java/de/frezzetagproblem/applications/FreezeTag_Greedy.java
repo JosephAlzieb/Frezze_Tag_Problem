@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FrezzeTag_Greedy {
+public class FreezeTag_Greedy {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT);

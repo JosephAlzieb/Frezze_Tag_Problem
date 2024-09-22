@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
 
-public class FrezzeTag_OnRoboter_Perm {
+public class FreezeTag_OnRoboter_Perm {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT);

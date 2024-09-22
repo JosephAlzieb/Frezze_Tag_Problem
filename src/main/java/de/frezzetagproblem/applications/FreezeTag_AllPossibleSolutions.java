@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-public class FrezzeTag_AllPossibleSolutions {
+public class FreezeTag_AllPossibleSolutions {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT);

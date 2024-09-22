@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FrezzeTag_BestNext_AktiveRobot {
+public class FreezeTag_BestNext_AktiveRobot {
 
   public static void main(String[] args) throws IOException {
     runExperiments(Properties.ROBOTS_COUNT, Properties.TOTAL_ROBOTS_COUNT);

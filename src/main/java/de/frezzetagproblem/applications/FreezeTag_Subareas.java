@@ -11,15 +11,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class FrezzeTag_Subareas {
+public class FreezeTag_Subareas {
 
   public static void main(String[] args) throws IOException {
-    FrezzeTag_Subareas ftp = new FrezzeTag_Subareas();
+    FreezeTag_Subareas ftp = new FreezeTag_Subareas();
     //Ab 5 Roboter macht das Sinn
     ftp.runExperiments(5, Properties.TOTAL_ROBOTS_COUNT);
   }
